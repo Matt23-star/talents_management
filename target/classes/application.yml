@@ -1,0 +1,24 @@
+
+spring:
+  # 应用名称
+  application:
+    name: Talent-management-back
+  #数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #数据库地址
+    url: jdbc:mysql://106.14.145.85:3306/management_system?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF8
+    #数据库用户名
+    username: root
+    #数据库密码
+    password: 123123
+
+# Mybatis-plus配置
+mybatis-plus:
+  # 配置Mapper映射文件
+  mapper-locations: classpath*:/mapper/*Mapper.xml
+  # 配置MyBatis数据返回类型别名（默认名称是类名）
+  type-aliases-package: com.foe.talentmanagementback.entity
+  configuration:
+    # 自动驼峰命名
+    map-underscore-to-camel-case: true
