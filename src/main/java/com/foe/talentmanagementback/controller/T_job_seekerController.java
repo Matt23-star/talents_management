@@ -1,6 +1,7 @@
 package com.foe.talentmanagementback.controller;
 
 
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Controller;
  * @since 2021-07-08
  */
 @Controller
+@Api(value = "求职者接口")
 @RequestMapping("/t_job_seeker")
 public class T_job_seekerController {
 

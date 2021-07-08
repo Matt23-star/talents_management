@@ -1,5 +1,7 @@
 package com.foe.talentmanagementback.entity;
 
+import io.swagger.annotations.ApiModel;
+
 import java.io.Serializable;
 
 /**
@@ -10,6 +12,8 @@ import java.io.Serializable;
  * @author Matt
  * @since 2021-07-08
  */
+
+@ApiModel(value = "系统登录信息对象")
 public class T_login implements Serializable {
 
 

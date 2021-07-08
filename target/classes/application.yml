@@ -1,3 +1,6 @@
+#端口8081
+server:
+  port: 8081
 
 spring:
   # 应用名称
@@ -22,3 +25,4 @@ mybatis-plus:
   configuration:
     # 自动驼峰命名
     map-underscore-to-camel-case: true
+
