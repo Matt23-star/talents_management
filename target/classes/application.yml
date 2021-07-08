@@ -26,3 +26,8 @@ mybatis-plus:
     # 自动驼峰命名
     map-underscore-to-camel-case: true
 
+
+#Mybatis SQL语句，控制台输出
+logging:
+  level:
+    com.foe.talentmanagementback.mapper: debug

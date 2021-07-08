@@ -1,6 +1,8 @@
 package com.foe.talentmanagementback.entity;
 
-import io.swagger.annotations.ApiModel;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.Data;
 
 import java.io.Serializable;
 
@@ -13,10 +15,10 @@ import java.io.Serializable;
  * @since 2021-07-08
  */
 
-@ApiModel(value = "到勤信息对象")
+@Data
 public class T_work_attendance implements Serializable {
 
-
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     private Integer archiveDetailId;
@@ -27,47 +29,4 @@ public class T_work_attendance implements Serializable {
     private String achievements;
 
     private String attendance;
-
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getArchiveDetailId() {
-        return archiveDetailId;
-    }
-
-    public void setArchiveDetailId(Integer archiveDetailId) {
-        this.archiveDetailId = archiveDetailId;
-    }
-
-    public String getAchievements() {
-        return achievements;
-    }
-
-    public void setAchievements(String achievements) {
-        this.achievements = achievements;
-    }
-
-    public String getAttendance() {
-        return attendance;
-    }
-
-    public void setAttendance(String attendance) {
-        this.attendance = attendance;
-    }
-
-    @Override
-    public String toString() {
-        return "T_work_attendance{" +
-        "id=" + id +
-        ", archive_detail_id=" + archiveDetailId +
-        ", achievements=" + achievements +
-        ", attendacne=" + attendance +
-        "}";
-    }
 }

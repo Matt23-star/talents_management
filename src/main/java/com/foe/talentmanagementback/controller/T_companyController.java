@@ -16,8 +16,18 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 @RequestMapping("/t_company")
-@Api(value = "公司接口")
+@Api(value = "公司接口",tags = "接口")
 public class T_companyController {
 
+//    @Autowired
+//    private T_archiveServiceImpl t_archiveService;
+//
+//    @ApiOperation(value = "获取人才档案", notes = "通过系统人才id")
+//    @RequestMapping("/getById/{talentId}")
+//    @ResponseBody
+//    public T_archive getArchiveByTalentId(@ApiParam(value = "系统人才id", required = true) @PathVariable("talentId") Integer talentId) {
+//        System.out.println(talentId);
+//        return t_archiveService.getArchiveByTalentId(talentId);
+//    }
 }
 

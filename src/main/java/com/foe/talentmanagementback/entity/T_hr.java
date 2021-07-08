@@ -1,6 +1,7 @@
 package com.foe.talentmanagementback.entity;
 
-import io.swagger.annotations.ApiModel;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 
 import java.io.Serializable;
 
@@ -12,11 +13,9 @@ import java.io.Serializable;
  * @author Matt
  * @since 2021-07-08
  */
-
-@ApiModel(value = "HR对象")
 public class T_hr implements Serializable {
 
-
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     /**

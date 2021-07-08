@@ -2,7 +2,7 @@ package com.foe.talentmanagementback.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import io.swagger.annotations.ApiModel;
+import lombok.Data;
 
 import java.io.Serializable;
 
@@ -15,7 +15,7 @@ import java.io.Serializable;
  * @since 2021-07-08
  */
 
-@ApiModel(value = "民族对象")
+@Data
 public class T_nation implements Serializable {
 
 
@@ -29,29 +29,4 @@ public class T_nation implements Serializable {
      * 民族
      */
     private String name;
-
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "T_nation{" +
-        "id=" + id +
-        ", name=" + name +
-        "}";
-    }
 }

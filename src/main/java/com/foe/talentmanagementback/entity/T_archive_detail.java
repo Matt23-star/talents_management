@@ -1,5 +1,7 @@
 package com.foe.talentmanagementback.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModel;
 
 import java.io.Serializable;
@@ -13,10 +15,10 @@ import java.io.Serializable;
  * @since 2021-07-08
  */
 
-@ApiModel(value = "档案详情对象")
+@ApiModel(value = "archiveDetail对象")
 public class T_archive_detail implements Serializable {
 
-
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     private Integer companyId;
