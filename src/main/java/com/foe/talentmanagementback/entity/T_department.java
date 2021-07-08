@@ -1,7 +1,5 @@
 package com.foe.talentmanagementback.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 
 /**
@@ -15,36 +13,15 @@ import java.io.Serializable;
 public class T_department implements Serializable {
 
 
-    /**
-     * id
-     */
-    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    /**
-     * 部门名称
-     */
-    private String name;
+    private Integer companyId;
 
-    /**
-     * 父id
-     */
-    private Integer parentId;
+    private Integer departmentManagerId;
 
-    /**
-     * 路径
-     */
-    private String depPath;
+    private String departmentName;
 
-    /**
-     * 是否启用
-     */
-    private Boolean enabled;
-
-    /**
-     * 是否上级
-     */
-    private Boolean isParent;
+    private String departmentFunction;
 
 
     public Integer getId() {
@@ -55,55 +32,46 @@ public class T_department implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Integer getCompanyId() {
+        return companyId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCompanyId(Integer companyId) {
+        this.companyId = companyId;
     }
 
-    public Integer getParentId() {
-        return parentId;
+    public Integer getDepartmentManagerId() {
+        return departmentManagerId;
     }
 
-    public void setParentId(Integer parentId) {
-        this.parentId = parentId;
+    public void setDepartmentManagerId(Integer departmentManagerId) {
+        this.departmentManagerId = departmentManagerId;
     }
 
-    public String getDepPath() {
-        return depPath;
+    public String getDepartmentName() {
+        return departmentName;
     }
 
-    public void setDepPath(String depPath) {
-        this.depPath = depPath;
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
     }
 
-    public Boolean getEnabled() {
-        return enabled;
+    public String getDepartmentFunction() {
+        return departmentFunction;
     }
 
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public Boolean getIsParent() {
-        return isParent;
-    }
-
-    public void setIsParent(Boolean isParent) {
-        this.isParent = isParent;
+    public void setDepartmentFunction(String departmentFunction) {
+        this.departmentFunction = departmentFunction;
     }
 
     @Override
     public String toString() {
         return "T_department{" +
         "id=" + id +
-        ", name=" + name +
-        ", parentId=" + parentId +
-        ", depPath=" + depPath +
-        ", enabled=" + enabled +
-        ", isParent=" + isParent +
+        ", company_id=" + companyId +
+        ", department_manager_id=" + departmentManagerId +
+        ", department_name=" + departmentName +
+        ", department_function=" + departmentFunction +
         "}";
     }
 }

@@ -14,7 +14,7 @@ import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 public class MyBatis {
 
     public static void main(String[] args) {
-        DataSourceConfig dataSourceConfig = new DataSourceConfig.Builder("jdbc:mysql://106.14.145.85:3306/test?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF8",
+        DataSourceConfig dataSourceConfig = new DataSourceConfig.Builder("jdbc:mysql://106.14.145.85:3306/management_system?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF8",
                 "root",
                 "123123").build();
         GlobalConfig globalConfig = new GlobalConfig.Builder()
