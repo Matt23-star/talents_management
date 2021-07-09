@@ -26,8 +26,8 @@ import java.util.List;
  * @since 2021-07-08
  */
 @RestController
-@Api(value = "系统人才接口")
-@RequestMapping("/t_talent")
+@Api(tags = "系统人才接口")
+@RequestMapping("/talent")
 public class T_talentController {
     @Autowired
     private T_talentServiceImpl talentService;

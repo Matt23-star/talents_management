@@ -24,12 +24,20 @@ import java.util.List;
 public class T_archive_detailServiceImpl extends ServiceImpl<T_archive_detailMapper, T_archive_detail> implements IT_archive_detailService {
 
     @Autowired
-    public T_archive_detailMapper t_archive_detailMapper;
+    private T_archive_detailMapper archive_detailMapper;
 
     @Override
     public List<T_archive_detail> getArchivesByTalentId(int talentId) {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("talent_id",talentId);
-        return t_archive_detailMapper.selectList(queryWrapper);
+        return archive_detailMapper.selectList(queryWrapper);
+    }
+
+    @Override
+    public T_archive_detail getArchiveBytIdWcId(int talentId, int companyId) {
+        QueryWrapper<T_archive_detail> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("talent_id",talentId);
+        queryWrapper.eq("company_id",companyId);
+        return archive_detailMapper.selectOne(queryWrapper);
     }
 }

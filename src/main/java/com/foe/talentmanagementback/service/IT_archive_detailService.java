@@ -17,4 +17,6 @@ public interface IT_archive_detailService extends IService<T_archive_detail> {
 
     public List<T_archive_detail> getArchivesByTalentId(int talentId);
 
+    public T_archive_detail getArchiveBytIdWcId(int talentId,int companyId);
+
 }

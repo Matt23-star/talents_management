@@ -32,23 +32,19 @@ import java.util.List;
 public class T_archive_detailController {
 
     @Autowired
-    T_archive_detailServiceImpl archive_detailService;
+    private T_archive_detailServiceImpl archive_detailService;
 
-    @RequestMapping("/hello")
-    public String hello(){
-
-        return "talentName";
-    }
-
-    @RequestMapping("/login")
-    public String login(String talentName){
-        return talentName;
-    }
-
-    @GetMapping("/archives/{talentId}")
-    @ApiOperation(value = "查询所有人才")
-    public List<T_archive_detail> getTalents(@ApiParam(value = "系统人才ID",required = true)@PathVariable("talentId") int talentId){
+    @GetMapping("/talentArchives/{talentId}")
+    @ApiOperation(value = "查询系统人才的所有档案，这些档案属于不同公司")
+    public List<T_archive_detail> getArchivesOfTalent(@ApiParam(value = "系统人才id",required = true)@PathVariable("talentId") int talentId){
         return archive_detailService.getArchivesByTalentId(talentId);
+    }
+
+    @GetMapping("/talentInCompany/{talentId}/{companyId}")
+    @ApiOperation(value = "查询特定公司特定员工档案")
+    public T_archive_detail getAtchiveOfOneTalentInCo(@ApiParam(value = "系统人才id，公司id",required = true)@PathVariable("talentId") int talentId,
+                                                      @PathVariable("companyId") int companyId){
+        return archive_detailService.getArchiveBytIdWcId(talentId,companyId);
     }
 }
 

@@ -2,6 +2,7 @@ package com.foe.talentmanagementback.mapper;
 
 import com.foe.talentmanagementback.entity.T_evaluation_details;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.springframework.stereotype.Component;
 
 /**
  * <p>
@@ -11,6 +12,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author Matt
  * @since 2021-07-08
  */
+
+@Component
 public interface T_evaluation_detailsMapper extends BaseMapper<T_evaluation_details> {
 
 }

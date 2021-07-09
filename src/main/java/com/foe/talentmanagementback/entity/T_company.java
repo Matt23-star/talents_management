@@ -2,6 +2,7 @@ package com.foe.talentmanagementback.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import io.swagger.annotations.ApiModel;
 
 import java.io.Serializable;
 
@@ -13,6 +14,8 @@ import java.io.Serializable;
  * @author Matt
  * @since 2021-07-08
  */
+
+@ApiModel(value = "com.foe.talentmanagementback.entity.T_company",description = "新增公司参数")
 public class T_company implements Serializable {
 
     @TableId(value = "id", type = IdType.AUTO)

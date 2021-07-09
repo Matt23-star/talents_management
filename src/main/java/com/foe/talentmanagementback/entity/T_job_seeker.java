@@ -18,7 +18,6 @@ import java.io.Serializable;
 @Data
 public class T_job_seeker implements Serializable {
 
-    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     private String company1_id;

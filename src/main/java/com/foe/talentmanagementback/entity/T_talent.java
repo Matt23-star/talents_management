@@ -2,6 +2,7 @@ package com.foe.talentmanagementback.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -16,6 +17,7 @@ import java.io.Serializable;
  */
 
 @Data
+@ApiModel(value = "com.foe.talentmanagementback.entity.T_talent",description = "新增系统人才参数")
 public class T_talent implements Serializable {
 
 

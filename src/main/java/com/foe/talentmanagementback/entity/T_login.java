@@ -18,7 +18,6 @@ import java.io.Serializable;
 @Data
 public class T_login implements Serializable {
 
-    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     private String nikname;
