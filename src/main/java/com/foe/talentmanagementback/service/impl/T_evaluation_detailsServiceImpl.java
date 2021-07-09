@@ -28,7 +28,7 @@ public class T_evaluation_detailsServiceImpl extends ServiceImpl<T_evaluation_de
     public List<T_evaluation_details> getEvaluationsByADId(int archiveDetailId) {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("archive_detail_id",archiveDetailId);
-        return null;
+        return evaluationDetailsMapper.selectList(queryWrapper);
     }
 }
 
