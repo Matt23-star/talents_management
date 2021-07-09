@@ -2,6 +2,7 @@ package com.foe.talentmanagementback.mapper;
 
 import com.foe.talentmanagementback.entity.T_talent;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Select;
 import org.mapstruct.Mapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;

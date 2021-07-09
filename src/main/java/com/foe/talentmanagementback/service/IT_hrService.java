@@ -13,4 +13,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IT_hrService extends IService<T_hr> {
 
+    public T_hr getHrByTalentId(int id);
 }

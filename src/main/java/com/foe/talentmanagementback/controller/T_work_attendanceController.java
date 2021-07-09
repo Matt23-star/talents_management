@@ -1,6 +1,7 @@
 package com.foe.talentmanagementback.controller;
 
 
+import com.foe.talentmanagementback.entity.Result;
 import com.foe.talentmanagementback.entity.T_evaluation_details;
 import com.foe.talentmanagementback.entity.T_work_attendance;
 import com.foe.talentmanagementback.service.impl.T_work_attendanceServiceImpl;
@@ -35,7 +36,7 @@ public class T_work_attendanceController {
 
     @GetMapping("/archiveDetailId/{archiveDetailId}")
     @ApiOperation(value = "查询系统人才的所有档案，这些档案属于不同公司")
-    public List<T_work_attendance> getArchivesOfTalent(@ApiParam(value = "档案id",required = true)@PathVariable("archiveDetailId") int archiveDetailId){
+    public Result<List<T_work_attendance>> getArchivesOfTalent(@ApiParam(value = "档案id",required = true)@PathVariable("archiveDetailId") int archiveDetailId){
         return workAttendanceService.getAttendancesByADId(archiveDetailId);
     }
 }
