@@ -48,10 +48,10 @@ public class T_talentController {
         return talentService.getTalentById(id);
     }
 
-    @GetMapping("/hrId/{talentId}")
+    @GetMapping("/hrid/{id}")
     @ApiOperation(value = "通过hr的系统id查询所管理人才数据")
-    public Result<List<T_talent>> getH(){
-        return talentService.getTalentsByLeaderId(1);
+    public Result<List<T_talent>> getWorkersByHrId(@PathVariable("id")int id){
+        return talentService.getWorkersByHrId(id);
 
     }
 }

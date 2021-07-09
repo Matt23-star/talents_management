@@ -28,12 +28,7 @@ public class T_talentServiceImpl extends ServiceImpl<T_talentMapper, T_talent> i
     @Autowired
     private T_hrMapper hrMapper;
     @Autowired
-    private T_departmentMapper departmentMapper;
-    @Autowired
-    private T_companyMapper companyMapper;
-    @Autowired
     private T_workerMapper workerMapper;
-
 
     @Override
     public Result<List<T_talent>> getTalents() {
@@ -52,21 +47,20 @@ public class T_talentServiceImpl extends ServiceImpl<T_talentMapper, T_talent> i
     }
 
     @Override
-    public Result<List<T_talent>> getTalentsByLeaderId(int talentId) {
-        QueryWrapper queryWrapper = new QueryWrapper();
-        QueryWrapper queryWrapper1 = new QueryWrapper();
-        queryWrapper1.exists("select company_id from t_hr where hr_talent_id ='"+talentId+"'");
-        queryWrapper.eq("company_id",queryWrapper1);
+    public Result<List<T_talent>> getWorkersByHrId(int hrId) {
+        T_hr hr =  hrMapper.selectById(hrId);
+        QueryWrapper<T_worker> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("company_id",hr.getCompanyId());
         List<T_worker> workers = workerMapper.selectList(queryWrapper);
-        Collection<Integer> talentIds = new ArrayList<>();
-        for (T_worker worker:
-             workers) {
-            talentIds.add(worker.getId());
+        List<Integer> ids = new ArrayList<>();
+        for (T_worker w:workers
+             ) {
+            ids.add(w.getId());
         }
-        QueryWrapper queryWrapper2 = new QueryWrapper();
-        queryWrapper2.in("id",talentIds);
-        return ResultUtils.success(talentMapper.selectList(queryWrapper2));
+        List<T_talent> result = talentMapper.selectBatchIds(ids);
+        return ResultUtils.success(result);
     }
+
 
 
 }
