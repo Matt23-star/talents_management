@@ -12,6 +12,7 @@ import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 import java.io.IOException;
 
+//Jackson 中对 null 的处理
 @Configuration
 public class JacksonConfig {
     @Bean
