@@ -2,6 +2,7 @@ package com.foe.talentmanagementback.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.Data;
 
 import java.io.Serializable;
 
@@ -13,6 +14,8 @@ import java.io.Serializable;
  * @author Matt
  * @since 2021-07-08
  */
+
+@Data
 public class T_hr implements Serializable {
 
     @TableId(value = "id", type = IdType.AUTO)
@@ -25,37 +28,4 @@ public class T_hr implements Serializable {
 
     private Integer hrTalentId;
 
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getCompanyId() {
-        return companyId;
-    }
-
-    public void setCompanyId(Integer companyId) {
-        this.companyId = companyId;
-    }
-
-    public Integer getHrTalentId() {
-        return hrTalentId;
-    }
-
-    public void setHrTalentId(Integer hrTalentId) {
-        this.hrTalentId = hrTalentId;
-    }
-
-    @Override
-    public String toString() {
-        return "T_hr{" +
-        "id=" + id +
-        ", company_id=" + companyId +
-        ", hr_talent_id=" + hrTalentId +
-        "}";
-    }
 }
