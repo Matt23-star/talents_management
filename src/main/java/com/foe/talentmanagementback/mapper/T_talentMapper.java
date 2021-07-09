@@ -8,12 +8,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 /**
- * <p>
- *  Mapper 接口
- * </p>
+ * Created with IntelliJ IDEA.
  *
- * @author Matt
- * @since 2021-07-08
+ * @Author: 张越
+ * @Date: 2021/07/09/23:11
+ * @Description:
  */
 
 @Component

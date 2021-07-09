@@ -4,12 +4,11 @@ import com.foe.talentmanagementback.entity.T_job_seeker;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
- * <p>
- *  服务类
- * </p>
+ * Created with IntelliJ IDEA.
  *
- * @author Matt
- * @since 2021-07-08
+ * @Author: 张越
+ * @Date: 2021/07/09/23:11
+ * @Description:
  */
 public interface IT_job_seekerService extends IService<T_job_seeker> {
 

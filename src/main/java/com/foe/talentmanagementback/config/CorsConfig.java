@@ -5,7 +5,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
-
+/**
+ * Created with IntelliJ IDEA.
+ *
+ * @Author: 张越
+ * @Date: 2021/07/09/23:11
+ * @Description:
+ */
 //跨域访问配置
 @Configuration
 public class CorsConfig {

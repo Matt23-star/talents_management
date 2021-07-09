@@ -5,14 +5,12 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.springframework.stereotype.Component;
 
 /**
- * <p>
- *  Mapper 接口
- * </p>
+ * Created with IntelliJ IDEA.
  *
- * @author Matt
- * @since 2021-07-08
+ * @Author: 张越
+ * @Date: 2021/07/09/23:11
+ * @Description:
  */
-
 @Component
 public interface T_loginMapper extends BaseMapper<T_login> {
 

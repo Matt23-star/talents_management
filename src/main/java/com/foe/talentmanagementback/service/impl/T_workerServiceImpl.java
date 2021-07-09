@@ -7,12 +7,11 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**
- * <p>
- * 工作表 服务实现类
- * </p>
+ * Created with IntelliJ IDEA.
  *
- * @author Matt
- * @since 2021-07-08
+ * @Author: 张越
+ * @Date: 2021/07/09/23:11
+ * @Description:
  */
 @Service
 public class T_workerServiceImpl extends ServiceImpl<T_workerMapper, T_worker> implements IT_workerService {

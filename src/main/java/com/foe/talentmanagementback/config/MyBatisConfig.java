@@ -1,4 +1,4 @@
-package com.foe.talentmanagementback;
+package com.foe.talentmanagementback.config;
 
 import com.baomidou.mybatisplus.generator.config.GlobalConfig;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
@@ -7,13 +7,15 @@ import com.baomidou.mybatisplus.generator.config.PackageConfig;
 import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 
 /**
- * @author: Matt
- * @date: 2021/7/8/8:45
- * @description:
+ * Created with IntelliJ IDEA.
+ *
+ * @Author: 张越
+ * @Date: 2021/07/09/23:11
+ * @Description:
  */
-public class MyBatis {
+public class MyBatisConfig {
 
-    public static void main(String[] args) {
+    public static void Generator() {
         DataSourceConfig dataSourceConfig = new DataSourceConfig.Builder("jdbc:mysql://106.14.145.85:3306/management_system?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF8",
                 "root",
                 "123123").build();

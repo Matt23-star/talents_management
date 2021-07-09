@@ -4,12 +4,11 @@ import com.foe.talentmanagementback.entity.T_worker;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
- * <p>
- * 工作表 服务类
- * </p>
+ * Created with IntelliJ IDEA.
  *
- * @author Matt
- * @since 2021-07-08
+ * @Author: 张越
+ * @Date: 2021/07/09/23:11
+ * @Description:
  */
 public interface IT_workerService extends IService<T_worker> {
 

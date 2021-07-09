@@ -14,12 +14,11 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * <p>
- * 服务实现类
- * </p>
+ * Created with IntelliJ IDEA.
  *
- * @author Matt
- * @since 2021-07-08
+ * @Author: 张越
+ * @Date: 2021/07/09/23:11
+ * @Description:
  */
 @Service
 public class T_talentServiceImpl extends ServiceImpl<T_talentMapper, T_talent> implements IT_talentService {

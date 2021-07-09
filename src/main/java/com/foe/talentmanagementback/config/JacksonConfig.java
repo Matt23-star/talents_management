@@ -11,7 +11,13 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 import java.io.IOException;
-
+/**
+ * Created with IntelliJ IDEA.
+ *
+ * @Author: 张越
+ * @Date: 2021/07/09/23:11
+ * @Description:
+ */
 //Jackson 中对 null 的处理
 @Configuration
 public class JacksonConfig {
