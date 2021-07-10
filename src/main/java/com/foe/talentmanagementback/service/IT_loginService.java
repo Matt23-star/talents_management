@@ -1,7 +1,9 @@
 package com.foe.talentmanagementback.service;
 
+import com.foe.talentmanagementback.entity.Result;
 import com.foe.talentmanagementback.entity.T_login;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.foe.talentmanagementback.entity.T_talent;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IT_loginService extends IService<T_login> {
 
+    public Result<T_talent> login(String account, String password);
 }
