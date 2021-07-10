@@ -36,8 +36,8 @@ public class T_loginServiceImpl extends ServiceImpl<T_loginMapper, T_login> impl
         queryWrapperLogin.eq("password",password);
         T_login login = loginMapper.selectOne(queryWrapperLogin);
         if(login==null){
-            return ResultUtils.error(new ResultMessage(1,"该用户不存在！"));
+            return ResultUtils.error(new ResultMessage(404,"该用户不存在！"));
         }
-        return ResultUtils.success(new ResultMessage(11,"登陆成功"), talentMapper.selectById(login.getId()));
+        return ResultUtils.success(new ResultMessage(200,"登陆成功"), talentMapper.selectById(login.getId()));
     }
 }
