@@ -28,7 +28,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/archiveDetail")
-@Api(value="档案接口",tags={"档案接口"})
+@Api(tags={"档案接口"})
 public class T_archive_detailController {
 
     @Autowired
