@@ -1,0 +1,36 @@
+= Simple APIs
+
+
+[[_overview]]
+== Overview
+simple apis
+
+
+=== Version information
+[%hardbreaks]
+__Version__ : 1.0
+
+
+=== Contact information
+[%hardbreaks]
+__Contact__ : Matt
+__Contact Email__ : 825256547@qq.com
+
+
+=== URI scheme
+[%hardbreaks]
+__Host__ : localhost:8081
+__BasePath__ : /
+
+
+=== Tags
+
+* HR接口 : T _hr Controller
+* 到勤情况接口 : T _work _attendance Controller
+* 档案接口 : T _archive _detail Controller
+* 登录接口 : T _login Controller
+* 系统人才接口 : T _talent Controller
+* 评价详情接口 : T _evaluation _details Controller
+
+
+

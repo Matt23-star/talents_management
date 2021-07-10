@@ -1,0 +1,253 @@
+
+[[_definitions]]
+== Definitions
+
+[[_archive]]
+=== Archive
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**archiveDetail** +
+__optional__|<<_com_foe_talentmanagementback_entity_t_archive_detail,com.foe.talentmanagementback.entity.T_archive_detail>>
+|**evaluationDetails** +
+__optional__|< <<_t_evaluation_details,T_evaluation_details>> > array
+|**workAttendances** +
+__optional__|< <<_t_work_attendance,T_work_attendance>> > array
+|===
+
+
+[[_archivedetaildto]]
+=== ArchiveDetailDTO
+获取档案记录参数
+
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**companyId** +
+__optional__|公司ID|integer(int32)
+|**date** +
+__optional__|记录时间|string
+|**detailRecord** +
+__optional__|重大事件记录|string
+|===
+
+
+[[_hrdto]]
+=== HrDTO
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**companyId** +
+__optional__|integer(int32)
+|**hrTalentId** +
+__optional__|integer(int32)
+|===
+
+
+[[_9abe59d77bd9690dcb44bc7f8f559952]]
+=== Result«Archive»
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**code** +
+__optional__|integer(int32)
+|**data** +
+__optional__|<<_archive,Archive>>
+|**message** +
+__optional__|string
+|===
+
+
+[[_9bce529110bd3b8d89ff748213666933]]
+=== Result«List«ArchiveDetailDTO»»
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**code** +
+__optional__|integer(int32)
+|**data** +
+__optional__|< <<_archivedetaildto,ArchiveDetailDTO>> > array
+|**message** +
+__optional__|string
+|===
+
+
+[[_e414498261e90ec3edf0da2ab3133eb2]]
+=== Result«List«T_evaluation_details»»
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**code** +
+__optional__|integer(int32)
+|**data** +
+__optional__|< <<_t_evaluation_details,T_evaluation_details>> > array
+|**message** +
+__optional__|string
+|===
+
+
+[[_44177af6da99b276593188f79c398b20]]
+=== Result«List«T_work_attendance»»
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**code** +
+__optional__|integer(int32)
+|**data** +
+__optional__|< <<_t_work_attendance,T_work_attendance>> > array
+|**message** +
+__optional__|string
+|===
+
+
+[[_be459b6ad7619b1f492c905ac3c7b5c0]]
+=== Result«List«com.foe.talentmanagementback.entity.T_talent»»
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**code** +
+__optional__|integer(int32)
+|**data** +
+__optional__|< <<_com_foe_talentmanagementback_entity_t_talent,com.foe.talentmanagementback.entity.T_talent>> > array
+|**message** +
+__optional__|string
+|===
+
+
+[[_69fbec3c07534b4ec6452a2b95bd0226]]
+=== Result«com.foe.talentmanagementback.entity.T_archive_detail»
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**code** +
+__optional__|integer(int32)
+|**data** +
+__optional__|<<_com_foe_talentmanagementback_entity_t_archive_detail,com.foe.talentmanagementback.entity.T_archive_detail>>
+|**message** +
+__optional__|string
+|===
+
+
+[[_91905bfefdebd9918a269654bb5ac4d4]]
+=== Result«com.foe.talentmanagementback.entity.T_talent»
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**code** +
+__optional__|integer(int32)
+|**data** +
+__optional__|<<_com_foe_talentmanagementback_entity_t_talent,com.foe.talentmanagementback.entity.T_talent>>
+|**message** +
+__optional__|string
+|===
+
+
+[[_t_evaluation_details]]
+=== T_evaluation_details
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**archiveDetailId** +
+__optional__|integer(int32)
+|**comment** +
+__optional__|string
+|**evaluator** +
+__optional__|integer(int32)
+|**id** +
+__optional__|integer(int32)
+|**workingAttitude** +
+__optional__|string
+|===
+
+
+[[_t_work_attendance]]
+=== T_work_attendance
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**achievements** +
+__optional__|string
+|**archiveDetailId** +
+__optional__|integer(int32)
+|**attendance** +
+__optional__|string
+|**id** +
+__optional__|integer(int32)
+|===
+
+
+[[_com_foe_talentmanagementback_entity_t_archive_detail]]
+=== com.foe.talentmanagementback.entity.T_archive_detail
+新增档案记录参数
+
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**companyId** +
+__optional__|公司ID|integer(int32)
+|**date** +
+__optional__|记录时间|string
+|**detailRecord** +
+__optional__|重大事件记录|string
+|**id** +
+__optional__|档案ID|integer(int32)
+|===
+
+
+[[_com_foe_talentmanagementback_entity_t_talent]]
+=== com.foe.talentmanagementback.entity.T_talent
+新增系统人才参数
+
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**address** +
+__optional__|string
+|**age** +
+__optional__|integer(int32)
+|**birthday** +
+__optional__|string
+|**degree** +
+__optional__|string
+|**email** +
+__optional__|string
+|**id** +
+__optional__|integer(int32)
+|**idCard** +
+__optional__|string
+|**major** +
+__optional__|string
+|**maritalStatus** +
+__optional__|integer(int32)
+|**name** +
+__optional__|string
+|**nationId** +
+__optional__|integer(int32)
+|**nativePlace** +
+__optional__|string
+|**phoneNum** +
+__optional__|string
+|**politicId** +
+__optional__|integer(int32)
+|**school** +
+__optional__|string
+|**sex** +
+__optional__|string
+|===
+
+
+
