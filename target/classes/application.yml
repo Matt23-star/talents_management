@@ -1,7 +1,6 @@
 #端口9999
 server:
   port: 9999
-
 spring:
   # 应用名称
   application:

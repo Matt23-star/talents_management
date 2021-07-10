@@ -1,5 +1,6 @@
 package com.foe.talentmanagementback.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -24,7 +25,6 @@ public class Swagger2Config {
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .host("localhost:8081")
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.foe.talentmanagementback.controller"))
@@ -35,7 +35,7 @@ public class Swagger2Config {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder().title("Simple APIs")
                 .description("simple apis")
-                .contact(new Contact("Matt", "localhost:8080/swagger-ui.html", "825256547@qq.com"))
+                .contact(new Contact("FOE","localhost:9999/swagger-ui.html", "825256547@qq.com"))
                 .version("1.0")
                 .build();
     }
