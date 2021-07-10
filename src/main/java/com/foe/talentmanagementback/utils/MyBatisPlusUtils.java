@@ -1,4 +1,4 @@
-package com.foe.talentmanagementback.config;
+package com.foe.talentmanagementback.utils;
 
 import com.baomidou.mybatisplus.generator.config.GlobalConfig;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
@@ -13,7 +13,7 @@ import com.baomidou.mybatisplus.generator.config.StrategyConfig;
  * @Date: 2021/07/09/23:11
  * @Description:
  */
-public class MyBatisConfig {
+public class MyBatisPlusUtils {
 
     public static void Generator() {
         DataSourceConfig dataSourceConfig = new DataSourceConfig.Builder("jdbc:mysql://106.14.145.85:3306/management_system?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF8",
