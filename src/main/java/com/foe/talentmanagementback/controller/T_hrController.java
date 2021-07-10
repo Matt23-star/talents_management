@@ -4,8 +4,10 @@ package com.foe.talentmanagementback.controller;
 import com.foe.talentmanagementback.entity.Archive;
 import com.foe.talentmanagementback.entity.Result;
 import com.foe.talentmanagementback.entity.T_archive_detail;
+import com.foe.talentmanagementback.entity.dto.HrDTO;
 import com.foe.talentmanagementback.service.impl.T_archive_detailServiceImpl;
 import com.foe.talentmanagementback.service.impl.T_evaluation_detailsServiceImpl;
+import com.foe.talentmanagementback.service.impl.T_hrServiceImpl;
 import com.foe.talentmanagementback.service.impl.T_work_attendanceServiceImpl;
 import com.foe.talentmanagementback.utils.ResultUtils;
 import io.swagger.annotations.Api;
@@ -32,6 +34,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class T_hrController {
 
     @Autowired
+    private T_hrServiceImpl hrService;
+    @Autowired
     private T_archive_detailServiceImpl archiveDetailService;
     @Autowired
     private T_evaluation_detailsServiceImpl evaluationDetailsService;
@@ -55,5 +59,10 @@ public class T_hrController {
         return ResultUtils.success(archive);
     }
 
+    @GetMapping("/hrImf/{hrId}")
+    @ApiOperation(value = "查询hr信息")
+    public HrDTO getHrByHrId(@PathVariable("hrId") int hrId){
+        return hrService.getHrByTalentId(hrId);
+    }
 }
 

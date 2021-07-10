@@ -47,7 +47,9 @@ public class T_talentServiceImpl extends ServiceImpl<T_talentMapper, T_talent> i
 
     @Override
     public Result<List<T_talent>> getWorkersByHrId(int hrId) {
-        T_hr hr =  hrMapper.selectById(hrId);
+        QueryWrapper<T_hr> queryWrapperHr = new QueryWrapper<>();
+        queryWrapperHr.eq("hr_talent_id",hrId);
+        T_hr hr =  hrMapper.selectOne(queryWrapperHr);
         QueryWrapper<T_worker> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("company_id",hr.getCompanyId());
         List<T_worker> workers = workerMapper.selectList(queryWrapper);
