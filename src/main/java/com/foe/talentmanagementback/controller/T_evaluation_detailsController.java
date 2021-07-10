@@ -25,7 +25,7 @@ import java.util.List;
  * @since 2021-07-08
  */
 @RestController
-@Api(value = "评价详情接口")
+@Api(value = "评价详情接口", tags = "评价详情接口")
 @RequestMapping("/evaluationDetails")
 public class T_evaluation_detailsController {
 

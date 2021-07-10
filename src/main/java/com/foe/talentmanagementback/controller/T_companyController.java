@@ -4,7 +4,6 @@ package com.foe.talentmanagementback.controller;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -17,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/t_company")
-@Api(value = "公司接口",tags = "接口")
+@Api(value = "公司接口",tags = "公司接口")
 public class T_companyController {
 
 //    @Autowired

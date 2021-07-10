@@ -27,7 +27,7 @@ import java.util.List;
  * @since 2021-07-08
  */
 @RestController
-@Api(value = "到勤情况接口")
+@Api(value = "到勤情况接口", tags = "到勤情况接口")
 @RequestMapping("/workAttendance")
 public class T_work_attendanceController {
 

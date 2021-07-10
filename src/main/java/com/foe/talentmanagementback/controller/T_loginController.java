@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Description:
  */
 @RestController
-@Api(value = "登录接口")
+@Api(value = "登录接口", tags = "登录接口")
 @RequestMapping("/loginPage")
 public class T_loginController {
 

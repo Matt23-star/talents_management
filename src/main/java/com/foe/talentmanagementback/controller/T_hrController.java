@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2021-07-08
  */
 @RestController
-@Api(value = "HR接口")
+@Api(value = "HR接口", tags = "HR接口")
 @RequestMapping("/hr")
 public class T_hrController {
 
