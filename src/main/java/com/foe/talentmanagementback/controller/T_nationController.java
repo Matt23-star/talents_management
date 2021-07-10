@@ -5,6 +5,8 @@ import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -12,7 +14,7 @@ import org.springframework.stereotype.Controller;
  * @Date: 2021/07/09/23:11
  * @Description:
  */
-@Controller
+@RestController
 @Api(value = "民族接口")
 @RequestMapping("/t_nation")
 public class T_nationController {
