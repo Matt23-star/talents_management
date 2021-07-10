@@ -43,7 +43,7 @@ public class T_talentController {
 
     @GetMapping("/id/{id}")
     @ApiOperation(value = "通过id查询人才")
-    public Result<T_talent> getTalentByName(@PathVariable("id") long id){
+    public Result<T_talent> getTalentById(@PathVariable("id") long id){
         return talentService.getTalentById(id);
     }
 
