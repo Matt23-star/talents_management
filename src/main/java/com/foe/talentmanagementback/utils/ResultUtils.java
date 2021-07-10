@@ -11,29 +11,29 @@ import com.foe.talentmanagementback.entity.ResultMessage;
 public class ResultUtils {
 
     //带code和参数的成功
-    public static Result success(ResultMessage resultMessage, Object date){
-        Result result = new Result();
+    public static <T> Result success(ResultMessage resultMessage, T data){
+        Result<T> result = new Result<>();
         result.setCode(resultMessage.getCode());
         result.setMessage(resultMessage.getMessage());
-        result.setData(date);
+        result.setData(data);
         return result;
     }
 
     //带参数成功
-    public static Result success(Object date){
-        Result result = new Result();
+    public static <T> Result success(T data){
+        Result<T> result = new Result();
         result.setCode(0);
         result.setMessage("成功！！！");
-        result.setData(date);
+        result.setData(data);
         return result;
     }
     //不带参数成功
-    public static Result success(){
+    public static <T> Result success(){
         return success(null);
     }
 
-    public static Result error(ResultMessage errorMsg){
-        Result result = new Result();
+    public static <T> Result error(ResultMessage errorMsg){
+        Result<T> result = new Result();
         result.setCode(errorMsg.getCode());
         result.setMessage(errorMsg.getMessage());
         return result;
