@@ -5,6 +5,7 @@ import com.foe.talentmanagementback.entity.Result;
 import com.foe.talentmanagementback.entity.T_talent;
 import com.foe.talentmanagementback.service.impl.T_loginServiceImpl;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
