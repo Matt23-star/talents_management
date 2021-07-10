@@ -33,11 +33,7 @@ public class T_loginController {
     @ApiOperation(value = "通过账号和密码登录系统")
     public Result<T_talent> login(@PathVariable("account") String account,
                                   @PathVariable("password") String password) {
-
-
-        Result<T_talent> result = loginService.login(account,password);
-        System.out.println(result);
-        return  result;
+        return  loginService.login(account,password);
     }
 }
 
