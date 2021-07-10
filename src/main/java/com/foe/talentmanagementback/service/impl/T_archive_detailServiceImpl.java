@@ -3,10 +3,14 @@ package com.foe.talentmanagementback.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.foe.talentmanagementback.entity.Result;
 import com.foe.talentmanagementback.entity.T_archive_detail;
+import com.foe.talentmanagementback.entity.dto.ArchiveDetailDTO;
 import com.foe.talentmanagementback.mapper.T_archive_detailMapper;
 import com.foe.talentmanagementback.service.IT_archive_detailService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.foe.talentmanagementback.utils.ResultUtils;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
+import org.modelmapper.internal.asm.Type;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,12 +32,16 @@ public class T_archive_detailServiceImpl extends ServiceImpl<T_archive_detailMap
     @Autowired
     private T_archive_detailMapper archive_detailMapper;
 
+
+
     @Override
-    public Result<List<T_archive_detail>> getArchivesByTalentId(int talentId) {
-        QueryWrapper queryWrapper = new QueryWrapper();
+    public Result<List<ArchiveDetailDTO>> getArchivesByTalentId(int talentId) {
+        ModelMapper modelMapper = new ModelMapper();
+        QueryWrapper<T_archive_detail> queryWrapper = new QueryWrapper();
         queryWrapper.eq("talent_id",talentId);
         List<T_archive_detail> archiveDetails =  archive_detailMapper.selectList(queryWrapper);
-        return ResultUtils.success(archiveDetails);
+        List<ArchiveDetailDTO> archiveDetailDTOS = modelMapper.map(archiveDetails,new TypeToken<List<ArchiveDetailDTO>>(){}.getType());
+        return ResultUtils.success(archiveDetailDTOS);
     }
 
     @Override

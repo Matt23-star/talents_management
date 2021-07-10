@@ -2,6 +2,7 @@ package com.foe.talentmanagementback.service;
 
 import com.foe.talentmanagementback.entity.T_hr;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.foe.talentmanagementback.entity.dto.HrDTO;
 
 /**
  * <p>
@@ -13,5 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IT_hrService extends IService<T_hr> {
 
-    public T_hr getHrByTalentId(int id);
+    public HrDTO getHrByTalentId(int id);
 }

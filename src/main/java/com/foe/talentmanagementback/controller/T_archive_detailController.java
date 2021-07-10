@@ -3,6 +3,7 @@ package com.foe.talentmanagementback.controller;
 
 import com.foe.talentmanagementback.entity.Result;
 import com.foe.talentmanagementback.entity.T_archive_detail;
+import com.foe.talentmanagementback.entity.dto.ArchiveDetailDTO;
 import com.foe.talentmanagementback.service.impl.T_archive_detailServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -35,7 +36,7 @@ public class T_archive_detailController {
 
     @GetMapping("/talentArchives/{talentId}")
     @ApiOperation(value = "查询系统人才的所有档案，这些档案属于不同公司")
-    public Result<List<T_archive_detail>> getArchivesOfTalent(@ApiParam(value = "系统人才id",required = true)@PathVariable("talentId") int talentId){
+    public Result<List<ArchiveDetailDTO>> getArchivesOfTalent(@ApiParam(value = "系统人才id",required = true)@PathVariable("talentId") int talentId){
         return archive_detailService.getArchivesByTalentId(talentId);
     }
 
