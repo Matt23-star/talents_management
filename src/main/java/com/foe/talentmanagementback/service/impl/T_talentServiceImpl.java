@@ -34,21 +34,28 @@ public class T_talentServiceImpl extends ServiceImpl<T_talentMapper, T_talent> i
         return ResultUtils.success(talentMapper.selectList(null));
     }
 
-    public Result<T_talent> getTalentByName(String name) {
+    public Result<List<T_talent>> getTalentByName(String name) {
+        if(name!=null&&name!=""){
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("name", name);
-        return ResultUtils.success(talentMapper.selectOne(queryWrapper));
+        return ResultUtils.success(talentMapper.selectList(queryWrapper));
+        }else return ResultUtils.error(new ResultMessage(500,"姓名为空"));
     }
 
     @Override
-    public Result<T_talent> getTalentById(long id) {
+    public Result<T_talent> getTalentById(int id) {
+        if(id<=0) {return ResultUtils.error(new ResultMessage(500,"id非法"));}
         return ResultUtils.success(talentMapper.selectById(id));
     }
 
     @Override
-    public Result<List<T_talent>> getWorkersByHrId(int hrId) {
+    public Result<List<T_talent>> getWorkersByHrId(int hrid) {
+
+        if(hrid<=0) {return ResultUtils.error(new ResultMessage(500,"id非法"));}
+
+
         QueryWrapper<T_hr> queryWrapperHr = new QueryWrapper<>();
-        queryWrapperHr.eq("hr_talent_id",hrId);
+        queryWrapperHr.eq("hr_talent_id",hrid);
         T_hr hr =  hrMapper.selectOne(queryWrapperHr);
         QueryWrapper<T_worker> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("company_id",hr.getCompanyId());
@@ -62,6 +69,23 @@ public class T_talentServiceImpl extends ServiceImpl<T_talentMapper, T_talent> i
         return ResultUtils.success(result);
     }
 
+    @Override
+    public Result addTalent(T_talent newTalent) {
+       int result = talentMapper.insert(newTalent);
+       if (result>0){
+           return ResultUtils.success();
+       }
+        else return ResultUtils.error(new ResultMessage(500,"添加失败"));
+    }
+
+    @Override
+    public Result updateTalent(T_talent talent) {
+       int result = talentMapper.updateById(talent);
+        if (result>0){
+            return ResultUtils.success();
+        }
+        else return ResultUtils.error(new ResultMessage(500,"更新失败"));
+    }
 
 
 }

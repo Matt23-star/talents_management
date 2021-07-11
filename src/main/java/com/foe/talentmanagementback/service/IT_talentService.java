@@ -16,8 +16,9 @@ import java.util.List;
 public interface IT_talentService extends IService<T_talent> {
 
     Result<List<T_talent>> getTalents();
-    Result<T_talent> getTalentByName(String name);
-    Result<T_talent> getTalentById(long id);
+    Result<List<T_talent>> getTalentByName(String name);
+    Result<T_talent> getTalentById(int id);
     Result<List<T_talent>> getWorkersByHrId(int talentId);
-
+    Result addTalent(T_talent newTalent);
+    Result updateTalent(T_talent talent);
 }
