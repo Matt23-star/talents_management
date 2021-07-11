@@ -10,7 +10,6 @@ public enum User {
     MANAGER_USER(2,"deptManager"),
     HR_USER(3,"Hr");
 
-
     private Integer idCode;
     private String userIdentity;
 
