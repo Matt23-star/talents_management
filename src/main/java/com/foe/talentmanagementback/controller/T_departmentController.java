@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Api(value = "部门接口",tags = "部门接口")
-@RequestMapping("/t_department")
+@RequestMapping("/department")
 public class T_departmentController {
 
 }

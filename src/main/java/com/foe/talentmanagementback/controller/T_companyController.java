@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2021-07-08
  */
 @RestController
-@RequestMapping("/t_company")
+@RequestMapping("/company")
 @Api(value = "公司接口",tags = "公司接口")
 public class T_companyController {
 

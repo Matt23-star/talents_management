@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Api(value = "求职者接口")
-@RequestMapping("/t_job_seeker")
+@RequestMapping("/job_seeker")
 public class T_job_seekerController {
 
 }
