@@ -19,5 +19,5 @@ public interface IT_talentService extends IService<T_talent> {
     Result<List<T_talent>> getTalentByName(String name);
     Result<T_talent> getTalentById(int id);
     Result<List<T_talent>> getWorkersByHrId(int talentId);
-
+    Result addTalent(T_talent newTalent);
 }

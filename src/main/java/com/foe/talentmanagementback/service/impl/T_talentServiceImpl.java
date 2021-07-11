@@ -69,6 +69,14 @@ public class T_talentServiceImpl extends ServiceImpl<T_talentMapper, T_talent> i
         return ResultUtils.success(result);
     }
 
+    @Override
+    public Result addTalent(T_talent newTalent) {
+       int result = talentMapper.insert(newTalent);
+       if (result>0){
+           return ResultUtils.success();
+       }
+        else return ResultUtils.error(new ResultMessage(500,"添加失败"));
+    }
 
 
 }

@@ -7,11 +7,7 @@ import com.foe.talentmanagementback.service.impl.T_talentServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -37,9 +33,7 @@ public class T_talentController {
 
     @GetMapping("/name/{name}")
     @ApiOperation(value = "输入人才姓名，返回所有同名的T_tanlent数据")
-    public Result<List<T_talent>> getTalentByName(@PathVariable("name") String name){
-        return talentService.getTalentByName(name);
-    }
+    public Result<List<T_talent>> getTalentByName(@PathVariable("name") String name){ return talentService.getTalentByName(name); }
     @GetMapping("/id/{id}")
     @ApiOperation(value = "输入人才id，返回该id对应的T_tanlent数据")
     public Result<T_talent> getTalentById(@PathVariable("id")int  id){
@@ -48,9 +42,13 @@ public class T_talentController {
 
     @GetMapping("/hrid/{id}")
     @ApiOperation(value = "输入hr的id，返回该hr公司下的所有T_tanlent数据")
-    public Result<List<T_talent>> getWorkersByHrId(@PathVariable("id")int id){
-        return talentService.getWorkersByHrId(id);
+    public Result<List<T_talent>> getWorkersByHrId(@PathVariable("id")int id){ return talentService.getWorkersByHrId(id); }
 
+    @PostMapping("/add")
+    public Result addTalent(@RequestBody T_talent talent){
+        T_talent newTalent =talent;
+        return talentService.addTalent(newTalent);
     }
+
 }
 
