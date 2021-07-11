@@ -78,5 +78,14 @@ public class T_talentServiceImpl extends ServiceImpl<T_talentMapper, T_talent> i
         else return ResultUtils.error(new ResultMessage(500,"添加失败"));
     }
 
+    @Override
+    public Result updateTalent(T_talent talent) {
+       int result = talentMapper.updateById(talent);
+        if (result>0){
+            return ResultUtils.success();
+        }
+        else return ResultUtils.error(new ResultMessage(500,"更新失败"));
+    }
+
 
 }

@@ -1,12 +1,15 @@
 package com.foe.talentmanagementback.entity;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
@@ -50,6 +53,9 @@ public class T_talent implements Serializable {
      */
     @ApiModelProperty(value = "身份证号")
     private String idCard;
+    /**
+     * 年龄
+     */
     @ApiModelProperty(value = "年龄")
     private Integer age;
 
@@ -112,5 +118,11 @@ public class T_talent implements Serializable {
      */
     @ApiModelProperty(value = "婚姻状况")
     private Integer maritalStatus;
+
+    @TableField(fill = FieldFill.INSERT)     // 时间特有的注解
+    private Date createTime;
+
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Date updateTime;
 
 }

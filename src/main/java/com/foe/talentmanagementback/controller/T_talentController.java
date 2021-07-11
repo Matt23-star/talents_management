@@ -45,10 +45,16 @@ public class T_talentController {
     public Result<List<T_talent>> getWorkersByHrId(@PathVariable("id")int id){ return talentService.getWorkersByHrId(id); }
 
     @PostMapping("/add")
+    @ApiOperation(value = "接受post请求，T_tanlent中仅name字段必填")
     public Result addTalent(@RequestBody T_talent talent){
         T_talent newTalent =talent;
         return talentService.addTalent(newTalent);
     }
-
+    @PostMapping("/update")
+    @ApiOperation(value = "接受post请求，T_tanlent中id,name均为必填字段")
+    public Result updateTalent(@RequestBody T_talent talent){
+        T_talent updateTalent =talent;
+        return talentService.updateTalent(updateTalent);
+    }
 }
 
