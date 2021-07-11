@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -28,10 +29,34 @@ public class T_archive_detail implements Serializable {
     @ApiModelProperty(value = "公司ID")
     private Integer companyId;
 
-    @ApiModelProperty(value = "重大事件记录")
-    private String detailRecord;
+    private Integer talentId;
+    /**
+     * 入职时间
+     */
+    private Date entryTime;
+    /**
+     * 工号
+     */
+    private Integer jobNumber;
 
-    @ApiModelProperty(value = "记录时间")
-    private String date;
+    /**
+     * 合同类型
+     */
+    private String contract;
 
+    private Date contractBeginDate;
+
+    private Date contractDeadline;
+
+    private Integer absenceTimes;
+
+    private Integer lateTimes;
+
+    private Integer earlyLeaveTimes;
+
+    private Integer leaveTimes;
+
+    private Integer awardTimes;
+
+    private Integer punishmentTimes;
 }
