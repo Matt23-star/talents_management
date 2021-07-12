@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Api(value = "政治身份接口")
-@RequestMapping("/politics_status")
+@RequestMapping("/politics-status")
 public class T_politics_statusController {
 
 }

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Api(value = "民族接口")
-@RequestMapping("/nation")
+@RequestMapping("/nations")
 public class T_nationController {
 
 }

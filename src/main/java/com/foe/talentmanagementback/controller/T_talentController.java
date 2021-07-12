@@ -21,7 +21,7 @@ import java.util.List;
  */
 @RestController
 @Api(tags = "系统人才接口")
-@RequestMapping("/talents")
+@RequestMapping("/api/talents")
 public class T_talentController {
 
     @Autowired
@@ -57,21 +57,11 @@ public class T_talentController {
      * @Author: 张越
      * @Date: 2021/7/12
      */
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     @ApiOperation(value = "输入人才id，返回该id对应的T_tanlent数据")
     public Result<T_talent> getTalentById(@PathVariable("id")int  id){
         return talentService.getTalentById(id);
     }
-    /**
-     * @Description:
-     * @Param:
-     * @return:
-     * @Author: 张越
-     * @Date: 2021/7/12
-     */
-    @GetMapping("/{hrid}")
-    @ApiOperation(value = "输入hr的id，返回该hr公司下的所有T_tanlent数据")
-    public Result<List<T_talent>> getWorkersByHrId(@PathVariable("hrid")int id){ return talentService.getWorkersByHrId(id); }
     /**
      * @Description:
      * @Param:
