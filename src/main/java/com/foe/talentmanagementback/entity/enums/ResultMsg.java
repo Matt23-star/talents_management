@@ -10,6 +10,7 @@ public enum ResultMsg {
     SUCCESS(200,"成功"),
     USER_NOT_EXIST(404,"用户名或密码错误"),
     TALENT_NOT_EXIST(404,"该系统人才不存在"),
+    TALENT_ARCHIVE_NOT_EXIST(404,"该系统人才无档案"),
     ARCHIVE_NOT_EXIST(404,"该档案不存在");
 
 

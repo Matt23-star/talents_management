@@ -17,14 +17,16 @@ import java.util.List;
  * @Date: 2021/07/09/23:11
  * @Description:
  */
+
 @RestController
 @Api(value = "评价详情接口", tags = "评价详情接口")
-@RequestMapping("/ed")
+@RequestMapping("/evaluation")
 public class T_evaluation_detailsController {
     @Autowired
     private T_evaluation_detailsServiceImpl evaluationDetailsService;
+
     @PostMapping("/ied")
-    @ApiOperation(value = "添加评价",notes = "添加评价，包括了打分和文字评价")
+    @ApiOperation(value = "插入评价")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "talentId", value = "档案中系统人才id", dataType = "int", paramType = "query", required = true),
             @ApiImplicitParam(name = "professionalKnowledge", value = "评价：专业知识", dataType = "int", paramType = "query", required = true),
@@ -49,6 +51,7 @@ public class T_evaluation_detailsController {
                 performance,
                 comment,
                 evaluator);
+
     }
 }
 

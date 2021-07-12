@@ -20,10 +20,10 @@ public class ResultUtils {
         return result;
     }
 
-    public static <T> Result success(ResultMessage resultMessage, T data){
+    public static <T> Result success(ResultMessage resultMsg, T data){
         Result<T> result = new Result<>();
-        result.setCode(resultMessage.getCode());
-        result.setMessage(resultMessage.getMessage());
+        result.setCode(resultMsg.getCode());
+        result.setMessage(resultMsg.getMessage());
         result.setData(data);
         return result;
     }
@@ -41,7 +41,14 @@ public class ResultUtils {
         return success(null);
     }
 
-    public static <T> Result error(ResultMessage errorMsg){
+    public static <T> Result error(ResultMessage resultMessage){
+        Result<T> result = new Result();
+        result.setCode(resultMessage.getCode());
+        result.setMessage(resultMessage.getMessage());
+        return result;
+    }
+
+    public static <T> Result error(ResultMsg errorMsg){
         Result<T> result = new Result();
         result.setCode(errorMsg.getCode());
         result.setMessage(errorMsg.getMessage());
