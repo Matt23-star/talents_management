@@ -527,9 +527,9 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_addtalentusingpost">接受post请求</a></li>
 <li><a href="#_gettalentsusingget">无需参数，返回所有T_tanlent数据</a></li>
 <li><a href="#_updatetalentusingput">接受put请求，T_tanlent中id为必填字段</a></li>
-<li><a href="#_getworkersbyhridusingget">输入hr的id，返回该hr公司下的所有T_tanlent数据</a></li>
 <li><a href="#_gettalentbyidusingget">输入人才id，返回该id对应的T_tanlent数据</a></li>
 <li><a href="#_gettalentbynameusingget">输入人才姓名，返回所有同名的T_tanlent数据</a></li>
+<li><a href="#_getworkersbyhridusingget">输入company的id，返回该hr公司下的所有T_tanlent数据</a></li>
 </ul>
 </li>
 </ul>
@@ -1794,10 +1794,10 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect2">
-<h3 id="_getworkersbyhridusingget">输入hr的id，返回该hr公司下的所有T_tanlent数据</h3>
+<h3 id="_gettalentbyidusingget">输入人才id，返回该id对应的T_tanlent数据</h3>
 <div class="literalblock">
 <div class="content">
-<pre>GET /api/talents/{hrid}</pre>
+<pre>GET /api/talents/{id}</pre>
 </div>
 </div>
 <div class="sect3">
@@ -1820,9 +1820,9 @@ table.CodeRay td.code>pre{padding:0}
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Path</strong></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>hrid</strong><br>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>id</strong><br>
 <em>required</em></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">hrid</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">id</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">integer(int32)</p></td>
 </tr>
 </tbody>
@@ -1847,7 +1847,7 @@ table.CodeRay td.code>pre{padding:0}
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_f89c2473e0832215ccf9cbdbacad7353">Result«List«T_talent»»</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_c7a36d9936a64679239f3946d21b9f3d">Result«T_talent»</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong></p></td>
@@ -1889,10 +1889,10 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect2">
-<h3 id="_gettalentbyidusingget">输入人才id，返回该id对应的T_tanlent数据</h3>
+<h3 id="_gettalentbynameusingget">输入人才姓名，返回所有同名的T_tanlent数据</h3>
 <div class="literalblock">
 <div class="content">
-<pre>GET /api/talents/{id}</pre>
+<pre>GET /api/talents/{name}</pre>
 </div>
 </div>
 <div class="sect3">
@@ -1915,10 +1915,10 @@ table.CodeRay td.code>pre{padding:0}
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Path</strong></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>id</strong><br>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>name</strong><br>
 <em>required</em></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">id</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">integer(int32)</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
 </tr>
 </tbody>
 </table>
@@ -1942,7 +1942,7 @@ table.CodeRay td.code>pre{padding:0}
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_c7a36d9936a64679239f3946d21b9f3d">Result«T_talent»</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_f89c2473e0832215ccf9cbdbacad7353">Result«List«T_talent»»</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong></p></td>
@@ -1984,10 +1984,10 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect2">
-<h3 id="_gettalentbynameusingget">输入人才姓名，返回所有同名的T_tanlent数据</h3>
+<h3 id="_getworkersbyhridusingget">输入company的id，返回该hr公司下的所有T_tanlent数据</h3>
 <div class="literalblock">
 <div class="content">
-<pre>GET /api/talents/{name}</pre>
+<pre>GET /companies/{companyid}/talents</pre>
 </div>
 </div>
 <div class="sect3">
@@ -2010,10 +2010,10 @@ table.CodeRay td.code>pre{padding:0}
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Path</strong></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>name</strong><br>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>companyid</strong><br>
 <em>required</em></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">name</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">companyid</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">integer(int32)</p></td>
 </tr>
 </tbody>
 </table>
@@ -2072,7 +2072,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="ulist">
 <ul>
 <li>
-<p>系统人才接口</p>
+<p>公司接口</p>
 </li>
 </ul>
 </div>
@@ -2083,7 +2083,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-07-12 22:03:46 +08:00
+Last updated 2021-07-12 22:08:52 +08:00
 </div>
 </div>
 </body>
