@@ -15,4 +15,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface IT_departmentService extends IService<T_department> {
 
     public T_department getDepartmentByTalentId(Integer talentId);
+
+    public T_department getDepartmentById(Integer departmentId);
 }

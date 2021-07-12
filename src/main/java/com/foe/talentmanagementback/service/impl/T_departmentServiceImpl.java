@@ -30,4 +30,11 @@ public class T_departmentServiceImpl extends ServiceImpl<T_departmentMapper, T_d
         queryWrapper.eq("department_manager_id",talentId);
         return departmentMapper.selectOne(queryWrapper);
     }
+
+    @Override
+    public T_department getDepartmentById(Integer departmentId) {
+        return departmentMapper.selectById(departmentId);
+    }
+
+
 }
