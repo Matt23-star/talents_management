@@ -1,5 +1,6 @@
 package com.foe.talentmanagementback.service;
 
+import com.foe.talentmanagementback.entity.Result;
 import com.foe.talentmanagementback.entity.T_department;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IT_departmentService extends IService<T_department> {
 
+    public Result<T_department> getDepartmentByTalentId(Integer talentId);
 }

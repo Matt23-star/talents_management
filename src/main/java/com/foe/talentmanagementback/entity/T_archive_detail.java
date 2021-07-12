@@ -35,6 +35,10 @@ public class T_archive_detail implements Serializable {
      */
     private Date entryTime;
     /**
+     * 离职时间
+     */
+    private Date quitTime;
+    /**
      * 工号
      */
     private Integer jobNumber;

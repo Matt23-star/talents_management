@@ -127,4 +127,7 @@ public class T_talent implements Serializable {
 
     private String accountNumber;
 
+    private Integer jobStatus;
+
+    private Integer companyId;
 }

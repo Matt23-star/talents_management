@@ -27,15 +27,11 @@ public class T_worker implements Serializable {
 
     private Integer salary;
 
-    private Integer companyId;
-
     private String jobType;
     /**
      * 部门主管
      */
     private Integer departmentManagerId;
-
-    private String status;
 
     private Integer archiveDetailId;
 
