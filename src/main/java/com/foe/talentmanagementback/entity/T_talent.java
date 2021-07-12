@@ -125,4 +125,6 @@ public class T_talent implements Serializable {
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date updateTime;
 
+    private String accountNumber;
+
 }

@@ -3,9 +3,11 @@ package com.foe.talentmanagementback.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,35 +23,29 @@ public class T_worker implements Serializable {
 
     private Integer id;
 
-    /**
-     * 工号
-     */
-    private Integer jobNumber;
-
-    /**
-     * 合同类型
-     */
-    private String contract;
-
-    private String contractBeginDate;
-
-    private String contract_deadline;
-
     private Integer workingYears;
 
     private Integer salary;
 
     private Integer companyId;
 
-    /**
-     * 入职时间
-     */
-    private String entryTime;
-
     private String jobType;
-
     /**
      * 部门主管
      */
     private Integer departmentManagerId;
+
+    private String status;
+
+    private Integer archiveDetailId;
+
+    @ApiModelProperty(value = "重大事件记录")
+    private String detailRecord;
+
+    @ApiModelProperty(value = "记录时间")
+    private Date date;
+    /**
+     * 职位
+     */
+    private String position;
 }

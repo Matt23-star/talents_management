@@ -25,11 +25,16 @@ public class T_company implements Serializable {
 
     private String name;
 
-
     private String type;
 
     private String certification;
 
     private String foundingTime;
+
+    private String address;
+
+    private String legalRepresentative;
+
+    private Integer legalRepresentativeCertificate;
 
 }

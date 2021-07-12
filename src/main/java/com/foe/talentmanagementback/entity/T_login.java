@@ -16,16 +16,16 @@ import java.io.Serializable;
 
 @Data
 public class T_login implements Serializable {
-
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     private String nikname;
 
     private String briefIntroduction;
 
-    private Integer accountNumber;
+    private String accountNumber;
 
-    private Integer password;
+    private String password;
 
     private String headPortrait;
 }
