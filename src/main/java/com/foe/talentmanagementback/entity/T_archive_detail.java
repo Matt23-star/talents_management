@@ -31,6 +31,10 @@ public class T_archive_detail implements Serializable {
 
     private Integer talentId;
     /**
+     * 工号
+     */
+    private Integer jobNumber;
+    /**
      * 入职时间
      */
     private Date entryTime;
@@ -38,10 +42,6 @@ public class T_archive_detail implements Serializable {
      * 离职时间
      */
     private Date quitTime;
-    /**
-     * 工号
-     */
-    private Integer jobNumber;
 
     /**
      * 合同类型
