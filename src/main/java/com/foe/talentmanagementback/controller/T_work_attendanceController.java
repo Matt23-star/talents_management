@@ -2,9 +2,6 @@ package com.foe.talentmanagementback.controller;
 
 
 import com.foe.talentmanagementback.entity.Result;
-import com.foe.talentmanagementback.entity.T_evaluation_details;
-import com.foe.talentmanagementback.entity.T_work_attendance;
-import com.foe.talentmanagementback.service.impl.T_work_attendanceServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -13,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -31,13 +27,13 @@ import java.util.List;
 @RequestMapping("/workAttendance")
 public class T_work_attendanceController {
 
-    @Autowired
-    private T_work_attendanceServiceImpl workAttendanceService;
-
-    @GetMapping("/archiveDetailId/{archiveDetailId}")
-    @ApiOperation(value = "查询系统人才的所有档案，这些档案属于不同公司")
-    public Result<List<T_work_attendance>> getArchivesOfTalent(@ApiParam(value = "档案id",required = true)@PathVariable("archiveDetailId") int archiveDetailId){
-        return workAttendanceService.getAttendancesByADId(archiveDetailId);
-    }
+//    @Autowired
+//    private T_work_attendanceServiceImpl workAttendanceService;
+//
+//    @GetMapping("/archiveDetailId/{archiveDetailId}")
+//    @ApiOperation(value = "查询系统人才的所有档案，这些档案属于不同公司")
+//    public Result<List<T_work_attendance>> getArchivesOfTalent(@ApiParam(value = "档案id",required = true)@PathVariable("archiveDetailId") int archiveDetailId){
+//        return workAttendanceService.getAttendancesByADId(archiveDetailId);
+//    }
 }
 

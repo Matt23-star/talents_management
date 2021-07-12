@@ -117,7 +117,7 @@ public class T_talent implements Serializable {
      * 婚姻状况
      */
     @ApiModelProperty(value = "婚姻状况")
-    private Integer maritalStatus;
+    private String maritalStatus;
 
     @TableField(fill = FieldFill.INSERT)     // 时间特有的注解
     private Date createTime;

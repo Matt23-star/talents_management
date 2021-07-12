@@ -16,5 +16,5 @@ public class Archive {
 
     private List<T_evaluation_details> evaluationDetails;
 
-    private List<T_work_attendance> workAttendances;
+   // private List<T_work_attendance> workAttendances;
 }
