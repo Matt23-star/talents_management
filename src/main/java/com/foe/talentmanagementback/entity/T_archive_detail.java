@@ -38,7 +38,10 @@ public class T_archive_detail implements Serializable {
      * 入职时间
      */
     private Date entryTime;
-
+    /**
+     * 离职时间
+     */
+    private Date quitTime;
 
     /**
      * 合同类型

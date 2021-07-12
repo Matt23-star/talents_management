@@ -1,13 +1,14 @@
 package com.foe.talentmanagementback.controller;
 
 
-import com.foe.talentmanagementback.entity.Archive;
 import com.foe.talentmanagementback.entity.Result;
 import com.foe.talentmanagementback.entity.T_archive_detail;
+import com.foe.talentmanagementback.entity.T_hr;
 import com.foe.talentmanagementback.entity.dto.HrDTO;
 import com.foe.talentmanagementback.service.impl.T_archive_detailServiceImpl;
 import com.foe.talentmanagementback.service.impl.T_evaluation_detailsServiceImpl;
 import com.foe.talentmanagementback.service.impl.T_hrServiceImpl;
+import com.foe.talentmanagementback.service.impl.T_work_attendanceServiceImpl;
 import com.foe.talentmanagementback.utils.ResultUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -38,8 +39,6 @@ public class T_hrController {
     private T_archive_detailServiceImpl archiveDetailService;
     @Autowired
     private T_evaluation_detailsServiceImpl evaluationDetailsService;
-//    @Autowired
-//    private T_work_attendanceServiceImpl workAttendanceService;
 
 //    @GetMapping("/talentArchive/{talentId}/{companyId}")
 //    @ApiOperation(value = "查询特定公司特定员工档案")
@@ -60,7 +59,7 @@ public class T_hrController {
 
     @GetMapping("/hrImf/{hrId}")
     @ApiOperation(value = "查询hr信息")
-    public HrDTO getHrByHrId(@PathVariable("hrId") int hrId){
+    public Result<T_hr> getHrByHrId(@PathVariable("hrId") int hrId){
         return hrService.getHrByTalentId(hrId);
     }
 }

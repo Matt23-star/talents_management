@@ -29,7 +29,7 @@ public class JacksonConfig {
         objectMapper.getSerializerProvider().setNullValueSerializer(new JsonSerializer<Object>() {
             @Override
             public void serialize(Object o, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
-                jsonGenerator.writeString("");
+                jsonGenerator.writeString("暂无");
             }
         });
         return objectMapper;

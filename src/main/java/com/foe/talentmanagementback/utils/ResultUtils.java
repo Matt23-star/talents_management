@@ -2,6 +2,7 @@ package com.foe.talentmanagementback.utils;
 
 import com.foe.talentmanagementback.entity.Result;
 import com.foe.talentmanagementback.entity.ResultMessage;
+import com.foe.talentmanagementback.entity.enums.ResultMsg;
 
 /**
  * @author: Matt
@@ -11,6 +12,14 @@ import com.foe.talentmanagementback.entity.ResultMessage;
 public class ResultUtils {
 
     //带code和参数的成功
+    public static <T> Result success(ResultMsg resultMessage, T data){
+        Result<T> result = new Result<>();
+        result.setCode(resultMessage.getCode());
+        result.setMessage(resultMessage.getMessage());
+        result.setData(data);
+        return result;
+    }
+
     public static <T> Result success(ResultMessage resultMessage, T data){
         Result<T> result = new Result<>();
         result.setCode(resultMessage.getCode());

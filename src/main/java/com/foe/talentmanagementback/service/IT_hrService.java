@@ -1,5 +1,6 @@
 package com.foe.talentmanagementback.service;
 
+import com.foe.talentmanagementback.entity.Result;
 import com.foe.talentmanagementback.entity.T_hr;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.foe.talentmanagementback.entity.dto.HrDTO;
@@ -14,5 +15,5 @@ import com.foe.talentmanagementback.entity.dto.HrDTO;
  */
 public interface IT_hrService extends IService<T_hr> {
 
-    public HrDTO getHrByTalentId(int id);
+    public Result<T_hr> getHrByTalentId(int id);
 }

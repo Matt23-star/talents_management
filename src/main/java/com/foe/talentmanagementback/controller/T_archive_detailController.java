@@ -6,6 +6,7 @@ import com.foe.talentmanagementback.entity.T_archive_detail;
 import com.foe.talentmanagementback.entity.dto.ArchiveDetailDTO;
 import com.foe.talentmanagementback.service.impl.T_archive_detailServiceImpl;
 import io.swagger.annotations.*;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 /**
