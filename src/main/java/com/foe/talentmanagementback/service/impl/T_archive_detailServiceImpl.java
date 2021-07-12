@@ -8,11 +8,14 @@ import com.foe.talentmanagementback.entity.enums.ResultMsg;
 import com.foe.talentmanagementback.mapper.T_archive_detailMapper;
 import com.foe.talentmanagementback.service.IT_archive_detailService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.foe.talentmanagementback.utils.DateConvert;
 import com.foe.talentmanagementback.utils.ResultUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,8 +52,10 @@ public class T_archive_detailServiceImpl extends ServiceImpl<T_archive_detailMap
         if(archiveDetails == null){
             return ResultUtils.error(ResultMsg.TALENT_ARCHIVE_NOT_EXIST);
         }
+
         for (T_archive_detail archiveDetail: archiveDetails
              ) {
+            archiveDetail.setEntryTime(DateConvert.dateConvert(archiveDetail.getEntryTime()));
             WorkExperienceDTO workExperienceDTO = modelMapper.map(archiveDetail,WorkExperienceDTO.class);
             workExperienceDTO.setCompanyName(companyService
                     .getCompanyById(archiveDetail.getCompanyId())

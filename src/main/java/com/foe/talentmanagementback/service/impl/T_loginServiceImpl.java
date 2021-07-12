@@ -92,17 +92,12 @@ public class T_loginServiceImpl extends ServiceImpl<T_loginMapper, T_login> impl
             queryWrapperArchive.eq("company_id", talent.getCompanyId());
             T_archive_detail archiveDetail = archiveDetailMapper.selectOne(queryWrapperArchive);
             if (archiveDetail!=null) {
-                queryWrapperWorker.eq("archive_detail_id", archiveDetail.getId());
-                T_worker worker = workerMapper.selectOne(queryWrapperWorker);
-
-                if (worker != null) {
                     userDTO.setDepartmentName(departmentService
-                            .getDepartmentByTalentId(worker.getDepartmentManagerId())
+                            .getDepartmentByTalentId(archiveDetail.getDepartmentLast())
                             .getDepartmentName());
-                    userDTO.setPosition(worker.getPosition());
+                    userDTO.setPosition(archiveDetail.getPositionLast());
                 }
             }
-        }
         return ResultUtils.success(ResultMsg.SUCCESS, userDTO);
     }
 }

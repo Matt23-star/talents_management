@@ -2,6 +2,7 @@ package com.foe.talentmanagementback.entity.dto;
 
 import com.foe.talentmanagementback.entity.enums.JobStatus;
 import com.foe.talentmanagementback.entity.enums.UserRight;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
@@ -91,6 +92,8 @@ public class UserDTO {
     private String accountNumber;
 
     private String jobStatusEnum;
+
+    private Integer companyId;
 
     private String companyName;
 

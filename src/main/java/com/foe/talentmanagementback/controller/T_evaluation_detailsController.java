@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  *
- * @Author: 张越
- * @Date: 2021/07/09/23:11
+ * @Author: Matt
+ * @Date: 2021/07/09
  * @Description:
  */
 
@@ -21,6 +21,9 @@ import org.springframework.web.bind.annotation.*;
 public class T_evaluation_detailsController {
     @Autowired
     private T_evaluation_detailsServiceImpl evaluationDetailsService;
+
+    @GetMapping("/archiveDetailId")
+    //@ApiOperation(value = "通过archiveDetailId")
 
     @PostMapping("/ied")
     @ApiOperation(value = "插入评价")

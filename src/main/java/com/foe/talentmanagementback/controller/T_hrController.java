@@ -6,6 +6,7 @@ import com.foe.talentmanagementback.service.impl.T_archive_detailServiceImpl;
 import com.foe.talentmanagementback.service.impl.T_evaluation_detailsServiceImpl;
 import com.foe.talentmanagementback.service.impl.T_hrServiceImpl;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,6 +53,7 @@ public class T_hrController {
 
     @GetMapping("/hrImf/{hrId}")
     @ApiOperation(value = "查询hr信息")
+    @ApiImplicitParam(name = "hrId", value = "")
     public T_hr getHrByHrId(@PathVariable("hrId") int hrId){
         return hrService.getHrByTalentId(hrId);
     }
