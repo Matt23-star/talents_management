@@ -90,7 +90,7 @@ public class UserDTO {
 
     private String accountNumber;
 
-    private String jobStatus;
+    private String jobStatusEnum;
 
     private String companyName;
 

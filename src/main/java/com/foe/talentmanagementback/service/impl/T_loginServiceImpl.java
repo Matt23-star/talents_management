@@ -51,7 +51,6 @@ public class T_loginServiceImpl extends ServiceImpl<T_loginMapper, T_login> impl
 
     @Override
     public Result<UserDTO> login(String account, String password) {
-        UserDTO userDTO = new UserDTO();
         QueryWrapper<T_login> queryWrapperLogin = new QueryWrapper<>();
         QueryWrapper<T_talent> queryWrapperTalent = new QueryWrapper<>();
         QueryWrapper<T_archive_detail> queryWrapperArchive = new QueryWrapper<>();
@@ -74,7 +73,7 @@ public class T_loginServiceImpl extends ServiceImpl<T_loginMapper, T_login> impl
 
         ModelMapper modelMapper = new ModelMapper();
         System.out.println(talent);
-        modelMapper.map(talent,UserDTO.class);
+        UserDTO userDTO = modelMapper.map(talent,UserDTO.class);
         userDTO.setCompanyName(companyService.getCompanyById(talent.getCompanyId()).getName());
         userDTO.setDepartmentName(departmentService
                 .getDepartmentByTalentId(worker.getDepartmentManagerId())
