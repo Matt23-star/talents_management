@@ -125,9 +125,12 @@ public class T_talent implements Serializable {
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date updateTime;
 
+    @ApiModelProperty(value = "账户")
     private String accountNumber;
 
+    @ApiModelProperty(value = "工作状态")
     private Integer jobStatus;
 
+    @ApiModelProperty(value = "公司Id")
     private Integer companyId;
 }

@@ -23,14 +23,12 @@ import org.springframework.stereotype.Controller;
  * @Description:
  */
 @RestController
-@Api(value = "登录和注册接口", tags = "登录和注册接口")
+@Api(value = "登录和注册接口", tags = "登录接口")
 @RequestMapping("/loginPage")
 public class T_loginController {
 
     @Autowired
     private T_loginServiceImpl loginService;
-    @Autowired
-    private T_registerServiceImpl registerService;
 
     @PostMapping("/login")
     @ApiOperation(value = "通过account和password登录系统，返回UserDTO")

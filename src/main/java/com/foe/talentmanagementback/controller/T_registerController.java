@@ -5,6 +5,7 @@ import com.foe.talentmanagementback.service.impl.T_registerServiceImpl;
 import com.foe.talentmanagementback.utils.ResultUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,8 +28,8 @@ public class T_registerController {
     private T_registerServiceImpl registerService;
     @PostMapping("/register")
     @ApiOperation(value = "输入用户名和密码注册")
-    public Result register(@RequestParam(value="account") String account,
-                           @RequestParam(value="password") String password){
+    public Result register(@ApiParam(value = "账号",required = true) @RequestParam(value="account") String account,
+                           @ApiParam(value = "密码",required = true)@RequestParam(value="password") String password){
 
         return registerService.register(account,password);
     }
