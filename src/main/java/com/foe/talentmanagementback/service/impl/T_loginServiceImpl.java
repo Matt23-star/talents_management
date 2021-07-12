@@ -56,6 +56,7 @@ public class T_loginServiceImpl extends ServiceImpl<T_loginMapper, T_login> impl
         QueryWrapper<T_archive_detail> queryWrapperArchive = new QueryWrapper<>();
         QueryWrapper<T_worker> queryWrapperWorker = new QueryWrapper<>();
 
+        //登录鉴权
         queryWrapperLogin.eq("account_number", account);
         queryWrapperLogin.eq("password", password);
         T_login login = loginMapper.selectOne(queryWrapperLogin);
@@ -63,30 +64,45 @@ public class T_loginServiceImpl extends ServiceImpl<T_loginMapper, T_login> impl
             return ResultUtils.error(new ResultMessage(404, "该用户不存在！"));
         }
 
+        //获取talent信息
         queryWrapperTalent.eq("account_number", login.getAccountNumber());
         T_talent talent = talentMapper.selectOne(queryWrapperTalent);
-        queryWrapperArchive.eq("talent_id",talent.getId());
-        queryWrapperArchive.eq("company_id",talent.getCompanyId());
-        T_archive_detail archiveDetail = archiveDetailMapper.selectOne(queryWrapperArchive);
-        queryWrapperWorker.eq("archive_detail_id", archiveDetail.getId());
-        T_worker worker = workerMapper.selectOne(queryWrapperWorker);
 
+        //使用ModelMapper 映射到UserDTO
         ModelMapper modelMapper = new ModelMapper();
-        System.out.println(talent);
         UserDTO userDTO = modelMapper.map(talent,UserDTO.class);
-        userDTO.setCompanyName(companyService.getCompanyById(talent.getCompanyId()).getName());
-        userDTO.setDepartmentName(departmentService
-                .getDepartmentByTalentId(worker.getDepartmentManagerId())
-                .getDepartmentName());
-        userDTO.setPosition(worker.getPosition());
-        userDTO.setNation(nationMapper
-                .selectById(talent.getNationId())
-                .getName());
-        if (talent.getJobStatus() == 0) {
-            userDTO.setJobStatusEnum(JobStatus.UNEMPLOYED.getJobStatus());
-        } else userDTO.setJobStatusEnum(JobStatus.EMPLOYED.getJobStatus());
-        userDTO.setHeadPortrait(login.getHeadPortrait());
-        userDTO.setUserRight(rightUtils.confirmRight(talent.getId()));
+
+        //若talent能查到
+        if(talent!=null) {
+            //根据talent信息设置公司名、民族名、头像路径以及工作状态
+            userDTO.setCompanyName(companyService
+                    .getCompanyById(talent.getCompanyId())
+                    .getName());
+            userDTO.setNation(nationMapper
+                    .selectById(talent.getNationId())
+                    .getName());
+            userDTO.setHeadPortrait(login.getHeadPortrait());
+            if (talent.getJobStatus() == 0) {
+                userDTO.setJobStatusEnum(JobStatus.UNEMPLOYED.getJobStatus());
+            } else userDTO.setJobStatusEnum(JobStatus.EMPLOYED.getJobStatus());
+            userDTO.setUserRight(rightUtils.confirmRight(talent.getId()));
+
+            //查询档案记录
+            queryWrapperArchive.eq("talent_id", talent.getId());
+            queryWrapperArchive.eq("company_id", talent.getCompanyId());
+            T_archive_detail archiveDetail = archiveDetailMapper.selectOne(queryWrapperArchive);
+            if (archiveDetail!=null) {
+                queryWrapperWorker.eq("archive_detail_id", archiveDetail.getId());
+                T_worker worker = workerMapper.selectOne(queryWrapperWorker);
+
+                if (worker != null) {
+                    userDTO.setDepartmentName(departmentService
+                            .getDepartmentByTalentId(worker.getDepartmentManagerId())
+                            .getDepartmentName());
+                    userDTO.setPosition(worker.getPosition());
+                }
+            }
+        }
         return ResultUtils.success(ResultMsg.SUCCESS, userDTO);
     }
 }

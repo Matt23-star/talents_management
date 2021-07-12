@@ -7,6 +7,7 @@ import com.foe.talentmanagementback.entity.dto.UserDTO;
 import com.foe.talentmanagementback.service.impl.T_loginServiceImpl;
 import com.foe.talentmanagementback.service.impl.T_registerServiceImpl;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import javaslang.collection.Map;
@@ -34,9 +35,13 @@ public class T_loginController {
 
     @PostMapping("/login")
     @ApiOperation(value = "通过account和password登录系统，返回UserDTO")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "account", value = "用户名account", dataType = "String", paramType = "query", required = true),
+            @ApiImplicitParam(name = "password", value = "密码password", dataType = "String", paramType = "query", required = true)
+    })
     public Result<UserDTO> login(@RequestParam("account") String account,
                                  @RequestParam("password") String password) {
-        return  loginService.login(account,password);
+        return loginService.login(account,password);
     }
 }
 
