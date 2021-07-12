@@ -11,9 +11,9 @@ public class WorkExperienceDTO {
 
     private String companyName;
 
-    private String departmentForLast;
+    private String departmentLast;
 
-    private String positionForLast;
+    private String positionLast;
 
     private Date entryTime;
 
