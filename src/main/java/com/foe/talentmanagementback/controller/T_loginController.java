@@ -38,13 +38,5 @@ public class T_loginController {
                                  @RequestParam("password") String password) {
         return  loginService.login(account,password);
     }
-
-    @PostMapping("/register")
-    @ApiOperation(value = "输入用户名和密码注册")
-    public Result register(@RequestParam(value="account") String account,
-                           @RequestParam(value="password") String password){
-
-        return registerService.register(account,password);
-    }
 }
 

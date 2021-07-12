@@ -5,10 +5,13 @@ import com.foe.talentmanagementback.entity.Result;
 import com.foe.talentmanagementback.entity.ResultMessage;
 import com.foe.talentmanagementback.entity.T_login;
 import com.foe.talentmanagementback.entity.T_talent;
+import com.foe.talentmanagementback.entity.dto.UserDTO;
+import com.foe.talentmanagementback.entity.enums.UserRight;
 import com.foe.talentmanagementback.mapper.T_loginMapper;
 import com.foe.talentmanagementback.mapper.T_talentMapper;
 import com.foe.talentmanagementback.service.IT_registerService;
 import com.foe.talentmanagementback.utils.ResultUtils;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,11 +44,16 @@ public class T_registerServiceImpl implements IT_registerService {
                T_talent talent = new T_talent();
                talent.setAccountNumber(account);
                int talentInsert = talentMapper.insert(talent);
+
                if(loginInsert==1&&talentInsert==1)
                {
                    QueryWrapper<T_talent> queryWrapperTalent = new QueryWrapper();
                    queryWrapperTalent.eq("account_number",account);
-                   return ResultUtils.success(new ResultMessage(200,"注册成功"),talentMapper.selectOne(queryWrapperTalent));
+                   T_talent talentToDTO= talentMapper.selectOne(queryWrapperTalent);
+                   ModelMapper modelMapper =new ModelMapper();
+                   UserDTO userDTO = modelMapper.map(talentToDTO,UserDTO.class);
+                   userDTO.setUserRight(UserRight.NORMAL_USER);
+                   return ResultUtils.success(new ResultMessage(200,"注册成功"),userDTO);
                }else return ResultUtils.error(new ResultMessage(500,"注册失败，插入数据库异常"));
            }
        }

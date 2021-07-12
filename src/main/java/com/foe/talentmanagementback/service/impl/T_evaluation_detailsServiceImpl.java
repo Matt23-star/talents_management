@@ -2,7 +2,10 @@ package com.foe.talentmanagementback.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.foe.talentmanagementback.entity.Result;
+import com.foe.talentmanagementback.entity.ResultMessage;
+import com.foe.talentmanagementback.entity.T_archive_detail;
 import com.foe.talentmanagementback.entity.T_evaluation_details;
+import com.foe.talentmanagementback.mapper.T_archive_detailMapper;
 import com.foe.talentmanagementback.mapper.T_evaluation_detailsMapper;
 import com.foe.talentmanagementback.service.IT_evaluation_detailsService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -22,15 +25,32 @@ import java.util.List;
  */
 @Service
 public class T_evaluation_detailsServiceImpl extends ServiceImpl<T_evaluation_detailsMapper, T_evaluation_details> implements IT_evaluation_detailsService {
-
     @Autowired
     private T_evaluation_detailsMapper evaluationDetailsMapper;
-
+    @Autowired
+    private T_archive_detailMapper archiveDetailMapper;
     @Override
-    public Result<List<T_evaluation_details>> getEvaluationsByADId(int archiveDetailId) {
+    public Result intsertEvaluation(int talentId,int professionalKnowledge, int opinionValue, int ability, int performance,String comment,int evaluator) {
         QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("archive_detail_id",archiveDetailId);
-        return ResultUtils.success(evaluationDetailsMapper.selectList(queryWrapper));
+        queryWrapper.eq("talent_id",talentId);
+        T_archive_detail archiveDetail = archiveDetailMapper.selectOne(queryWrapper);
+        if(archiveDetail==null){
+            return ResultUtils.error(new ResultMessage(500,"未查询到档案信息，评价失败"));
+        }else {
+            T_evaluation_details evaluationDetails = new T_evaluation_details();
+            evaluationDetails.setArchiveDetailId(archiveDetail.getId());
+            evaluationDetails.setProfessionalKnowledge(professionalKnowledge);
+            evaluationDetails.setOpinionValue(opinionValue);
+            evaluationDetails.setAbility(ability);
+            evaluationDetails.setPerformance(performance);
+            evaluationDetails.setComment(comment);
+            evaluationDetails.setEvaluator(evaluator);
+            int resultEva = evaluationDetailsMapper.insert(evaluationDetails);
+            if(resultEva>0){
+                return ResultUtils.success(new ResultMessage(200,"评价成功"));
+            }
+        }
+        return ResultUtils.error(new ResultMessage(500,"评价失败"));
     }
 }
 

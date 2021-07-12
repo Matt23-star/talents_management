@@ -8,36 +8,40 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 /**
- * <p>
- * 评价详情表 前端控制器
- * </p>
+ * Created with IntelliJ IDEA.
  *
- * @author Matt
- * @since 2021-07-08
+ * @Author: 张越
+ * @Date: 2021/07/09/23:11
+ * @Description:
  */
 @RestController
 @Api(value = "评价详情接口", tags = "评价详情接口")
-@RequestMapping("/evaluationDetails")
+@RequestMapping("/ed")
 public class T_evaluation_detailsController {
-
     @Autowired
     private T_evaluation_detailsServiceImpl evaluationDetailsService;
+    @PostMapping("/ied")
+    public Result insertEvaluation(@RequestParam("talentId")int talentId,
+                                   @RequestParam("professionalKnowledge")int professionalKnowledge,
+                                   @RequestParam("opinionValue")int opinionValue,
+                                   @RequestParam("ability")int ability,
+                                   @RequestParam("performance")int performance,
+                                   @RequestParam(value = "comment")String comment,
+                                   @RequestParam(value = "evaluator")int evaluator
+                                   ){
+        return evaluationDetailsService.intsertEvaluation(talentId,
+                professionalKnowledge,
+                opinionValue,
+                ability,
+                performance,
+                comment,
+                evaluator);
 
-    @GetMapping("/archiveDetailId/{archiveDetailId}")
-    @ApiOperation(value = "查询系统人才的所有档案，这些档案属于不同公司")
-    public Result<List<T_evaluation_details>> getArchivesOfTalent(@ApiParam(value = "档案id",required = true)@PathVariable("archiveDetailId") int archiveDetailId){
-        return evaluationDetailsService.getEvaluationsByADId(archiveDetailId);
     }
-
-
 }
 

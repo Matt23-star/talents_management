@@ -73,8 +73,8 @@ public class T_loginServiceImpl extends ServiceImpl<T_loginMapper, T_login> impl
         userDTO.setPosition(worker.getPosition());
         userDTO.setNation(nationMapper.selectById(talent.getNationId()).getName());
         if (talent.getJobStatus() == 0) {
-            userDTO.setJobStatus(JobStatus.UNEMPLOYED);
-        } else userDTO.setJobStatus(JobStatus.EMPLOYED);
+            userDTO.setJobStatus("未就业");
+        } else userDTO.setJobStatus("已就业");
         userDTO.setHeadPortrait(login.getHeadPortrait());
         userDTO.setUserRight(new RightUtils().confirmRight(talent.getId()));
         return ResultUtils.success(ResultMsg.SUCCESS, userDTO);
