@@ -12,6 +12,7 @@ public enum ResultMsg {
     TALENT_NOT_EXIST(404,"该系统人才不存在"),
     ARCHIVE_NOT_EXIST(404,"该档案不存在");
 
+
     private Integer code;
     private String message;
 
