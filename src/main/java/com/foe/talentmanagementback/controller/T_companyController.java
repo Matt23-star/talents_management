@@ -29,5 +29,6 @@ public class T_companyController {
 //        System.out.println(talentId);
 //        return t_archiveService.getArchiveByTalentId(talentId);
 //    }
+
 }
 
