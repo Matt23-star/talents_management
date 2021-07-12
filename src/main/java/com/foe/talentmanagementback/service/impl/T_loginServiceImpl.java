@@ -10,7 +10,7 @@ import com.foe.talentmanagementback.service.IT_loginService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.foe.talentmanagementback.utils.ResultUtils;
 import com.foe.talentmanagementback.utils.RightUtils;
-import org.apache.catalina.User;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +23,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class T_loginServiceImpl extends ServiceImpl<T_loginMapper, T_login> implements IT_loginService {
+
 
     @Autowired
     private T_loginMapper loginMapper;
@@ -40,8 +41,13 @@ public class T_loginServiceImpl extends ServiceImpl<T_loginMapper, T_login> impl
     private T_workerMapper workerMapper;
 
     @Autowired
-    private T_hrMapper hrMapper;
+    private T_departmentServiceImpl departmentService;
 
+    @Autowired
+    private T_companyServiceImpl companyService;
+
+    @Autowired
+    private RightUtils rightUtils;
 
     @Override
     public Result<UserDTO> login(String account, String password) {
@@ -66,17 +72,22 @@ public class T_loginServiceImpl extends ServiceImpl<T_loginMapper, T_login> impl
         queryWrapperWorker.eq("archive_detail_id", archiveDetail.getId());
         T_worker worker = workerMapper.selectOne(queryWrapperWorker);
 
-        userDTO.setDepartmentName(new T_departmentServiceImpl()
+        ModelMapper modelMapper = new ModelMapper();
+        System.out.println(talent);
+        modelMapper.map(talent,UserDTO.class);
+        userDTO.setCompanyName(companyService.getCompanyById(talent.getCompanyId()).getName());
+        userDTO.setDepartmentName(departmentService
                 .getDepartmentByTalentId(worker.getDepartmentManagerId())
-                .getData()
                 .getDepartmentName());
         userDTO.setPosition(worker.getPosition());
-        userDTO.setNation(nationMapper.selectById(talent.getNationId()).getName());
+        userDTO.setNation(nationMapper
+                .selectById(talent.getNationId())
+                .getName());
         if (talent.getJobStatus() == 0) {
-            userDTO.setJobStatus(JobStatus.UNEMPLOYED);
-        } else userDTO.setJobStatus(JobStatus.EMPLOYED);
+            userDTO.setJobStatusEnum(JobStatus.UNEMPLOYED.getJobStatus());
+        } else userDTO.setJobStatusEnum(JobStatus.EMPLOYED.getJobStatus());
         userDTO.setHeadPortrait(login.getHeadPortrait());
-        userDTO.setUserRight(new RightUtils().confirmRight(talent.getId()));
+        userDTO.setUserRight(rightUtils.confirmRight(talent.getId()));
         return ResultUtils.success(ResultMsg.SUCCESS, userDTO);
     }
 }

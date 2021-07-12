@@ -27,11 +27,15 @@ public class T_hrServiceImpl extends ServiceImpl<T_hrMapper, T_hr> implements IT
     @Autowired
     private T_hrMapper hrMapper;
 
-
     @Override
-    public Result<T_hr> getHrByTalentId(int talentId) {
-        QueryWrapper<T_hr> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("hr_talent_id",talentId);
-        return ResultUtils.success(ResultMsg.SUCCESS,hrMapper.selectOne(queryWrapper));
+    public T_hr getHrByTalentId(int talentId) {
+        try {
+            QueryWrapper<T_hr> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("hr_talent_id", talentId);
+            T_hr hr = hrMapper.selectOne(queryWrapper);
+            return hr;
+        } catch (NullPointerException nullPointerException){
+            return null;
+        }
     }
 }

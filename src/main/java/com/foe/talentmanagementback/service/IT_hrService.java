@@ -15,5 +15,5 @@ import com.foe.talentmanagementback.entity.dto.HrDTO;
  */
 public interface IT_hrService extends IService<T_hr> {
 
-    public Result<T_hr> getHrByTalentId(int id);
+    public T_hr getHrByTalentId(int id);
 }

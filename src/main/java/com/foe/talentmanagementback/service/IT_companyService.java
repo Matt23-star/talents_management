@@ -2,6 +2,7 @@ package com.foe.talentmanagementback.service;
 
 import com.foe.talentmanagementback.entity.T_company;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.foe.talentmanagementback.entity.T_department;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IT_companyService extends IService<T_company> {
 
+    public T_company getCompanyById(Integer id);
 }

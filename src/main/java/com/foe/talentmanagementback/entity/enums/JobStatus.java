@@ -35,7 +35,6 @@ public enum JobStatus {
         this.jobStatus = jobStatus;
     }
 
-
     @Override
     public String toString() {
         return "JobStatus{" +

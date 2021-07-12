@@ -58,7 +58,7 @@ public class T_hrController {
 
     @GetMapping("/hrImf/{hrId}")
     @ApiOperation(value = "查询hr信息")
-    public Result<T_hr> getHrByHrId(@PathVariable("hrId") int hrId){
+    public T_hr getHrByHrId(@PathVariable("hrId") int hrId){
         return hrService.getHrByTalentId(hrId);
     }
 }
