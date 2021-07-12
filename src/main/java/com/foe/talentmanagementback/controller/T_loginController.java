@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
 
 /**
- * Created with IntelliJ IDEA.
  *
  * @Author: Matt
  * @Date: 2021/07/09/23:11
@@ -25,13 +24,13 @@ import org.springframework.stereotype.Controller;
  */
 @RestController
 @Api(value = "登录和注册接口", tags = "登录接口")
-@RequestMapping("/loginPage")
+@RequestMapping("/api/login")
 public class T_loginController {
 
     @Autowired
     private T_loginServiceImpl loginService;
 
-    @PostMapping("/login")
+    @PostMapping("")
     @ApiOperation(value = "通过account和password登录系统，返回UserDTO")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "account", value = "用户名account", dataType = "String", paramType = "query", required = true),

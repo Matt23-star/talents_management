@@ -20,7 +20,7 @@ import java.util.Date;
  */
 
 @Data
-@ApiModel(value = "T_talent",description = "新增系统人才参数")
+//@ApiModel(value = "T_talent",description = "新增系统人才参数")
 public class T_talent implements Serializable {
 
 

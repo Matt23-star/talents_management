@@ -21,7 +21,7 @@ import java.util.List;
  */
 @RestController
 @Api(tags = "系统人才接口")
-@RequestMapping("/talents")
+@RequestMapping("/api/talents")
 public class T_talentController {
 
     @Autowired

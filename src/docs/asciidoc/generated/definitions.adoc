@@ -2,40 +2,236 @@
 [[_definitions]]
 == Definitions
 
-[[_archive]]
-=== Archive
+[[_evaluationdto]]
+=== EvaluationDTO
 
 [options="header", cols=".^3,.^4"]
 |===
 |Name|Schema
-|**archiveDetail** +
-__optional__|<<_com_foe_talentmanagementback_entity_t_archive_detail,com.foe.talentmanagementback.entity.T_archive_detail>>
-|**evaluationDetails** +
-__optional__|< <<_t_evaluation_details,T_evaluation_details>> > array
-|**workAttendances** +
-__optional__|< <<_t_work_attendance,T_work_attendance>> > array
+|**ability** +
+__optional__|integer(int32)
+|**comment** +
+__optional__|string
+|**evaluator** +
+__optional__|string
+|**opinionValue** +
+__optional__|integer(int32)
+|**performance** +
+__optional__|integer(int32)
+|**professionalKnowledge** +
+__optional__|integer(int32)
+|**talentId** +
+__optional__|string
 |===
 
 
-[[_archivedetaildto]]
-=== ArchiveDetailDTO
-获取档案记录参数
+[[_myorganizationdto]]
+=== MyOrganizationDTO
+包含了我的组织页面的全部信息
 
 
 [options="header", cols=".^3,.^11,.^4"]
 |===
 |Name|Description|Schema
+|**certification** +
+__optional__|公司简介|string
 |**companyId** +
 __optional__|公司ID|integer(int32)
-|**date** +
-__optional__|记录时间|string
-|**detailRecord** +
-__optional__|重大事件记录|string
+|**companyName** +
+__optional__|公司名称|string
+|**departmentFunction** +
+__optional__|部门简介|string
+|**departmentId** +
+__optional__|部门ID|integer(int32)
+|**departmentName** +
+__optional__|部门名称|string
 |===
 
 
-[[_hrdto]]
-=== HrDTO
+[[_result]]
+=== Result
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**code** +
+__optional__|integer(int32)
+|**data** +
+__optional__|object
+|**message** +
+__optional__|string
+|===
+
+
+[[_f89c2473e0832215ccf9cbdbacad7353]]
+=== Result«List«T_talent»»
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**code** +
+__optional__|integer(int32)
+|**data** +
+__optional__|< <<_t_talent,T_talent>> > array
+|**message** +
+__optional__|string
+|===
+
+
+[[_e1deee9e2f2716fa017685eb444d5497]]
+=== Result«List«WorkExperienceDTO»»
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**code** +
+__optional__|integer(int32)
+|**data** +
+__optional__|< <<_workexperiencedto,WorkExperienceDTO>> > array
+|**message** +
+__optional__|string
+|===
+
+
+[[_8c99ff772fe710adb1f00100f007f3ac]]
+=== Result«MyOrganizationDTO»
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**code** +
+__optional__|integer(int32)
+|**data** +
+__optional__|<<_myorganizationdto,MyOrganizationDTO>>
+|**message** +
+__optional__|string
+|===
+
+
+[[_9a9d54c5d66d1d08c2005c8633fe9f69]]
+=== Result«T_archive_detail»
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**code** +
+__optional__|integer(int32)
+|**data** +
+__optional__|<<_t_archive_detail,T_archive_detail>>
+|**message** +
+__optional__|string
+|===
+
+
+[[_0c9f50bc6757fa4f34833fdbae49ecf9]]
+=== Result«T_department»
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**code** +
+__optional__|integer(int32)
+|**data** +
+__optional__|<<_t_department,T_department>>
+|**message** +
+__optional__|string
+|===
+
+
+[[_c7a36d9936a64679239f3946d21b9f3d]]
+=== Result«T_talent»
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**code** +
+__optional__|integer(int32)
+|**data** +
+__optional__|<<_t_talent,T_talent>>
+|**message** +
+__optional__|string
+|===
+
+
+[[_4f607e52b445989f6e67d8cec6972486]]
+=== Result«UserDTO»
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**code** +
+__optional__|integer(int32)
+|**data** +
+__optional__|<<_userdto,UserDTO>>
+|**message** +
+__optional__|string
+|===
+
+
+[[_t_archive_detail]]
+=== T_archive_detail
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**absenceTimes** +
+__optional__||integer(int32)
+|**awardTimes** +
+__optional__||integer(int32)
+|**companyId** +
+__optional__|公司ID|integer(int32)
+|**contract** +
+__optional__||string
+|**contractBeginDate** +
+__optional__||string(date-time)
+|**contractDeadline** +
+__optional__||string(date-time)
+|**departmentLast** +
+__optional__||integer(int32)
+|**earlyLeaveTimes** +
+__optional__||integer(int32)
+|**entryTime** +
+__optional__||string(date-time)
+|**id** +
+__optional__|档案ID|integer(int32)
+|**jobNumber** +
+__optional__||integer(int32)
+|**lateTimes** +
+__optional__||integer(int32)
+|**leaveTimes** +
+__optional__||integer(int32)
+|**positionLast** +
+__optional__||string
+|**punishmentTimes** +
+__optional__||integer(int32)
+|**quitTime** +
+__optional__||string(date-time)
+|**talentId** +
+__optional__||integer(int32)
+|===
+
+
+[[_t_department]]
+=== T_department
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**companyId** +
+__optional__|integer(int32)
+|**departmentFunction** +
+__optional__|string
+|**departmentManagerId** +
+__optional__|integer(int32)
+|**departmentName** +
+__optional__|string
+|**id** +
+__optional__|integer(int32)
+|===
+
+
+[[_t_hr]]
+=== T_hr
 
 [options="header", cols=".^3,.^4"]
 |===
@@ -44,209 +240,137 @@ __optional__|重大事件记录|string
 __optional__|integer(int32)
 |**hrTalentId** +
 __optional__|integer(int32)
-|===
-
-
-[[_9abe59d77bd9690dcb44bc7f8f559952]]
-=== Result«Archive»
-
-[options="header", cols=".^3,.^4"]
-|===
-|Name|Schema
-|**code** +
-__optional__|integer(int32)
-|**data** +
-__optional__|<<_archive,Archive>>
-|**message** +
-__optional__|string
-|===
-
-
-[[_9bce529110bd3b8d89ff748213666933]]
-=== Result«List«ArchiveDetailDTO»»
-
-[options="header", cols=".^3,.^4"]
-|===
-|Name|Schema
-|**code** +
-__optional__|integer(int32)
-|**data** +
-__optional__|< <<_archivedetaildto,ArchiveDetailDTO>> > array
-|**message** +
-__optional__|string
-|===
-
-
-[[_e414498261e90ec3edf0da2ab3133eb2]]
-=== Result«List«T_evaluation_details»»
-
-[options="header", cols=".^3,.^4"]
-|===
-|Name|Schema
-|**code** +
-__optional__|integer(int32)
-|**data** +
-__optional__|< <<_t_evaluation_details,T_evaluation_details>> > array
-|**message** +
-__optional__|string
-|===
-
-
-[[_44177af6da99b276593188f79c398b20]]
-=== Result«List«T_work_attendance»»
-
-[options="header", cols=".^3,.^4"]
-|===
-|Name|Schema
-|**code** +
-__optional__|integer(int32)
-|**data** +
-__optional__|< <<_t_work_attendance,T_work_attendance>> > array
-|**message** +
-__optional__|string
-|===
-
-
-[[_be459b6ad7619b1f492c905ac3c7b5c0]]
-=== Result«List«com.foe.talentmanagementback.entity.T_talent»»
-
-[options="header", cols=".^3,.^4"]
-|===
-|Name|Schema
-|**code** +
-__optional__|integer(int32)
-|**data** +
-__optional__|< <<_com_foe_talentmanagementback_entity_t_talent,com.foe.talentmanagementback.entity.T_talent>> > array
-|**message** +
-__optional__|string
-|===
-
-
-[[_69fbec3c07534b4ec6452a2b95bd0226]]
-=== Result«com.foe.talentmanagementback.entity.T_archive_detail»
-
-[options="header", cols=".^3,.^4"]
-|===
-|Name|Schema
-|**code** +
-__optional__|integer(int32)
-|**data** +
-__optional__|<<_com_foe_talentmanagementback_entity_t_archive_detail,com.foe.talentmanagementback.entity.T_archive_detail>>
-|**message** +
-__optional__|string
-|===
-
-
-[[_91905bfefdebd9918a269654bb5ac4d4]]
-=== Result«com.foe.talentmanagementback.entity.T_talent»
-
-[options="header", cols=".^3,.^4"]
-|===
-|Name|Schema
-|**code** +
-__optional__|integer(int32)
-|**data** +
-__optional__|<<_com_foe_talentmanagementback_entity_t_talent,com.foe.talentmanagementback.entity.T_talent>>
-|**message** +
-__optional__|string
-|===
-
-
-[[_t_evaluation_details]]
-=== T_evaluation_details
-
-[options="header", cols=".^3,.^4"]
-|===
-|Name|Schema
-|**archiveDetailId** +
-__optional__|integer(int32)
-|**comment** +
-__optional__|string
-|**evaluator** +
-__optional__|integer(int32)
-|**id** +
-__optional__|integer(int32)
-|**workingAttitude** +
-__optional__|string
-|===
-
-
-[[_t_work_attendance]]
-=== T_work_attendance
-
-[options="header", cols=".^3,.^4"]
-|===
-|Name|Schema
-|**achievements** +
-__optional__|string
-|**archiveDetailId** +
-__optional__|integer(int32)
-|**attendance** +
-__optional__|string
 |**id** +
 __optional__|integer(int32)
 |===
 
 
-[[_com_foe_talentmanagementback_entity_t_archive_detail]]
-=== com.foe.talentmanagementback.entity.T_archive_detail
-新增档案记录参数
-
+[[_t_talent]]
+=== T_talent
 
 [options="header", cols=".^3,.^11,.^4"]
 |===
 |Name|Description|Schema
+|**accountNumber** +
+__optional__|账户|string
+|**address** +
+__optional__|联系地址|string
+|**age** +
+__optional__|年龄|integer(int32)
+|**birthday** +
+__optional__|生日|string
 |**companyId** +
-__optional__|公司ID|integer(int32)
-|**date** +
-__optional__|记录时间|string
-|**detailRecord** +
-__optional__|重大事件记录|string
+__optional__|公司Id|integer(int32)
+|**createTime** +
+__optional__||string(date-time)
+|**degree** +
+__optional__|最高学历|string
+|**email** +
+__optional__|邮箱|string
 |**id** +
-__optional__|档案ID|integer(int32)
+__optional__||integer(int32)
+|**idCard** +
+__optional__|身份证号|string
+|**jobStatus** +
+__optional__|工作状态|integer(int32)
+|**major** +
+__optional__|所属专业|string
+|**maritalStatus** +
+__optional__|婚姻状况|string
+|**name** +
+__optional__|姓名|string
+|**nationId** +
+__optional__|民族|integer(int32)
+|**nativePlace** +
+__optional__|籍贯|string
+|**phoneNum** +
+__optional__|电话号码|string
+|**politicId** +
+__optional__|政治面貌|integer(int32)
+|**school** +
+__optional__|毕业院校|string
+|**sex** +
+__optional__|性别|string
+|**updateTime** +
+__optional__||string(date-time)
 |===
 
 
-[[_com_foe_talentmanagementback_entity_t_talent]]
-=== com.foe.talentmanagementback.entity.T_talent
-新增系统人才参数
-
+[[_userdto]]
+=== UserDTO
 
 [options="header", cols=".^3,.^4"]
 |===
 |Name|Schema
+|**accountNumber** +
+__optional__|string
 |**address** +
 __optional__|string
 |**age** +
 __optional__|integer(int32)
 |**birthday** +
 __optional__|string
+|**companyId** +
+__optional__|integer(int32)
+|**companyName** +
+__optional__|string
 |**degree** +
 __optional__|string
+|**departmentName** +
+__optional__|string
 |**email** +
+__optional__|string
+|**headPortrait** +
 __optional__|string
 |**id** +
 __optional__|integer(int32)
 |**idCard** +
 __optional__|string
+|**jobStatusEnum** +
+__optional__|string
 |**major** +
 __optional__|string
 |**maritalStatus** +
-__optional__|integer(int32)
+__optional__|string
 |**name** +
 __optional__|string
-|**nationId** +
-__optional__|integer(int32)
+|**nation** +
+__optional__|string
 |**nativePlace** +
 __optional__|string
 |**phoneNum** +
 __optional__|string
-|**politicId** +
-__optional__|integer(int32)
+|**politic** +
+__optional__|string
+|**position** +
+__optional__|string
 |**school** +
 __optional__|string
 |**sex** +
 __optional__|string
+|**userRight** +
+__optional__|enum (UserRight{idCode=1, userRight='normalUser'}, UserRight{idCode=2, userRight='deptManager'}, UserRight{idCode=3, userRight='hr'})
+|===
+
+
+[[_workexperiencedto]]
+=== WorkExperienceDTO
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**companyName** +
+__optional__|string
+|**departmentNameLast** +
+__optional__|string
+|**entryTime** +
+__optional__|string(date-time)
+|**jobNumber** +
+__optional__|integer(int32)
+|**positionLast** +
+__optional__|string
+|**quitTime** +
+__optional__|string(date-time)
 |===
 
 

@@ -515,17 +515,21 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel1">
 <li><a href="#_paths">Paths</a>
 <ul class="sectlevel2">
-<li><a href="#_getarchivesoftalentusingget">查询系统人才的所有档案，这些档案属于不同公司</a></li>
-<li><a href="#_getatchiveofonetalentincousingget">查询特定公司特定员工档案</a></li>
-<li><a href="#_getarchivesoftalentusingget_1">查询系统人才的所有档案，这些档案属于不同公司</a></li>
+<li><a href="#_getexperiencesoftalentusingget">通过talentId查询工作经历，成功返回工作经历链表，失败返回错误信息</a></li>
+<li><a href="#_getatchiveofonetalentincousingget">通过talentId和companyId查询特定人才特定公司工作经历，成功返回工作经历，失败返回错误信息</a></li>
+<li><a href="#_getdepartmentbyidusingget">通过部门departmentId查询部门信息，成功返回</a></li>
+<li><a href="#_getdepartmentbymanagerusingget">通过部门经理talentId查询部门信息，成功返回T_department，失败返回错误信息</a></li>
+<li><a href="#_addevaluationusingpost">插入评价</a></li>
 <li><a href="#_gethrbyhridusingget">查询hr信息</a></li>
-<li><a href="#_getatchiveofonetalentincousingget_1">查询特定公司特定员工档案</a></li>
-<li><a href="#_loginusingget">通过账号和密码登录系统</a></li>
-<li><a href="#_gettalentsusingget">查询所有人才</a></li>
-<li><a href="#_getworkersbyhridusingget">通过hr的系统id查询所管理人才数据</a></li>
-<li><a href="#_gettalentbyidusingget">通过id查询人才</a></li>
-<li><a href="#_gettalentbynameusingget">通过姓名查询人才</a></li>
-<li><a href="#_getarchivesoftalentusingget_2">查询系统人才的所有档案，这些档案属于不同公司</a></li>
+<li><a href="#_loginusingpost">通过account和password登录系统，返回UserDTO</a></li>
+<li><a href="#_getmyorganizationusingget">getMyOrganization</a></li>
+<li><a href="#_registerusingpost">输入用户名和密码注册</a></li>
+<li><a href="#_addtalentusingpost">接受post请求</a></li>
+<li><a href="#_gettalentsusingget">无需参数，返回所有T_tanlent数据</a></li>
+<li><a href="#_updatetalentusingput">接受put请求，T_tanlent中id为必填字段</a></li>
+<li><a href="#_getworkersbyhridusingget">输入hr的id，返回该hr公司下的所有T_tanlent数据</a></li>
+<li><a href="#_gettalentbyidusingget">输入人才id，返回该id对应的T_tanlent数据</a></li>
+<li><a href="#_gettalentbynameusingget">输入人才姓名，返回所有同名的T_tanlent数据</a></li>
 </ul>
 </li>
 </ul>
@@ -536,10 +540,10 @@ table.CodeRay td.code>pre{padding:0}
 <h2 id="_paths">Paths</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_getarchivesoftalentusingget">查询系统人才的所有档案，这些档案属于不同公司</h3>
+<h3 id="_getexperiencesoftalentusingget">通过talentId查询工作经历，成功返回工作经历链表，失败返回错误信息</h3>
 <div class="literalblock">
 <div class="content">
-<pre>GET /archiveDetail/talentArchives/{talentId}</pre>
+<pre>GET /api/archive-details/talents/{talentId}</pre>
 </div>
 </div>
 <div class="sect3">
@@ -564,7 +568,7 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Path</strong></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>talentId</strong><br>
 <em>required</em></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">系统人才id</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">档案中系统人才id</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">integer(int32)</p></td>
 </tr>
 </tbody>
@@ -589,7 +593,7 @@ table.CodeRay td.code>pre{padding:0}
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_9bce529110bd3b8d89ff748213666933">Result«List«ArchiveDetailDTO»»</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_e1deee9e2f2716fa017685eb444d5497">Result«List«WorkExperienceDTO»»</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong></p></td>
@@ -631,10 +635,10 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect2">
-<h3 id="_getatchiveofonetalentincousingget">查询特定公司特定员工档案</h3>
+<h3 id="_getatchiveofonetalentincousingget">通过talentId和companyId查询特定人才特定公司工作经历，成功返回工作经历，失败返回错误信息</h3>
 <div class="literalblock">
 <div class="content">
-<pre>GET /archiveDetail/talentInCompany/{talentId}/{companyId}</pre>
+<pre>GET /api/archive-details/talents/{talentId}/companies/{companyId}</pre>
 </div>
 </div>
 <div class="sect3">
@@ -659,14 +663,14 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Path</strong></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>companyId</strong><br>
 <em>required</em></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">companyId</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">档案中公司id</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">integer(int32)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Path</strong></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>talentId</strong><br>
 <em>required</em></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">系统人才id，公司id</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">档案中系统人才id</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">integer(int32)</p></td>
 </tr>
 </tbody>
@@ -691,7 +695,7 @@ table.CodeRay td.code>pre{padding:0}
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_69fbec3c07534b4ec6452a2b95bd0226">Result«com.foe.talentmanagementback.entity.T_archive_detail»</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_9a9d54c5d66d1d08c2005c8633fe9f69">Result«T_archive_detail»</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong></p></td>
@@ -733,10 +737,10 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect2">
-<h3 id="_getarchivesoftalentusingget_1">查询系统人才的所有档案，这些档案属于不同公司</h3>
+<h3 id="_getdepartmentbyidusingget">通过部门departmentId查询部门信息，成功返回</h3>
 <div class="literalblock">
 <div class="content">
-<pre>GET /evaluationDetails/archiveDetailId/{archiveDetailId}</pre>
+<pre>GET /api/department/departmentId</pre>
 </div>
 </div>
 <div class="sect3">
@@ -759,9 +763,9 @@ table.CodeRay td.code>pre{padding:0}
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Path</strong></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>archiveDetailId</strong><br>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>departmentId</strong><br>
 <em>required</em></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">档案id</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">部门id</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">integer(int32)</p></td>
 </tr>
 </tbody>
@@ -786,7 +790,7 @@ table.CodeRay td.code>pre{padding:0}
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_e414498261e90ec3edf0da2ab3133eb2">Result«List«T_evaluation_details»»</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_0c9f50bc6757fa4f34833fdbae49ecf9">Result«T_department»</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong></p></td>
@@ -821,17 +825,17 @@ table.CodeRay td.code>pre{padding:0}
 <div class="ulist">
 <ul>
 <li>
-<p>评价详情接口</p>
+<p>部门接口</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_gethrbyhridusingget">查询hr信息</h3>
+<h3 id="_getdepartmentbymanagerusingget">通过部门经理talentId查询部门信息，成功返回T_department，失败返回错误信息</h3>
 <div class="literalblock">
 <div class="content">
-<pre>GET /hr/hrImf/{hrId}</pre>
+<pre>GET /api/department/talentId</pre>
 </div>
 </div>
 <div class="sect3">
@@ -854,9 +858,9 @@ table.CodeRay td.code>pre{padding:0}
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Path</strong></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>hrId</strong><br>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>talentId</strong><br>
 <em>required</em></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">hrId</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">部门经理id</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">integer(int32)</p></td>
 </tr>
 </tbody>
@@ -881,7 +885,7 @@ table.CodeRay td.code>pre{padding:0}
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_hrdto">HrDTO</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_0c9f50bc6757fa4f34833fdbae49ecf9">Result«T_department»</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong></p></td>
@@ -916,17 +920,17 @@ table.CodeRay td.code>pre{padding:0}
 <div class="ulist">
 <ul>
 <li>
-<p>HR接口</p>
+<p>部门接口</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_getatchiveofonetalentincousingget_1">查询特定公司特定员工档案</h3>
+<h3 id="_addevaluationusingpost">插入评价</h3>
 <div class="literalblock">
 <div class="content">
-<pre>GET /hr/talentArchive/{talentId}/{companyId}</pre>
+<pre>POST /api/evaluations</pre>
 </div>
 </div>
 <div class="sect3">
@@ -948,18 +952,60 @@ table.CodeRay td.code>pre{padding:0}
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Path</strong></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>companyId</strong><br>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Query</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>ability</strong><br>
 <em>required</em></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">companyId</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">评价：能力</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">integer(int32)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Path</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Query</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>comment</strong><br>
+<em>required</em></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">评价:文字评价</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Query</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>evaluator</strong><br>
+<em>required</em></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">评价人</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Query</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>opinionValue</strong><br>
+<em>required</em></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">评价：价值观</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">integer(int32)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Query</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>performance</strong><br>
+<em>required</em></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">评价：表现</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">integer(int32)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Query</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>professionalKnowledge</strong><br>
+<em>required</em></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">评价：专业知识</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">integer(int32)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Query</strong></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>talentId</strong><br>
 <em>required</em></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">系统人才id，公司id</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">integer(int32)</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">档案中系统人才id</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Body</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>evaluationDTO</strong><br>
+<em>required</em></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">evaluationDTO</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_evaluationdto">EvaluationDTO</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -983,7 +1029,12 @@ table.CodeRay td.code>pre{padding:0}
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_9abe59d77bd9690dcb44bc7f8f559952">Result«Archive»</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_result">Result</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>201</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong></p></td>
@@ -1004,6 +1055,16 @@ table.CodeRay td.code>pre{padding:0}
 </table>
 </div>
 <div class="sect3">
+<h4 id="_consumes">Consumes</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>application/json</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
 <h4 id="_produces_5">Produces</h4>
 <div class="ulist">
 <ul>
@@ -1018,49 +1079,39 @@ table.CodeRay td.code>pre{padding:0}
 <div class="ulist">
 <ul>
 <li>
-<p>HR接口</p>
+<p>评价详情接口</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_loginusingget">通过账号和密码登录系统</h3>
+<h3 id="_gethrbyhridusingget">查询hr信息</h3>
 <div class="literalblock">
 <div class="content">
-<pre>GET /loginPage/login/{account}/{password}</pre>
+<pre>GET /api/hr/hrImf/{hrId}</pre>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_parameters_6">Parameters</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 11%;">
-<col style="width: 16%;">
-<col style="width: 50%;">
 <col style="width: 22%;">
+<col style="width: 33%;">
+<col style="width: 44%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-middle">Type</th>
 <th class="tableblock halign-left valign-middle">Name</th>
-<th class="tableblock halign-left valign-middle">Description</th>
 <th class="tableblock halign-left valign-middle">Schema</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Path</strong></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>account</strong><br>
-<em>required</em></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">account</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Path</strong></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>password</strong><br>
-<em>required</em></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">password</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>hrId</strong><br>
+<em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
 </tr>
 </tbody>
@@ -1085,7 +1136,7 @@ table.CodeRay td.code>pre{padding:0}
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_91905bfefdebd9918a269654bb5ac4d4">Result«com.foe.talentmanagementback.entity.T_talent»</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_t_hr">T_hr</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong></p></td>
@@ -1120,18 +1171,53 @@ table.CodeRay td.code>pre{padding:0}
 <div class="ulist">
 <ul>
 <li>
-<p>登录接口</p>
+<p>HR接口</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_gettalentsusingget">查询所有人才</h3>
+<h3 id="_loginusingpost">通过account和password登录系统，返回UserDTO</h3>
 <div class="literalblock">
 <div class="content">
-<pre>GET /talent/all</pre>
+<pre>POST /api/login</pre>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_parameters_7">Parameters</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11%;">
+<col style="width: 16%;">
+<col style="width: 50%;">
+<col style="width: 22%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">Type</th>
+<th class="tableblock halign-left valign-middle">Name</th>
+<th class="tableblock halign-left valign-middle">Description</th>
+<th class="tableblock halign-left valign-middle">Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Query</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>account</strong><br>
+<em>required</em></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">用户名account</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Query</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>password</strong><br>
+<em>required</em></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">密码password</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect3">
 <h4 id="_responses_7">Responses</h4>
@@ -1152,7 +1238,12 @@ table.CodeRay td.code>pre{padding:0}
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_be459b6ad7619b1f492c905ac3c7b5c0">Result«List«com.foe.talentmanagementback.entity.T_talent»»</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_4f607e52b445989f6e67d8cec6972486">Result«UserDTO»</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>201</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong></p></td>
@@ -1173,6 +1264,16 @@ table.CodeRay td.code>pre{padding:0}
 </table>
 </div>
 <div class="sect3">
+<h4 id="_consumes_2">Consumes</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>application/json</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
 <h4 id="_produces_7">Produces</h4>
 <div class="ulist">
 <ul>
@@ -1187,21 +1288,21 @@ table.CodeRay td.code>pre{padding:0}
 <div class="ulist">
 <ul>
 <li>
-<p>系统人才接口</p>
+<p>登录接口</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_getworkersbyhridusingget">通过hr的系统id查询所管理人才数据</h3>
+<h3 id="_getmyorganizationusingget">getMyOrganization</h3>
 <div class="literalblock">
 <div class="content">
-<pre>GET /talent/hrid/{id}</pre>
+<pre>GET /api/organizations/{id}</pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_parameters_7">Parameters</h4>
+<h4 id="_parameters_8">Parameters</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11%;">
@@ -1247,7 +1348,7 @@ table.CodeRay td.code>pre{padding:0}
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_be459b6ad7619b1f492c905ac3c7b5c0">Result«List«com.foe.talentmanagementback.entity.T_talent»»</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_8c99ff772fe710adb1f00100f007f3ac">Result«MyOrganizationDTO»</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong></p></td>
@@ -1282,21 +1383,21 @@ table.CodeRay td.code>pre{padding:0}
 <div class="ulist">
 <ul>
 <li>
-<p>系统人才接口</p>
+<p>获取公司和部门的信息</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_gettalentbyidusingget">通过id查询人才</h3>
+<h3 id="_registerusingpost">输入用户名和密码注册</h3>
 <div class="literalblock">
 <div class="content">
-<pre>GET /talent/id/{id}</pre>
+<pre>POST /api/register</pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_parameters_8">Parameters</h4>
+<h4 id="_parameters_9">Parameters</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11%;">
@@ -1314,11 +1415,18 @@ table.CodeRay td.code>pre{padding:0}
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Path</strong></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>id</strong><br>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Query</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>account</strong><br>
 <em>required</em></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">id</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">integer(int64)</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">账号</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Query</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>password</strong><br>
+<em>required</em></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">密码</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
 </tr>
 </tbody>
 </table>
@@ -1342,7 +1450,12 @@ table.CodeRay td.code>pre{padding:0}
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_91905bfefdebd9918a269654bb5ac4d4">Result«com.foe.talentmanagementback.entity.T_talent»</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_result">Result</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>201</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong></p></td>
@@ -1363,6 +1476,16 @@ table.CodeRay td.code>pre{padding:0}
 </table>
 </div>
 <div class="sect3">
+<h4 id="_consumes_3">Consumes</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>application/json</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
 <h4 id="_produces_9">Produces</h4>
 <div class="ulist">
 <ul>
@@ -1377,21 +1500,21 @@ table.CodeRay td.code>pre{padding:0}
 <div class="ulist">
 <ul>
 <li>
-<p>系统人才接口</p>
+<p>注册接口</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_gettalentbynameusingget">通过姓名查询人才</h3>
+<h3 id="_addtalentusingpost">接受post请求</h3>
 <div class="literalblock">
 <div class="content">
-<pre>GET /talent/name/{name}</pre>
+<pre>POST /api/talents</pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_parameters_9">Parameters</h4>
+<h4 id="_parameters_10">Parameters</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11%;">
@@ -1409,11 +1532,11 @@ table.CodeRay td.code>pre{padding:0}
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Path</strong></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>name</strong><br>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Body</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>talent</strong><br>
 <em>required</em></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">name</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">talent</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_t_talent">T_talent</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -1437,7 +1560,12 @@ table.CodeRay td.code>pre{padding:0}
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_91905bfefdebd9918a269654bb5ac4d4">Result«com.foe.talentmanagementback.entity.T_talent»</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_result">Result</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>201</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong></p></td>
@@ -1456,6 +1584,16 @@ table.CodeRay td.code>pre{padding:0}
 </tr>
 </tbody>
 </table>
+</div>
+<div class="sect3">
+<h4 id="_consumes_4">Consumes</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>application/json</code></p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_produces_10">Produces</h4>
@@ -1479,39 +1617,11 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect2">
-<h3 id="_getarchivesoftalentusingget_2">查询系统人才的所有档案，这些档案属于不同公司</h3>
+<h3 id="_gettalentsusingget">无需参数，返回所有T_tanlent数据</h3>
 <div class="literalblock">
 <div class="content">
-<pre>GET /workAttendance/archiveDetailId/{archiveDetailId}</pre>
+<pre>GET /api/talents</pre>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_parameters_10">Parameters</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 11%;">
-<col style="width: 16%;">
-<col style="width: 50%;">
-<col style="width: 22%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-middle">Type</th>
-<th class="tableblock halign-left valign-middle">Name</th>
-<th class="tableblock halign-left valign-middle">Description</th>
-<th class="tableblock halign-left valign-middle">Schema</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Path</strong></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>archiveDetailId</strong><br>
-<em>required</em></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">档案id</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">integer(int32)</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="sect3">
 <h4 id="_responses_11">Responses</h4>
@@ -1532,7 +1642,7 @@ table.CodeRay td.code>pre{padding:0}
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_44177af6da99b276593188f79c398b20">Result«List«T_work_attendance»»</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_f89c2473e0832215ccf9cbdbacad7353">Result«List«T_talent»»</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong></p></td>
@@ -1567,7 +1677,402 @@ table.CodeRay td.code>pre{padding:0}
 <div class="ulist">
 <ul>
 <li>
-<p>到勤情况接口</p>
+<p>系统人才接口</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_updatetalentusingput">接受put请求，T_tanlent中id为必填字段</h3>
+<div class="literalblock">
+<div class="content">
+<pre>PUT /api/talents</pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_parameters_11">Parameters</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11%;">
+<col style="width: 16%;">
+<col style="width: 50%;">
+<col style="width: 22%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">Type</th>
+<th class="tableblock halign-left valign-middle">Name</th>
+<th class="tableblock halign-left valign-middle">Description</th>
+<th class="tableblock halign-left valign-middle">Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Body</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>talent</strong><br>
+<em>required</em></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">talent</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_t_talent">T_talent</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_responses_12">Responses</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 70%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">HTTP Code</th>
+<th class="tableblock halign-left valign-middle">Description</th>
+<th class="tableblock halign-left valign-middle">Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_result">Result</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>201</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Unauthorized</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>403</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Forbidden</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>404</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Not Found</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_consumes_5">Consumes</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>application/json</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_produces_12">Produces</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code><strong>/</strong></code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tags_12">Tags</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>系统人才接口</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_getworkersbyhridusingget">输入hr的id，返回该hr公司下的所有T_tanlent数据</h3>
+<div class="literalblock">
+<div class="content">
+<pre>GET /api/talents/{hrid}</pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_parameters_12">Parameters</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11%;">
+<col style="width: 16%;">
+<col style="width: 50%;">
+<col style="width: 22%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">Type</th>
+<th class="tableblock halign-left valign-middle">Name</th>
+<th class="tableblock halign-left valign-middle">Description</th>
+<th class="tableblock halign-left valign-middle">Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Path</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>hrid</strong><br>
+<em>required</em></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">hrid</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">integer(int32)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_responses_13">Responses</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 70%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">HTTP Code</th>
+<th class="tableblock halign-left valign-middle">Description</th>
+<th class="tableblock halign-left valign-middle">Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_f89c2473e0832215ccf9cbdbacad7353">Result«List«T_talent»»</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Unauthorized</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>403</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Forbidden</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>404</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Not Found</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_produces_13">Produces</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code><strong>/</strong></code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tags_13">Tags</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>系统人才接口</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_gettalentbyidusingget">输入人才id，返回该id对应的T_tanlent数据</h3>
+<div class="literalblock">
+<div class="content">
+<pre>GET /api/talents/{id}</pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_parameters_13">Parameters</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11%;">
+<col style="width: 16%;">
+<col style="width: 50%;">
+<col style="width: 22%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">Type</th>
+<th class="tableblock halign-left valign-middle">Name</th>
+<th class="tableblock halign-left valign-middle">Description</th>
+<th class="tableblock halign-left valign-middle">Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Path</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>id</strong><br>
+<em>required</em></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">id</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">integer(int32)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_responses_14">Responses</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 70%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">HTTP Code</th>
+<th class="tableblock halign-left valign-middle">Description</th>
+<th class="tableblock halign-left valign-middle">Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_c7a36d9936a64679239f3946d21b9f3d">Result«T_talent»</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Unauthorized</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>403</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Forbidden</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>404</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Not Found</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_produces_14">Produces</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code><strong>/</strong></code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tags_14">Tags</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>系统人才接口</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_gettalentbynameusingget">输入人才姓名，返回所有同名的T_tanlent数据</h3>
+<div class="literalblock">
+<div class="content">
+<pre>GET /api/talents/{name}</pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_parameters_14">Parameters</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11%;">
+<col style="width: 16%;">
+<col style="width: 50%;">
+<col style="width: 22%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">Type</th>
+<th class="tableblock halign-left valign-middle">Name</th>
+<th class="tableblock halign-left valign-middle">Description</th>
+<th class="tableblock halign-left valign-middle">Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Path</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>name</strong><br>
+<em>required</em></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_responses_15">Responses</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 70%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">HTTP Code</th>
+<th class="tableblock halign-left valign-middle">Description</th>
+<th class="tableblock halign-left valign-middle">Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_f89c2473e0832215ccf9cbdbacad7353">Result«List«T_talent»»</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Unauthorized</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>403</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Forbidden</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>404</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Not Found</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">No Content</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_produces_15">Produces</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code><strong>/</strong></code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tags_15">Tags</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>系统人才接口</p>
 </li>
 </ul>
 </div>
@@ -1578,7 +2083,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-07-10 20:48:43 +08:00
+Last updated 2021-07-12 22:03:46 +08:00
 </div>
 </div>
 </body>

@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Api(value = "HR接口", tags = "HR接口")
-@RequestMapping("/hr")
+@RequestMapping("/api/hr")
 public class T_hrController {
 
     @Autowired

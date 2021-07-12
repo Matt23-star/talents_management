@@ -18,7 +18,7 @@ import java.util.Date;
  */
 
 @Data
-@ApiModel(value = "com.foe.talentmanagementback.entity.T_worker",description = "新增职员参数")
+//@ApiModel(value = "com.foe.talentmanagementback.entity.T_worker",description = "新增职员参数")
 public class T_worker implements Serializable {
 
     private Integer id;

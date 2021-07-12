@@ -22,7 +22,7 @@ import java.util.List;
  */
 @RestController
 @Api(value = "职员接口")
-@RequestMapping("/workers")
+@RequestMapping("/api/workers")
 public class T_workerController {
 
 }

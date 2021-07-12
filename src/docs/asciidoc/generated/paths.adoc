@@ -2,10 +2,10 @@
 [[_paths]]
 == Paths
 
-[[_getarchivesoftalentusingget]]
-=== 查询系统人才的所有档案，这些档案属于不同公司
+[[_getexperiencesoftalentusingget]]
+=== 通过talentId查询工作经历，成功返回工作经历链表，失败返回错误信息
 ....
-GET /archiveDetail/talentArchives/{talentId}
+GET /api/archive-details/talents/{talentId}
 ....
 
 
@@ -15,7 +15,7 @@ GET /archiveDetail/talentArchives/{talentId}
 |===
 |Type|Name|Description|Schema
 |**Path**|**talentId** +
-__required__|系统人才id|integer(int32)
+__required__|档案中系统人才id|integer(int32)
 |===
 
 
@@ -24,7 +24,7 @@ __required__|系统人才id|integer(int32)
 [options="header", cols=".^2,.^14,.^4"]
 |===
 |HTTP Code|Description|Schema
-|**200**|OK|<<_9bce529110bd3b8d89ff748213666933,Result«List«ArchiveDetailDTO»»>>
+|**200**|OK|<<_e1deee9e2f2716fa017685eb444d5497,Result«List«WorkExperienceDTO»»>>
 |**401**|Unauthorized|No Content
 |**403**|Forbidden|No Content
 |**404**|Not Found|No Content
@@ -42,9 +42,9 @@ __required__|系统人才id|integer(int32)
 
 
 [[_getatchiveofonetalentincousingget]]
-=== 查询特定公司特定员工档案
+=== 通过talentId和companyId查询特定人才特定公司工作经历，成功返回工作经历，失败返回错误信息
 ....
-GET /archiveDetail/talentInCompany/{talentId}/{companyId}
+GET /api/archive-details/talents/{talentId}/companies/{companyId}
 ....
 
 
@@ -54,9 +54,9 @@ GET /archiveDetail/talentInCompany/{talentId}/{companyId}
 |===
 |Type|Name|Description|Schema
 |**Path**|**companyId** +
-__required__|companyId|integer(int32)
+__required__|档案中公司id|integer(int32)
 |**Path**|**talentId** +
-__required__|系统人才id，公司id|integer(int32)
+__required__|档案中系统人才id|integer(int32)
 |===
 
 
@@ -65,7 +65,7 @@ __required__|系统人才id，公司id|integer(int32)
 [options="header", cols=".^2,.^14,.^4"]
 |===
 |HTTP Code|Description|Schema
-|**200**|OK|<<_69fbec3c07534b4ec6452a2b95bd0226,Result«com.foe.talentmanagementback.entity.T_archive_detail»>>
+|**200**|OK|<<_9a9d54c5d66d1d08c2005c8633fe9f69,Result«T_archive_detail»>>
 |**401**|Unauthorized|No Content
 |**403**|Forbidden|No Content
 |**404**|Not Found|No Content
@@ -82,10 +82,10 @@ __required__|系统人才id，公司id|integer(int32)
 * 档案接口
 
 
-[[_getarchivesoftalentusingget_1]]
-=== 查询系统人才的所有档案，这些档案属于不同公司
+[[_getdepartmentbyidusingget]]
+=== 通过部门departmentId查询部门信息，成功返回
 ....
-GET /evaluationDetails/archiveDetailId/{archiveDetailId}
+GET /api/department/departmentId
 ....
 
 
@@ -94,8 +94,8 @@ GET /evaluationDetails/archiveDetailId/{archiveDetailId}
 [options="header", cols=".^2,.^3,.^9,.^4"]
 |===
 |Type|Name|Description|Schema
-|**Path**|**archiveDetailId** +
-__required__|档案id|integer(int32)
+|**Path**|**departmentId** +
+__required__|部门id|integer(int32)
 |===
 
 
@@ -104,11 +104,109 @@ __required__|档案id|integer(int32)
 [options="header", cols=".^2,.^14,.^4"]
 |===
 |HTTP Code|Description|Schema
-|**200**|OK|<<_e414498261e90ec3edf0da2ab3133eb2,Result«List«T_evaluation_details»»>>
+|**200**|OK|<<_0c9f50bc6757fa4f34833fdbae49ecf9,Result«T_department»>>
 |**401**|Unauthorized|No Content
 |**403**|Forbidden|No Content
 |**404**|Not Found|No Content
 |===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* 部门接口
+
+
+[[_getdepartmentbymanagerusingget]]
+=== 通过部门经理talentId查询部门信息，成功返回T_department，失败返回错误信息
+....
+GET /api/department/talentId
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**talentId** +
+__required__|部门经理id|integer(int32)
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_0c9f50bc6757fa4f34833fdbae49ecf9,Result«T_department»>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* 部门接口
+
+
+[[_addevaluationusingpost]]
+=== 插入评价
+....
+POST /api/evaluations
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**ability** +
+__required__|评价：能力|integer(int32)
+|**Query**|**comment** +
+__required__|评价:文字评价|string
+|**Query**|**evaluator** +
+__required__|评价人|string
+|**Query**|**opinionValue** +
+__required__|评价：价值观|integer(int32)
+|**Query**|**performance** +
+__required__|评价：表现|integer(int32)
+|**Query**|**professionalKnowledge** +
+__required__|评价：专业知识|integer(int32)
+|**Query**|**talentId** +
+__required__|档案中系统人才id|string
+|**Body**|**evaluationDTO** +
+__required__|evaluationDTO|<<_evaluationdto,EvaluationDTO>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_result,Result>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
 
 
 ==== Produces
@@ -124,17 +222,17 @@ __required__|档案id|integer(int32)
 [[_gethrbyhridusingget]]
 === 查询hr信息
 ....
-GET /hr/hrImf/{hrId}
+GET /api/hr/hrImf/{hrId}
 ....
 
 
 ==== Parameters
 
-[options="header", cols=".^2,.^3,.^9,.^4"]
+[options="header", cols=".^2,.^3,.^4"]
 |===
-|Type|Name|Description|Schema
+|Type|Name|Schema
 |**Path**|**hrId** +
-__required__|hrId|integer(int32)
+__optional__|string
 |===
 
 
@@ -143,7 +241,7 @@ __required__|hrId|integer(int32)
 [options="header", cols=".^2,.^14,.^4"]
 |===
 |HTTP Code|Description|Schema
-|**200**|OK|<<_hrdto,HrDTO>>
+|**200**|OK|<<_t_hr,T_hr>>
 |**401**|Unauthorized|No Content
 |**403**|Forbidden|No Content
 |**404**|Not Found|No Content
@@ -160,51 +258,10 @@ __required__|hrId|integer(int32)
 * HR接口
 
 
-[[_getatchiveofonetalentincousingget_1]]
-=== 查询特定公司特定员工档案
+[[_loginusingpost]]
+=== 通过account和password登录系统，返回UserDTO
 ....
-GET /hr/talentArchive/{talentId}/{companyId}
-....
-
-
-==== Parameters
-
-[options="header", cols=".^2,.^3,.^9,.^4"]
-|===
-|Type|Name|Description|Schema
-|**Path**|**companyId** +
-__required__|companyId|integer(int32)
-|**Path**|**talentId** +
-__required__|系统人才id，公司id|integer(int32)
-|===
-
-
-==== Responses
-
-[options="header", cols=".^2,.^14,.^4"]
-|===
-|HTTP Code|Description|Schema
-|**200**|OK|<<_9abe59d77bd9690dcb44bc7f8f559952,Result«Archive»>>
-|**401**|Unauthorized|No Content
-|**403**|Forbidden|No Content
-|**404**|Not Found|No Content
-|===
-
-
-==== Produces
-
-* `*/*`
-
-
-==== Tags
-
-* HR接口
-
-
-[[_loginusingget]]
-=== 通过账号和密码登录系统
-....
-GET /loginPage/login/{account}/{password}
+POST /api/login
 ....
 
 
@@ -213,10 +270,10 @@ GET /loginPage/login/{account}/{password}
 [options="header", cols=".^2,.^3,.^9,.^4"]
 |===
 |Type|Name|Description|Schema
-|**Path**|**account** +
-__required__|account|string
-|**Path**|**password** +
-__required__|password|string
+|**Query**|**account** +
+__required__|用户名account|string
+|**Query**|**password** +
+__required__|密码password|string
 |===
 
 
@@ -225,11 +282,17 @@ __required__|password|string
 [options="header", cols=".^2,.^14,.^4"]
 |===
 |HTTP Code|Description|Schema
-|**200**|OK|<<_91905bfefdebd9918a269654bb5ac4d4,Result«com.foe.talentmanagementback.entity.T_talent»>>
+|**200**|OK|<<_4f607e52b445989f6e67d8cec6972486,Result«UserDTO»>>
+|**201**|Created|No Content
 |**401**|Unauthorized|No Content
 |**403**|Forbidden|No Content
 |**404**|Not Found|No Content
 |===
+
+
+==== Consumes
+
+* `application/json`
 
 
 ==== Produces
@@ -242,39 +305,10 @@ __required__|password|string
 * 登录接口
 
 
-[[_gettalentsusingget]]
-=== 查询所有人才
+[[_getmyorganizationusingget]]
+=== getMyOrganization
 ....
-GET /talent/all
-....
-
-
-==== Responses
-
-[options="header", cols=".^2,.^14,.^4"]
-|===
-|HTTP Code|Description|Schema
-|**200**|OK|<<_be459b6ad7619b1f492c905ac3c7b5c0,Result«List«com.foe.talentmanagementback.entity.T_talent»»>>
-|**401**|Unauthorized|No Content
-|**403**|Forbidden|No Content
-|**404**|Not Found|No Content
-|===
-
-
-==== Produces
-
-* `*/*`
-
-
-==== Tags
-
-* 系统人才接口
-
-
-[[_getworkersbyhridusingget]]
-=== 通过hr的系统id查询所管理人才数据
-....
-GET /talent/hrid/{id}
+GET /api/organizations/{id}
 ....
 
 
@@ -293,7 +327,212 @@ __required__|id|integer(int32)
 [options="header", cols=".^2,.^14,.^4"]
 |===
 |HTTP Code|Description|Schema
-|**200**|OK|<<_be459b6ad7619b1f492c905ac3c7b5c0,Result«List«com.foe.talentmanagementback.entity.T_talent»»>>
+|**200**|OK|<<_8c99ff772fe710adb1f00100f007f3ac,Result«MyOrganizationDTO»>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* 获取公司和部门的信息
+
+
+[[_registerusingpost]]
+=== 输入用户名和密码注册
+....
+POST /api/register
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**account** +
+__required__|账号|string
+|**Query**|**password** +
+__required__|密码|string
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_result,Result>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* 注册接口
+
+
+[[_addtalentusingpost]]
+=== 接受post请求
+....
+POST /api/talents
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**talent** +
+__required__|talent|<<_t_talent,T_talent>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_result,Result>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* 系统人才接口
+
+
+[[_gettalentsusingget]]
+=== 无需参数，返回所有T_tanlent数据
+....
+GET /api/talents
+....
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_f89c2473e0832215ccf9cbdbacad7353,Result«List«T_talent»»>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* 系统人才接口
+
+
+[[_updatetalentusingput]]
+=== 接受put请求，T_tanlent中id为必填字段
+....
+PUT /api/talents
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**talent** +
+__required__|talent|<<_t_talent,T_talent>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_result,Result>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* 系统人才接口
+
+
+[[_getworkersbyhridusingget]]
+=== 输入hr的id，返回该hr公司下的所有T_tanlent数据
+....
+GET /api/talents/{hrid}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**hrid** +
+__required__|hrid|integer(int32)
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_f89c2473e0832215ccf9cbdbacad7353,Result«List«T_talent»»>>
 |**401**|Unauthorized|No Content
 |**403**|Forbidden|No Content
 |**404**|Not Found|No Content
@@ -311,9 +550,9 @@ __required__|id|integer(int32)
 
 
 [[_gettalentbyidusingget]]
-=== 通过id查询人才
+=== 输入人才id，返回该id对应的T_tanlent数据
 ....
-GET /talent/id/{id}
+GET /api/talents/{id}
 ....
 
 
@@ -323,7 +562,7 @@ GET /talent/id/{id}
 |===
 |Type|Name|Description|Schema
 |**Path**|**id** +
-__required__|id|integer(int64)
+__required__|id|integer(int32)
 |===
 
 
@@ -332,7 +571,7 @@ __required__|id|integer(int64)
 [options="header", cols=".^2,.^14,.^4"]
 |===
 |HTTP Code|Description|Schema
-|**200**|OK|<<_91905bfefdebd9918a269654bb5ac4d4,Result«com.foe.talentmanagementback.entity.T_talent»>>
+|**200**|OK|<<_c7a36d9936a64679239f3946d21b9f3d,Result«T_talent»>>
 |**401**|Unauthorized|No Content
 |**403**|Forbidden|No Content
 |**404**|Not Found|No Content
@@ -350,9 +589,9 @@ __required__|id|integer(int64)
 
 
 [[_gettalentbynameusingget]]
-=== 通过姓名查询人才
+=== 输入人才姓名，返回所有同名的T_tanlent数据
 ....
-GET /talent/name/{name}
+GET /api/talents/{name}
 ....
 
 
@@ -371,7 +610,7 @@ __required__|name|string
 [options="header", cols=".^2,.^14,.^4"]
 |===
 |HTTP Code|Description|Schema
-|**200**|OK|<<_91905bfefdebd9918a269654bb5ac4d4,Result«com.foe.talentmanagementback.entity.T_talent»>>
+|**200**|OK|<<_f89c2473e0832215ccf9cbdbacad7353,Result«List«T_talent»»>>
 |**401**|Unauthorized|No Content
 |**403**|Forbidden|No Content
 |**404**|Not Found|No Content
@@ -386,45 +625,6 @@ __required__|name|string
 ==== Tags
 
 * 系统人才接口
-
-
-[[_getarchivesoftalentusingget_2]]
-=== 查询系统人才的所有档案，这些档案属于不同公司
-....
-GET /workAttendance/archiveDetailId/{archiveDetailId}
-....
-
-
-==== Parameters
-
-[options="header", cols=".^2,.^3,.^9,.^4"]
-|===
-|Type|Name|Description|Schema
-|**Path**|**archiveDetailId** +
-__required__|档案id|integer(int32)
-|===
-
-
-==== Responses
-
-[options="header", cols=".^2,.^14,.^4"]
-|===
-|HTTP Code|Description|Schema
-|**200**|OK|<<_44177af6da99b276593188f79c398b20,Result«List«T_work_attendance»»>>
-|**401**|Unauthorized|No Content
-|**403**|Forbidden|No Content
-|**404**|Not Found|No Content
-|===
-
-
-==== Produces
-
-* `*/*`
-
-
-==== Tags
-
-* 到勤情况接口
 
 
 

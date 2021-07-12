@@ -19,18 +19,20 @@ __Contact Email__ : 825256547@qq.com
 
 === URI scheme
 [%hardbreaks]
-__Host__ : localhost:8081
+__Host__ : localhost:9999
 __BasePath__ : /
 
 
 === Tags
 
 * HR接口 : T _hr Controller
-* 到勤情况接口 : T _work _attendance Controller
 * 档案接口 : T _archive _detail Controller
+* 注册接口 : T _register Controller
 * 登录接口 : T _login Controller
 * 系统人才接口 : T _talent Controller
+* 获取公司和部门的信息 : T _organization Controller
 * 评价详情接口 : T _evaluation _details Controller
+* 部门接口 : T _department Controller
 
 
 
