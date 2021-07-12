@@ -17,14 +17,19 @@ public class MyOrganizationDTO {
 
     @ApiModelProperty(value = "公司ID")
     private Integer companyId;
+
     @ApiModelProperty(value = "公司名称")
     private String companyName;
+
     @ApiModelProperty(value = "公司简介")
     private String certification;
+
     @ApiModelProperty(value = "部门ID")
     private Integer departmentId;
+
     @ApiModelProperty(value = "部门名称")
     private String departmentName;
+
     @ApiModelProperty(value = "部门简介")
     private String departmentFunction;
 }

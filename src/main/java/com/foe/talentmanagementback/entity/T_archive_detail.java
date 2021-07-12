@@ -63,4 +63,8 @@ public class T_archive_detail implements Serializable {
     private Integer awardTimes;
 
     private Integer punishmentTimes;
+
+    private Integer departmentLast;
+
+    private String positionLast;
 }

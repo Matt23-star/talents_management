@@ -36,7 +36,7 @@ public class T_archive_detailController {
 
     @GetMapping("/talentArchives/{talentId}")
     @ApiOperation(value = "通过talentId查询所有当")
-    @ApiImplicitParam(name = "talentId", value = "档案中系统人才id", dataType = "int", paramType = "query", required = true)
+    @ApiImplicitParam(name = "talentId", value = "档案中系统人才id", dataType = "int", paramType = "path", required = true)
     public Result<List<ArchiveDetailDTO>> getArchivesOfTalent(@PathVariable("talentId") int talentId) {
         return archive_detailService.getArchivesByTalentId(talentId);
     }
@@ -44,8 +44,8 @@ public class T_archive_detailController {
     @GetMapping("/talentInCompany/{talentId}/{companyId}")
     @ApiOperation(value = "查询特定公司特定员工档案")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "talentId", value = "档案中系统人才id", dataType = "int", paramType = "query", required = true),
-            @ApiImplicitParam(name = "companyId", value = "档案中公司id", dataType = "int", paramType = "query", required = true)
+            @ApiImplicitParam(name = "talentId", value = "档案中系统人才id", dataType = "int", paramType = "path", required = true),
+            @ApiImplicitParam(name = "companyId", value = "档案中公司id", dataType = "int", paramType = "path", required = true)
     })
     public Result<T_archive_detail> getAtchiveOfOneTalentInCo(@PathVariable("talentId") int talentId,
                                                               @PathVariable("companyId") int companyId) {
