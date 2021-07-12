@@ -36,7 +36,7 @@ public class Swagger2Config {
         return new ApiInfoBuilder().title("Simple APIs")
                 .description("simple apis")
                 .contact(new Contact("Matt", "localhost:8080/swagger-ui.html", "825256547@qq.com"))
-                .version("1.0")
+                .version("2.0")
                 .build();
     }
 
