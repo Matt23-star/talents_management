@@ -2,6 +2,7 @@ package com.foe.talentmanagementback.controller;
 
 
 import com.foe.talentmanagementback.entity.Result;
+import com.foe.talentmanagementback.entity.bo.ExperienceDetailBO;
 import com.foe.talentmanagementback.entity.pojo.T_archive_detail;
 import com.foe.talentmanagementback.entity.dto.WorkExperienceDTO;
 import com.foe.talentmanagementback.service.impl.T_archive_detailServiceImpl;
@@ -41,8 +42,8 @@ public class T_archive_detailController {
             @ApiImplicitParam(name = "talentId", value = "档案中系统人才id", dataType = "int", paramType = "path", required = true),
             @ApiImplicitParam(name = "companyId", value = "档案中公司id", dataType = "int", paramType = "path", required = true)
     })
-    public Result<T_archive_detail> getAtchiveOfOneTalentInCo(@PathVariable("talentId") int talentId,
-                                                              @PathVariable("companyId") int companyId) {
+    public Result<ExperienceDetailBO> getAtchiveOfOneTalentInCo(@PathVariable("talentId") int talentId,
+                                                                @PathVariable("companyId") int companyId) {
         return archive_detailService.getArchiveBytIdWcId(talentId, companyId);
     }
 }

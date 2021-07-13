@@ -40,7 +40,6 @@ public class T_workerServiceImpl extends ServiceImpl<T_workerMapper, T_worker> i
         for (T_worker worker:
              workerList) {
             T_department department = departmentService.getDepartmentByTalentId(worker.getDepartmentManagerId());
-            System.out.println(department.getDepartmentName());
             if (department.getDepartmentName() !=null) {
                 workExperienceListDTO
                         .getDepartmentNames()

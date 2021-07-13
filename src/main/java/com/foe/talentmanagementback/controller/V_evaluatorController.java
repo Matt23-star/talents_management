@@ -22,8 +22,8 @@ public class V_evaluatorController {
     @Autowired
     private V_evaluatorServiceImpl evaluatorService;
 
-    @GetMapping("/talentIds/{talentId}")
-    public Result<V_evaluator> getEvaluatorByTalentId(@PathVariable("talentId") Integer talentId){
-        return evaluatorService.getEvaluatorByTalentId(talentId);
+    @GetMapping("/archives/{archiveId}")
+    public Result<V_evaluator> getEvaluatorByTalentId(@PathVariable("archiveId") Integer archiveId){
+        return evaluatorService.getEvaluatorByArchiveId(archiveId);
     }
 }
