@@ -22,7 +22,7 @@ public interface IT_evaluation_detailsService extends IService<T_evaluation_deta
 
    Result<EvaluationStatisticDTO> getEvaluationStatisticByArchiveId(Integer archiveId);
 
-   Result<List<EvaluationStatisticDTO>> getEvaluationStatisticsByTalentId(Integer talentId);
+   Result<EvaluationStatisticDTO> getEvaluationStatisticsByTalentId(Integer talentId);
 
    Result intsertEvaluation(int talentId,int companyId,int professionalKnowledge, int opinionValue, int ability, int performance,int executiveAbility,String comment,int evaluator);
 
