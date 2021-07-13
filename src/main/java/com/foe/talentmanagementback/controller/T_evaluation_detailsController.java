@@ -49,23 +49,27 @@ public class T_evaluation_detailsController {
     @ApiOperation(value = "插入评价")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "talentId", value = "档案中系统人才id", dataType = "String", paramType = "query", required = true),
+            @ApiImplicitParam(name = "companyId", value = "档案中系统人才当前就职的公司id", dataType = "String", paramType = "query", required = true),
             @ApiImplicitParam(name = "professionalKnowledge", value = "评价：专业知识", dataType = "int", paramType = "query", required = true),
             @ApiImplicitParam(name = "opinionValue", value = "评价：价值观", dataType = "int", paramType = "query", required = true),
             @ApiImplicitParam(name = "ability", value = "评价：能力", dataType = "int", paramType = "query", required = true),
             @ApiImplicitParam(name = "performance", value = "评价：表现", dataType = "int", paramType = "query", required = true),
+            @ApiImplicitParam(name = "executiveAbility", value = "评价：执行力", dataType = "int", paramType = "query", required = true),
             @ApiImplicitParam(name = "comment", value = "评价:文字评价", dataType = "String", paramType = "query", required = true),
             @ApiImplicitParam(name = "evaluator", value = "评价人", dataType = "String", paramType = "query", required = true)
     })
     public Result addEvaluation(@RequestBody EvaluationReceiveDTO evaluationReceiveDTO){
 
-        return evaluationDetailsService.intsertEvaluation(Integer.parseInt(evaluationReceiveDTO.getTalentId()),
+        return evaluationDetailsService.intsertEvaluation(
+                Integer.parseInt(evaluationReceiveDTO.getTalentId()),
+                Integer.parseInt(evaluationReceiveDTO.getCompanyId()),
                 evaluationReceiveDTO.getProfessionalKnowledge(),
                 evaluationReceiveDTO.getOpinionValue(),
                 evaluationReceiveDTO.getAbility(),
                 evaluationReceiveDTO.getPerformance(),
+                evaluationReceiveDTO.getExecutiveAbility(),
                 evaluationReceiveDTO.getComment(),
                 Integer.parseInt(evaluationReceiveDTO.getEvaluator()));
-
     }
 }
 

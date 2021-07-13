@@ -15,6 +15,8 @@ public class EvaluationReceiveDTO {
 
     private  String talentId;
 
+    private String companyId;
+
     private int professionalKnowledge;
 
     private int opinionValue;
@@ -22,6 +24,8 @@ public class EvaluationReceiveDTO {
     private int ability;
 
     private int performance;
+
+    private int executiveAbility;
 
     private String comment;
 

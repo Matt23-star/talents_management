@@ -70,10 +70,18 @@ public class T_evaluation_detailsServiceImpl extends ServiceImpl<T_evaluation_de
         return ResultUtils.success(ResultMsg.SUCCESS,evaluationSendDTOS);
     }
 
+ /**
+ * @Description:
+ * @Param:
+ * @return:
+ * @Author: 张越
+ * @Date: 2021/7/13
+ */
     @Override
-    public Result intsertEvaluation(int talentId,int professionalKnowledge, int opinionValue, int ability, int performance,String comment,int evaluator) {
+    public Result intsertEvaluation(int talentId,int companyId,int professionalKnowledge, int opinionValue, int ability, int performance,int executiveAbility,String comment,int evaluator) {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("talent_id",talentId);
+        queryWrapper.eq("company_id",companyId);
         T_archive_detail archiveDetail = archiveDetailMapper.selectOne(queryWrapper);
         if(archiveDetail==null){
             return ResultUtils.error(new ResultMessage(500,"未查询到档案信息，评价失败"));
