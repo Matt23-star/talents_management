@@ -1,6 +1,6 @@
 package com.foe.talentmanagementback.service;
 
-import com.foe.talentmanagementback.entity.T_nation;
+import com.foe.talentmanagementback.entity.pojo.T_nation;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

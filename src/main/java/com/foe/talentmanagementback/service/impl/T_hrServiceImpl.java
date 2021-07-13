@@ -1,15 +1,10 @@
 package com.foe.talentmanagementback.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.foe.talentmanagementback.entity.Result;
-import com.foe.talentmanagementback.entity.T_hr;
-import com.foe.talentmanagementback.entity.dto.HrDTO;
-import com.foe.talentmanagementback.entity.enums.ResultMsg;
+import com.foe.talentmanagementback.entity.pojo.T_hr;
 import com.foe.talentmanagementback.mapper.T_hrMapper;
 import com.foe.talentmanagementback.service.IT_hrService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.foe.talentmanagementback.utils.ResultUtils;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

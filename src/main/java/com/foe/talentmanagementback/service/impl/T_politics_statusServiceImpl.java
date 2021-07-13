@@ -1,6 +1,6 @@
 package com.foe.talentmanagementback.service.impl;
 
-import com.foe.talentmanagementback.entity.T_politics_status;
+import com.foe.talentmanagementback.entity.pojo.T_politics_status;
 import com.foe.talentmanagementback.mapper.T_politics_statusMapper;
 import com.foe.talentmanagementback.service.IT_politics_statusService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

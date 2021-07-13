@@ -11,12 +11,20 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @Description:
  */
 @Data
-public class EvaluationDTO {
+public class EvaluationReceiveDTO {
+
     private  String talentId;
+
     private int professionalKnowledge;
+
     private int opinionValue;
+
     private int ability;
+
     private int performance;
+
     private String comment;
+
     private String evaluator;
+
 }

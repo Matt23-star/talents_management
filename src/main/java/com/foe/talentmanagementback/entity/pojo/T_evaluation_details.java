@@ -1,4 +1,4 @@
-package com.foe.talentmanagementback.entity;
+package com.foe.talentmanagementback.entity.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -45,4 +45,5 @@ public class T_evaluation_details implements Serializable {
 
     private Integer performance;
 
+    private Integer executiveAbility;
 }

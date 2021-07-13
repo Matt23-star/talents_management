@@ -2,8 +2,7 @@ package com.foe.talentmanagementback.controller;
 
 
 import com.foe.talentmanagementback.entity.Result;
-import com.foe.talentmanagementback.entity.T_talent;
-import com.foe.talentmanagementback.mapper.T_companyMapper;
+import com.foe.talentmanagementback.entity.pojo.T_talent;
 import com.foe.talentmanagementback.service.impl.T_companyServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -25,7 +24,7 @@ import java.util.List;
  * @since 2021-07-08
  */
 @RestController
-@RequestMapping("/companies")
+@RequestMapping("/api/companies")
 @Api(value = "公司接口",tags = "公司接口")
 public class T_companyController {
 

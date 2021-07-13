@@ -1,10 +1,9 @@
 package com.foe.talentmanagementback.service;
 
 import com.foe.talentmanagementback.entity.Result;
-import com.foe.talentmanagementback.entity.T_company;
+import com.foe.talentmanagementback.entity.pojo.T_company;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.foe.talentmanagementback.entity.T_department;
-import com.foe.talentmanagementback.entity.T_talent;
+import com.foe.talentmanagementback.entity.pojo.T_talent;
 
 import java.util.List;
 

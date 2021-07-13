@@ -3,13 +3,18 @@ package com.foe.talentmanagementback.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.foe.talentmanagementback.entity.Result;
 import com.foe.talentmanagementback.entity.ResultMessage;
-import com.foe.talentmanagementback.entity.T_archive_detail;
-import com.foe.talentmanagementback.entity.T_evaluation_details;
+import com.foe.talentmanagementback.entity.dto.EvaluationSendDTO;
+import com.foe.talentmanagementback.entity.enums.ResultMsg;
+import com.foe.talentmanagementback.entity.pojo.T_archive_detail;
+import com.foe.talentmanagementback.entity.pojo.T_evaluation_details;
+import com.foe.talentmanagementback.entity.pojo.V_evaluator;
 import com.foe.talentmanagementback.mapper.T_archive_detailMapper;
 import com.foe.talentmanagementback.mapper.T_evaluation_detailsMapper;
 import com.foe.talentmanagementback.service.IT_evaluation_detailsService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.foe.talentmanagementback.utils.ResultUtils;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,10 +30,46 @@ import java.util.List;
  */
 @Service
 public class T_evaluation_detailsServiceImpl extends ServiceImpl<T_evaluation_detailsMapper, T_evaluation_details> implements IT_evaluation_detailsService {
+
     @Autowired
     private T_evaluation_detailsMapper evaluationDetailsMapper;
+
     @Autowired
     private T_archive_detailMapper archiveDetailMapper;
+
+    @Autowired
+    private V_evaluatorServiceImpl evaluatorService;
+
+    /**
+     * @author: Matt
+     * @date: 2021-07-13 11:29
+     * @description: 获得评价
+     * @return
+     */
+    @Override
+    public Result<List<EvaluationSendDTO>> getEvaluationsByArchiveId(Integer archiveId) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("archive_detail_id",archiveId);
+        List<T_evaluation_details> evaluationDetails = evaluationDetailsMapper.selectList(queryWrapper);
+        if (evaluationDetails.isEmpty()){
+            return ResultUtils.error(ResultMsg.EVALUATION_NOT_EXIST);
+        }
+        ModelMapper modelMapper = new ModelMapper();
+        List<EvaluationSendDTO> evaluationSendDTOS = modelMapper
+                .map(evaluationDetails, new TypeToken<List<EvaluationSendDTO>>(){}.getType());
+        for (EvaluationSendDTO evaluationSendDTO :
+                evaluationSendDTOS) {
+            V_evaluator evaluator = evaluatorService
+                    .getEvaluatorByTalentId(evaluationSendDTO
+                            .getEvaluator())
+                    .getData();
+            if (evaluator != null) {
+                evaluationSendDTO.setEvaluatorName(evaluator.getEvaluatorName());
+            }
+        }
+        return ResultUtils.success(ResultMsg.SUCCESS,evaluationSendDTOS);
+    }
+
     @Override
     public Result intsertEvaluation(int talentId,int professionalKnowledge, int opinionValue, int ability, int performance,String comment,int evaluator) {
         QueryWrapper queryWrapper = new QueryWrapper();

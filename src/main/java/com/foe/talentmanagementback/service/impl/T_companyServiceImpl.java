@@ -2,9 +2,8 @@ package com.foe.talentmanagementback.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.foe.talentmanagementback.entity.Result;
-import com.foe.talentmanagementback.entity.T_company;
-import com.foe.talentmanagementback.entity.T_department;
-import com.foe.talentmanagementback.entity.T_talent;
+import com.foe.talentmanagementback.entity.pojo.T_company;
+import com.foe.talentmanagementback.entity.pojo.T_talent;
 import com.foe.talentmanagementback.mapper.T_companyMapper;
 import com.foe.talentmanagementback.mapper.T_talentMapper;
 import com.foe.talentmanagementback.service.IT_companyService;

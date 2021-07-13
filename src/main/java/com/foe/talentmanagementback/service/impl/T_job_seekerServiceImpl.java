@@ -1,6 +1,6 @@
 package com.foe.talentmanagementback.service.impl;
 
-import com.foe.talentmanagementback.entity.T_job_seeker;
+import com.foe.talentmanagementback.entity.pojo.T_job_seeker;
 import com.foe.talentmanagementback.mapper.T_job_seekerMapper;
 import com.foe.talentmanagementback.service.IT_job_seekerService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

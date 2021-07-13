@@ -1,4 +1,4 @@
-package com.foe.talentmanagementback.entity;
+package com.foe.talentmanagementback.entity.pojo;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;

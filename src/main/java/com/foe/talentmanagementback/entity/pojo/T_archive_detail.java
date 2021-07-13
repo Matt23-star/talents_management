@@ -1,8 +1,7 @@
-package com.foe.talentmanagementback.entity;
+package com.foe.talentmanagementback.entity.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -19,7 +18,7 @@ import java.util.Date;
  */
 
 @Data
-//@ApiModel(value = "com.foe.talentmanagementback.entity.T_archive_detail",description = "新增档案记录参数")
+//@ApiModel(value = "com.foe.talentmanagementback.entity.pojo.T_archive_detail",description = "新增档案记录参数")
 public class T_archive_detail implements Serializable {
 
     @TableId(value = "id", type = IdType.AUTO)

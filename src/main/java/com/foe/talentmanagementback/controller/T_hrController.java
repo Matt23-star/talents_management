@@ -1,7 +1,6 @@
 package com.foe.talentmanagementback.controller;
 
-import com.foe.talentmanagementback.entity.Result;
-import com.foe.talentmanagementback.entity.T_hr;
+import com.foe.talentmanagementback.entity.pojo.T_hr;
 import com.foe.talentmanagementback.service.impl.T_archive_detailServiceImpl;
 import com.foe.talentmanagementback.service.impl.T_evaluation_detailsServiceImpl;
 import com.foe.talentmanagementback.service.impl.T_hrServiceImpl;

@@ -82,6 +82,45 @@ __required__|档案中系统人才id|integer(int32)
 * 档案接口
 
 
+[[_getworkersbyhridusingget]]
+=== 输入company的id，返回该hr公司下的所有T_tanlent数据
+....
+GET /api/companies/{companyid}/talents
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**companyid** +
+__required__|companyid|integer(int32)
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_f89c2473e0832215ccf9cbdbacad7353,Result«List«T_talent»»>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* 公司接口
+
+
 [[_getdepartmentbyidusingget]]
 === 通过部门departmentId查询部门信息，成功返回
 ....
@@ -186,8 +225,8 @@ __required__|评价：表现|integer(int32)
 __required__|评价：专业知识|integer(int32)
 |**Query**|**talentId** +
 __required__|档案中系统人才id|string
-|**Body**|**evaluationDTO** +
-__required__|evaluationDTO|<<_evaluationdto,EvaluationDTO>>
+|**Body**|**evaluationReceiveDTO** +
+__required__|evaluationReceiveDTO|<<_evaluationdto,EvaluationDTO>>
 |===
 
 
@@ -586,45 +625,6 @@ __required__|name|string
 ==== Tags
 
 * 系统人才接口
-
-
-[[_getworkersbyhridusingget]]
-=== 输入company的id，返回该hr公司下的所有T_tanlent数据
-....
-GET /companies/{companyid}/talents
-....
-
-
-==== Parameters
-
-[options="header", cols=".^2,.^3,.^9,.^4"]
-|===
-|Type|Name|Description|Schema
-|**Path**|**companyid** +
-__required__|companyid|integer(int32)
-|===
-
-
-==== Responses
-
-[options="header", cols=".^2,.^14,.^4"]
-|===
-|HTTP Code|Description|Schema
-|**200**|OK|<<_f89c2473e0832215ccf9cbdbacad7353,Result«List«T_talent»»>>
-|**401**|Unauthorized|No Content
-|**403**|Forbidden|No Content
-|**404**|Not Found|No Content
-|===
-
-
-==== Produces
-
-* `*/*`
-
-
-==== Tags
-
-* 公司接口
 
 
 

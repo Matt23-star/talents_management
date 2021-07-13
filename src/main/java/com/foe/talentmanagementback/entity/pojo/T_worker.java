@@ -1,4 +1,4 @@
-package com.foe.talentmanagementback.entity;
+package com.foe.talentmanagementback.entity.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -18,14 +18,14 @@ import java.util.Date;
  */
 
 @Data
-//@ApiModel(value = "com.foe.talentmanagementback.entity.T_worker",description = "新增职员参数")
+//@ApiModel(value = "com.foe.talentmanagementback.entity.pojo.T_worker",description = "新增职员参数")
 public class T_worker implements Serializable {
 
     private Integer id;
 
     private Integer workingYears;
 
-    private Integer salary;
+    private Float salary;
 
     private String jobType;
     /**

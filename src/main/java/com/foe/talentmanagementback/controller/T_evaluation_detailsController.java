@@ -2,8 +2,8 @@ package com.foe.talentmanagementback.controller;
 
 
 import com.foe.talentmanagementback.entity.Result;
-import com.foe.talentmanagementback.entity.T_evaluation_details;
-import com.foe.talentmanagementback.entity.dto.EvaluationDTO;
+import com.foe.talentmanagementback.entity.dto.EvaluationReceiveDTO;
+import com.foe.talentmanagementback.entity.dto.EvaluationSendDTO;
 import com.foe.talentmanagementback.service.impl.T_evaluation_detailsServiceImpl;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +23,21 @@ import java.util.List;
 public class T_evaluation_detailsController {
     @Autowired
     private T_evaluation_detailsServiceImpl evaluationDetailsService;
+
+    /**
+     *
+     * @author: Matt
+     * @date: 2021-07-13 12:40
+     * @description: 根据档案id获得评价
+     */
+
+    @GetMapping("/archives/{archiveId}")
+    @ApiOperation(value = "通过archiveId查询评价，成功返回评价链表，失败返回错误信息")
+    @ApiImplicitParam(name = "archiveId", value = "档案id", dataType = "Integer", paramType = "path", required = true)
+    public Result<List<EvaluationSendDTO>> getEvaluationByArchiveId(@PathVariable("archiveId") Integer archiveId){
+        return evaluationDetailsService.getEvaluationsByArchiveId(archiveId);
+    }
+
     /**
     * @Description:
     * @Param:
@@ -41,15 +56,15 @@ public class T_evaluation_detailsController {
             @ApiImplicitParam(name = "comment", value = "评价:文字评价", dataType = "String", paramType = "query", required = true),
             @ApiImplicitParam(name = "evaluator", value = "评价人", dataType = "String", paramType = "query", required = true)
     })
-    public Result addEvaluation(@RequestBody EvaluationDTO evaluationDTO){
+    public Result addEvaluation(@RequestBody EvaluationReceiveDTO evaluationReceiveDTO){
 
-        return evaluationDetailsService.intsertEvaluation(Integer.parseInt(evaluationDTO.getTalentId()),
-                evaluationDTO.getProfessionalKnowledge(),
-                evaluationDTO.getOpinionValue(),
-                evaluationDTO.getAbility(),
-                evaluationDTO.getPerformance(),
-                evaluationDTO.getComment(),
-                Integer.parseInt(evaluationDTO.getEvaluator()));
+        return evaluationDetailsService.intsertEvaluation(Integer.parseInt(evaluationReceiveDTO.getTalentId()),
+                evaluationReceiveDTO.getProfessionalKnowledge(),
+                evaluationReceiveDTO.getOpinionValue(),
+                evaluationReceiveDTO.getAbility(),
+                evaluationReceiveDTO.getPerformance(),
+                evaluationReceiveDTO.getComment(),
+                Integer.parseInt(evaluationReceiveDTO.getEvaluator()));
 
     }
 }

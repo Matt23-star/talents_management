@@ -1,4 +1,4 @@
-package com.foe.talentmanagementback.entity;
+package com.foe.talentmanagementback.entity.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -7,25 +7,25 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * Created with IntelliJ IDEA.
+ * <p>
+ * 
+ * </p>
  *
- * @Author: 张越
- * @Date: 2021/07/09/23:11
- * @Description:
+ * @author Matt
+ * @since 2021-07-08
  */
 
 @Data
-public class T_nation implements Serializable {
+public class T_hr implements Serializable {
 
-
-    /**
-     * id
-     */
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     /**
-     * 民族
+     * 公司id
      */
-    private String name;
+    private Integer companyId;
+
+    private Integer hrTalentId;
+
 }

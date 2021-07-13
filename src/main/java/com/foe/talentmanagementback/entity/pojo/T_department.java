@@ -1,4 +1,4 @@
-package com.foe.talentmanagementback.entity;
+package com.foe.talentmanagementback.entity.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -17,7 +17,7 @@ import java.io.Serializable;
  */
 
 @Data
-//@ApiModel(value = "com.foe.talentmanagementback.entity.T_department",description = "新增部门参数")
+//@ApiModel(value = "com.foe.talentmanagementback.entity.pojo.T_department",description = "新增部门参数")
 public class T_department implements Serializable {
 
     @TableId(value = "id", type = IdType.AUTO)
