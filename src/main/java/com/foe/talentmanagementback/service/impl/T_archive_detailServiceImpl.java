@@ -10,7 +10,7 @@ import com.foe.talentmanagementback.entity.enums.ResultMsg;
 import com.foe.talentmanagementback.mapper.T_archive_detailMapper;
 import com.foe.talentmanagementback.service.IT_archive_detailService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.foe.talentmanagementback.utils.DateConvert;
+import com.foe.talentmanagementback.utils.DateUtils;
 import com.foe.talentmanagementback.utils.ResultUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +60,7 @@ public class T_archive_detailServiceImpl extends ServiceImpl<T_archive_detailMap
 
         for (T_archive_detail archiveDetail: archiveDetails
              ) {
-            archiveDetail.setEntryTime(DateConvert.dateConvert(archiveDetail.getEntryTime()));
+            archiveDetail.setEntryTime(DateUtils.dateConvert(archiveDetail.getEntryTime()));
             WorkExperienceDTO workExperienceDTO = modelMapper.map(archiveDetail,WorkExperienceDTO.class);
             workExperienceDTO.setCompanyName(companyService
                     .getCompanyById(archiveDetail.getCompanyId())
@@ -83,11 +83,14 @@ public class T_archive_detailServiceImpl extends ServiceImpl<T_archive_detailMap
         ModelMapper modelMapper = new ModelMapper();
         ExperienceDetailBO experienceDetailBO = new ExperienceDetailBO();
         ArchiveDTO archive = modelMapper.map(archiveDetail, ArchiveDTO.class);
+        if (archiveDetail.getEntryTime()==null){
+            return ResultUtils.error(ResultMsg.ENTRYTIME_IS_NULL);
+        }
+        archive.setWorkingDays(DateUtils.getDaysInterval(archiveDetail.getEntryTime(),archiveDetail.getQuitTime()));
         experienceDetailBO.setArchive(archive);
         experienceDetailBO.setWorkExperience(this.workerService.getWorkerByArchiveId(archiveId).getData());
         experienceDetailBO.setEvaluationSends(this.evaluationDetailsService.getEvaluationsByArchiveId(archiveId).getData());
         experienceDetailBO.setEvaluationStatistic(this.evaluationDetailsService.getEvaluationStatisticByArchiveId(archiveId).getData());
-
         return ResultUtils.success(ResultMsg.SUCCESS,experienceDetailBO);
     }
 }

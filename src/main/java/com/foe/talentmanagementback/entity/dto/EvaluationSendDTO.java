@@ -13,7 +13,7 @@ import java.util.Date;
 @Data
 public class EvaluationSendDTO {
 
-    private Integer evaluationId;
+    private Integer id;
 
     private String comment;
 
