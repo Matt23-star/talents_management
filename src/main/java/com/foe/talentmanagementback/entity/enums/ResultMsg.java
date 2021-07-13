@@ -12,7 +12,8 @@ public enum ResultMsg {
     TALENT_NOT_EXIST(404,"该系统人才不存在"),
     TALENT_ARCHIVE_NOT_EXIST(404,"该系统人才无档案"),
     ARCHIVE_NOT_EXIST(404,"该档案不存在"),
-    EVALUATION_NOT_EXIST(404,"该档案中没有评价");
+    EVALUATION_NOT_EXIST(404,"该档案中没有评价"),
+    ENTRYTIME_IS_NULL(404,"入职时间为空");
 
 
     private Integer code;

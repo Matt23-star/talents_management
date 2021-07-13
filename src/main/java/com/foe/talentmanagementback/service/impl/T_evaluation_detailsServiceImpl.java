@@ -60,11 +60,12 @@ public class T_evaluation_detailsServiceImpl extends ServiceImpl<T_evaluation_de
         List<EvaluationSendDTO> evaluationSendDTOS = modelMapper
                 .map(evaluationDetails, new TypeToken<List<EvaluationSendDTO>>() {
                 }.getType());
+        System.out.println(evaluationSendDTOS);
         for (EvaluationSendDTO evaluationSendDTO :
                 evaluationSendDTOS) {
             V_evaluator evaluator = evaluatorService
                     .getEvaluatorByArchiveId(evaluationSendDTO
-                            .getEvaluationId())
+                            .getId())
                     .getData();
             if (evaluator != null) {
                 evaluationSendDTO.setEvaluatorName(evaluator.getEvaluatorName());
