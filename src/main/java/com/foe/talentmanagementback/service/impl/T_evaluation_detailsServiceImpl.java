@@ -19,6 +19,7 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -77,7 +78,6 @@ public class T_evaluation_detailsServiceImpl extends ServiceImpl<T_evaluation_de
      * @date: 2021-07-13 14:36
      * @description: 获得评价统计
      */
-
     public Result<EvaluationStatisticDTO> getEvaluationStatisticByArchiveId(Integer archiveId) {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("archive_detail_id", archiveId);
@@ -104,6 +104,27 @@ public class T_evaluation_detailsServiceImpl extends ServiceImpl<T_evaluation_de
             return ResultUtils.success(ResultMsg.SUCCESS, evaluationStatisticDTO);
         }
     }
+
+    /**
+     *
+     * @author: Matt
+     * @date: 2021-07-13 16:49
+     * @description:
+     */
+    @Override
+    public Result<List<EvaluationStatisticDTO>> getEvaluationStatisticsByTalentId(Integer talentId) {
+
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("talent_id", talentId);
+        List<T_archive_detail> archiveDetails = archiveDetailMapper.selectList(queryWrapper);
+        List<EvaluationStatisticDTO> evaluationStatistics = new ArrayList<>();
+        for (T_archive_detail archiveDetail :
+                archiveDetails) {
+            evaluationStatistics.add(getEvaluationStatisticByArchiveId(archiveDetail.getId()).getData());
+        }
+        return ResultUtils.success(ResultMsg.SUCCESS,evaluationStatistics);
+    }
+
 
     /**
      * @Description:
