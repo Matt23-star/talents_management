@@ -39,12 +39,31 @@ public class T_evaluation_detailsController {
         return evaluationDetailsService.getEvaluationsByArchiveId(archiveId);
     }
 
+    /**
+     * @author: Matt
+     * @date: 2021-07-13 17:03
+     * @description:
+     */
     @GetMapping("/archives/{archiveId}/evaluation-statistics")
-    @ApiOperation(value = "通过archiveId查询评价，成功返回评价链表，失败返回错误信息")
+    @ApiOperation(value = "通过archiveId查询评价统计，成功返回评价统计，失败返回错误信息")
     @ApiImplicitParam(name = "archiveId", value = "档案id", dataType = "Integer", paramType = "path", required = true)
     public Result<EvaluationStatisticDTO> getEvaluationStatisticByArchiveId(@PathVariable("archiveId") Integer archiveId){
         return evaluationDetailsService.getEvaluationStatisticByArchiveId(archiveId);
     }
+
+    /**
+     *
+     * @author: Matt
+     * @date: 2021-07-13 17:03
+     * @description:
+     */
+    @GetMapping("/talents/{talentId}/evaluation-statistics")
+    @ApiOperation(value = "通过talentId查询评价统计，成功返回所有公司的评价统计，失败返回错误信息")
+    @ApiImplicitParam(name = "talentId", value = "档案id", dataType = "Integer", paramType = "path", required = true)
+    public Result<List<EvaluationStatisticDTO>> getEvaluationStatisticByTalentId(@PathVariable("talentId") Integer talentId){
+        return evaluationDetailsService.getEvaluationStatisticsByTalentId(talentId);
+    }
+
     /**
     * @Description:
     * @Param:

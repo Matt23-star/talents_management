@@ -4,8 +4,6 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.foe.talentmanagementback.entity.Result;
 import com.foe.talentmanagementback.entity.bo.ExperienceDetailBO;
 import com.foe.talentmanagementback.entity.dto.ArchiveDTO;
-import com.foe.talentmanagementback.entity.dto.EvaluationStatisticDTO;
-import com.foe.talentmanagementback.entity.dto.WorkExperienceListDTO;
 import com.foe.talentmanagementback.entity.pojo.T_archive_detail;
 import com.foe.talentmanagementback.entity.dto.WorkExperienceDTO;
 import com.foe.talentmanagementback.entity.enums.ResultMsg;

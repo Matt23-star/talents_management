@@ -65,7 +65,7 @@ __required__|档案中系统人才id|integer(int32)
 [options="header", cols=".^2,.^14,.^4"]
 |===
 |HTTP Code|Description|Schema
-|**200**|OK|<<_9a9d54c5d66d1d08c2005c8633fe9f69,Result«T_archive_detail»>>
+|**200**|OK|<<_84d4ba3fce9f7b7ab414cce9d399219a,Result«ExperienceDetailBO»>>
 |**401**|Unauthorized|No Content
 |**403**|Forbidden|No Content
 |**404**|Not Found|No Content
@@ -121,10 +121,10 @@ __required__|companyid|integer(int32)
 * 公司接口
 
 
-[[_getdepartmentbyidusingget]]
-=== 通过部门departmentId查询部门信息，成功返回
+[[_getdepartmentbymanagerusingget]]
+=== 通过部门经理talentId查询部门信息，成功返回T_department，失败返回错误信息
 ....
-GET /api/department/departmentId
+GET /api/department/talentId/{talentId}
 ....
 
 
@@ -133,8 +133,8 @@ GET /api/department/departmentId
 [options="header", cols=".^2,.^3,.^9,.^4"]
 |===
 |Type|Name|Description|Schema
-|**Path**|**departmentId** +
-__required__|部门id|integer(int32)
+|**Path**|**talentId** +
+__required__|部门经理id|integer(int32)
 |===
 
 
@@ -160,10 +160,10 @@ __required__|部门id|integer(int32)
 * 部门接口
 
 
-[[_getdepartmentbymanagerusingget]]
-=== 通过部门经理talentId查询部门信息，成功返回T_department，失败返回错误信息
+[[_getdepartmentbyidusingget]]
+=== 通过部门departmentId查询部门信息，成功返回
 ....
-GET /api/department/talentId
+GET /api/department/{departmentId}
 ....
 
 
@@ -172,8 +172,8 @@ GET /api/department/talentId
 [options="header", cols=".^2,.^3,.^9,.^4"]
 |===
 |Type|Name|Description|Schema
-|**Path**|**talentId** +
-__required__|部门经理id|integer(int32)
+|**Path**|**departmentId** +
+__required__|部门id|integer(int32)
 |===
 
 
@@ -215,8 +215,12 @@ POST /api/evaluations
 __required__|评价：能力|integer(int32)
 |**Query**|**comment** +
 __required__|评价:文字评价|string
+|**Query**|**companyId** +
+__required__|档案中系统人才当前就职的公司id|string
 |**Query**|**evaluator** +
 __required__|评价人|string
+|**Query**|**executiveAbility** +
+__required__|评价：执行力|integer(int32)
 |**Query**|**opinionValue** +
 __required__|评价：价值观|integer(int32)
 |**Query**|**performance** +
@@ -226,7 +230,7 @@ __required__|评价：专业知识|integer(int32)
 |**Query**|**talentId** +
 __required__|档案中系统人才id|string
 |**Body**|**evaluationReceiveDTO** +
-__required__|evaluationReceiveDTO|<<_evaluationdto,EvaluationDTO>>
+__required__|evaluationReceiveDTO|<<_evaluationreceivedto,EvaluationReceiveDTO>>
 |===
 
 
@@ -256,6 +260,123 @@ __required__|evaluationReceiveDTO|<<_evaluationdto,EvaluationDTO>>
 ==== Tags
 
 * 评价详情接口
+
+
+[[_getevaluationbyarchiveidusingget]]
+=== 通过archiveId查询评价，成功返回评价链表，失败返回错误信息
+....
+GET /api/evaluations/archives/{archiveId}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**archiveId** +
+__required__|档案id|ref
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_919720dcd112009efe3d9c84d381e357,Result«List«EvaluationSendDTO»»>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* 评价详情接口
+
+
+[[_getevaluationstatisticbyarchiveidusingget]]
+=== 通过archiveId查询评价，成功返回评价链表，失败返回错误信息
+....
+GET /api/evaluations/archives/{archiveId}/evaluation-statistics
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**archiveId** +
+__required__|档案id|ref
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_6d7a9957e79f8df09df6047b23ab2ad7,Result«EvaluationStatisticDTO»>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* 评价详情接口
+
+
+[[_getevaluatorbytalentidusingget]]
+=== getEvaluatorByTalentId
+....
+GET /api/evaluators/archives/{archiveId}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**archiveId** +
+__required__|archiveId|integer(int32)
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_3c641a04a7e1d09b45f9467ed8e6f6af,Result«V_evaluator»>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* v-_evaluator-controller
 
 
 [[_gethrbyhridusingget]]
@@ -625,6 +746,45 @@ __required__|name|string
 ==== Tags
 
 * 系统人才接口
+
+
+[[_getworkexperiencebyarchiveidusingget]]
+=== 通过archiveId查询工作经历，成功返回工作经历链表，失败返回错误信息
+....
+GET /api/workers/archives/{archiveId}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**archiveId** +
+__required__|档案id|ref
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_39922d4e5ea8ad4e74869bbd31a169ed,Result«WorkExperienceListDTO»>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* t-_worker-controller
 
 
 

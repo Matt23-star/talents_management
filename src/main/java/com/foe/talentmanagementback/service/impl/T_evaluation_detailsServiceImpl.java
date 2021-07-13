@@ -19,6 +19,7 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -42,22 +43,23 @@ public class T_evaluation_detailsServiceImpl extends ServiceImpl<T_evaluation_de
     private V_evaluatorServiceImpl evaluatorService;
 
     /**
+     * @return
      * @author: Matt
      * @date: 2021-07-13 11:29
      * @description: 获得评价
-     * @return
      */
     @Override
     public Result<List<EvaluationSendDTO>> getEvaluationsByArchiveId(Integer archiveId) {
         QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("archive_detail_id",archiveId);
+        queryWrapper.eq("archive_detail_id", archiveId);
         List<T_evaluation_details> evaluationDetails = evaluationDetailsMapper.selectList(queryWrapper);
-        if (evaluationDetails.isEmpty()){
+        if (evaluationDetails.isEmpty()) {
             return ResultUtils.error(ResultMsg.EVALUATION_NOT_EXIST);
         }
         ModelMapper modelMapper = new ModelMapper();
         List<EvaluationSendDTO> evaluationSendDTOS = modelMapper
-                .map(evaluationDetails, new TypeToken<List<EvaluationSendDTO>>(){}.getType());
+                .map(evaluationDetails, new TypeToken<List<EvaluationSendDTO>>() {
+                }.getType());
         for (EvaluationSendDTO evaluationSendDTO :
                 evaluationSendDTOS) {
             V_evaluator evaluator = evaluatorService
@@ -68,7 +70,7 @@ public class T_evaluation_detailsServiceImpl extends ServiceImpl<T_evaluation_de
                 evaluationSendDTO.setEvaluatorName(evaluator.getEvaluatorName());
             }
         }
-        return ResultUtils.success(ResultMsg.SUCCESS,evaluationSendDTOS);
+        return ResultUtils.success(ResultMsg.SUCCESS, evaluationSendDTOS);
     }
 
     /**
@@ -76,7 +78,6 @@ public class T_evaluation_detailsServiceImpl extends ServiceImpl<T_evaluation_de
      * @date: 2021-07-13 14:36
      * @description: 获得评价统计
      */
-
     public Result<EvaluationStatisticDTO> getEvaluationStatisticByArchiveId(Integer archiveId) {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("archive_detail_id", archiveId);
@@ -85,40 +86,62 @@ public class T_evaluation_detailsServiceImpl extends ServiceImpl<T_evaluation_de
             return ResultUtils.error(ResultMsg.EVALUATION_NOT_EXIST);
         } else {
             EvaluationStatisticDTO evaluationStatisticDTO = new EvaluationStatisticDTO();
-            evaluationStatisticDTO.setAbilityAvg((float)evaluationDetails.stream().mapToDouble((evaluationDetail) -> {
-                return (double)evaluationDetail.getAbility();
+            evaluationStatisticDTO.setAbilityAvg((float) evaluationDetails.stream().mapToDouble((evaluationDetail) -> {
+                return (double) evaluationDetail.getAbility();
             }).average().getAsDouble());
             evaluationStatisticDTO.setExecutiveAbilityAvg((float)evaluationDetails.stream().mapToDouble((evaluationDetail) -> {
-                return (double)evaluationDetail.getExecutiveAbility();
+                return (double) evaluationDetail.getExecutiveAbility();
             }).average().getAsDouble());
             evaluationStatisticDTO.setOpinionValueAvg((float)evaluationDetails.stream().mapToDouble((evaluationDetail) -> {
-                return (double)evaluationDetail.getOpinionValue();
+                return (double) evaluationDetail.getOpinionValue();
             }).average().getAsDouble());
             evaluationStatisticDTO.setPerformanceAvg((float)evaluationDetails.stream().mapToDouble((evaluationDetail) -> {
-                return (double)evaluationDetail.getPerformance();
+                return (double) evaluationDetail.getPerformance();
             }).average().getAsDouble());
             evaluationStatisticDTO.setProfessionKAvg((float)evaluationDetails.stream().mapToDouble((evaluationDetail) -> {
-                return (double)evaluationDetail.getProfessionalKnowledge();
+                return (double) evaluationDetail.getProfessionalKnowledge();
             }).average().getAsDouble());
             return ResultUtils.success(ResultMsg.SUCCESS, evaluationStatisticDTO);
         }
     }
- /**
- * @Description:
- * @Param:
- * @return:
- * @Author: 张越
- * @Date: 2021/7/13
- */
+
+    /**
+     *
+     * @author: Matt
+     * @date: 2021-07-13 16:49
+     * @description:
+     */
     @Override
-    public Result intsertEvaluation(int talentId,int companyId,int professionalKnowledge, int opinionValue, int ability, int performance,int executiveAbility,String comment,int evaluator) {
+    public Result<List<EvaluationStatisticDTO>> getEvaluationStatisticsByTalentId(Integer talentId) {
+
         QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq("talent_id",talentId);
-        queryWrapper.eq("company_id",companyId);
+        queryWrapper.eq("talent_id", talentId);
+        List<T_archive_detail> archiveDetails = archiveDetailMapper.selectList(queryWrapper);
+        List<EvaluationStatisticDTO> evaluationStatistics = new ArrayList<>();
+        for (T_archive_detail archiveDetail :
+                archiveDetails) {
+            evaluationStatistics.add(getEvaluationStatisticByArchiveId(archiveDetail.getId()).getData());
+        }
+        return ResultUtils.success(ResultMsg.SUCCESS,evaluationStatistics);
+    }
+
+
+    /**
+     * @Description:
+     * @Param:
+     * @return:
+     * @Author: 张越
+     * @Date: 2021/7/13
+     */
+    @Override
+    public Result intsertEvaluation(int talentId, int companyId, int professionalKnowledge, int opinionValue, int ability, int performance, int executiveAbility, String comment, int evaluator) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("talent_id", talentId);
+        queryWrapper.eq("company_id", companyId);
         T_archive_detail archiveDetail = archiveDetailMapper.selectOne(queryWrapper);
-        if(archiveDetail==null){
-            return ResultUtils.error(new ResultMessage(500,"未查询到档案信息，评价失败"));
-        }else {
+        if (archiveDetail == null) {
+            return ResultUtils.error(new ResultMessage(500, "未查询到档案信息，评价失败"));
+        } else {
             T_evaluation_details evaluationDetails = new T_evaluation_details();
             evaluationDetails.setArchiveDetailId(archiveDetail.getId());
             evaluationDetails.setProfessionalKnowledge(professionalKnowledge);
@@ -129,11 +152,11 @@ public class T_evaluation_detailsServiceImpl extends ServiceImpl<T_evaluation_de
             evaluationDetails.setComment(comment);
             evaluationDetails.setEvaluator(evaluator);
             int resultEva = evaluationDetailsMapper.insert(evaluationDetails);
-            if(resultEva>0){
-                return ResultUtils.success(new ResultMessage(200,"评价成功"));
+            if (resultEva > 0) {
+                return ResultUtils.success(new ResultMessage(200, "评价成功"));
             }
         }
-        return ResultUtils.error(new ResultMessage(500,"评价失败"));
+        return ResultUtils.error(new ResultMessage(500, "评价失败"));
     }
 }
 
