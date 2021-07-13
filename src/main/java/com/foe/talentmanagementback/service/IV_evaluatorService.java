@@ -11,6 +11,6 @@ import com.foe.talentmanagementback.entity.pojo.V_evaluator;
  */
 public interface IV_evaluatorService extends IService<V_evaluator> {
 
-    public Result<V_evaluator> getEvaluatorByTalentId(Integer talentId);
+    public Result<V_evaluator> getEvaluatorByArchiveId(Integer talentId);
 
 }

@@ -4,6 +4,7 @@ package com.foe.talentmanagementback.controller;
 import com.foe.talentmanagementback.entity.Result;
 import com.foe.talentmanagementback.entity.dto.EvaluationReceiveDTO;
 import com.foe.talentmanagementback.entity.dto.EvaluationSendDTO;
+import com.foe.talentmanagementback.entity.dto.EvaluationStatisticDTO;
 import com.foe.talentmanagementback.service.impl.T_evaluation_detailsServiceImpl;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,12 @@ public class T_evaluation_detailsController {
         return evaluationDetailsService.getEvaluationsByArchiveId(archiveId);
     }
 
+    @GetMapping("/archives/{archiveId}/evaluation-statistics")
+    @ApiOperation(value = "通过archiveId查询评价，成功返回评价链表，失败返回错误信息")
+    @ApiImplicitParam(name = "archiveId", value = "档案id", dataType = "Integer", paramType = "path", required = true)
+    public Result<EvaluationStatisticDTO> getEvaluationStatisticByArchiveId(@PathVariable("archiveId") Integer archiveId){
+        return evaluationDetailsService.getEvaluationStatisticByArchiveId(archiveId);
+    }
     /**
     * @Description:
     * @Param:

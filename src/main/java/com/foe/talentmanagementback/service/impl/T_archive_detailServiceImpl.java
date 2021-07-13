@@ -2,6 +2,10 @@ package com.foe.talentmanagementback.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.foe.talentmanagementback.entity.Result;
+import com.foe.talentmanagementback.entity.bo.ExperienceDetailBO;
+import com.foe.talentmanagementback.entity.dto.ArchiveDTO;
+import com.foe.talentmanagementback.entity.dto.EvaluationStatisticDTO;
+import com.foe.talentmanagementback.entity.dto.WorkExperienceListDTO;
 import com.foe.talentmanagementback.entity.pojo.T_archive_detail;
 import com.foe.talentmanagementback.entity.dto.WorkExperienceDTO;
 import com.foe.talentmanagementback.entity.enums.ResultMsg;
@@ -39,6 +43,11 @@ public class T_archive_detailServiceImpl extends ServiceImpl<T_archive_detailMap
     @Autowired
     private T_departmentServiceImpl departmentService;
 
+    @Autowired
+    private T_workerServiceImpl workerService;
+    @Autowired
+    private T_evaluation_detailsServiceImpl evaluationDetailsService;
+
     @Override
     public Result<List<WorkExperienceDTO>> getArchivesByTalentId(int talentId) {
         ModelMapper modelMapper = new ModelMapper();
@@ -67,11 +76,20 @@ public class T_archive_detailServiceImpl extends ServiceImpl<T_archive_detailMap
     }
 
     @Override
-    public Result<T_archive_detail> getArchiveBytIdWcId(int talentId, int companyId) {
+    public Result<ExperienceDetailBO> getArchiveBytIdWcId(int talentId, int companyId) {
         QueryWrapper<T_archive_detail> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("talent_id",talentId);
         queryWrapper.eq("company_id",companyId);
         T_archive_detail archiveDetail = archive_detailMapper.selectOne(queryWrapper);
-        return ResultUtils.success(archiveDetail);
+        Integer archiveId = archiveDetail.getId();
+        ModelMapper modelMapper = new ModelMapper();
+        ExperienceDetailBO experienceDetailBO = new ExperienceDetailBO();
+        ArchiveDTO archive = modelMapper.map(archiveDetail, ArchiveDTO.class);
+        experienceDetailBO.setArchive(archive);
+        experienceDetailBO.setWorkExperience(this.workerService.getWorkerByArchiveId(archiveId).getData());
+        experienceDetailBO.setEvaluationSends(this.evaluationDetailsService.getEvaluationsByArchiveId(archiveId).getData());
+        experienceDetailBO.setEvaluationStatistic(this.evaluationDetailsService.getEvaluationStatisticByArchiveId(archiveId).getData());
+
+        return ResultUtils.success(ResultMsg.SUCCESS,experienceDetailBO);
     }
 }

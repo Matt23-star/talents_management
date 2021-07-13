@@ -23,10 +23,9 @@ public class V_evaluatorServiceImpl extends ServiceImpl<V_evaluatorMapper, V_eva
     private V_evaluatorMapper evaluatorMapper;
 
     @Override
-    public Result<V_evaluator> getEvaluatorByTalentId(Integer talentId) {
-
+    public Result<V_evaluator> getEvaluatorByArchiveId(Integer archiveId) {
         QueryWrapper<V_evaluator> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("evaluator",talentId);
+        queryWrapper.eq("evaluation_id",archiveId);
         return ResultUtils.success(ResultMsg.SUCCESS,evaluatorMapper.selectOne(queryWrapper));
     }
 }

@@ -13,6 +13,8 @@ import java.util.Date;
 @Data
 public class WorkExperienceDTO {
 
+    private Integer companyId;
+
     private String companyName;
 
     private String departmentNameLast;

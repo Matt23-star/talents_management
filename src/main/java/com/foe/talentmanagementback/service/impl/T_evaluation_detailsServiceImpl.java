@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.foe.talentmanagementback.entity.Result;
 import com.foe.talentmanagementback.entity.ResultMessage;
 import com.foe.talentmanagementback.entity.dto.EvaluationSendDTO;
+import com.foe.talentmanagementback.entity.dto.EvaluationStatisticDTO;
 import com.foe.talentmanagementback.entity.enums.ResultMsg;
 import com.foe.talentmanagementback.entity.pojo.T_archive_detail;
 import com.foe.talentmanagementback.entity.pojo.T_evaluation_details;
@@ -60,8 +61,8 @@ public class T_evaluation_detailsServiceImpl extends ServiceImpl<T_evaluation_de
         for (EvaluationSendDTO evaluationSendDTO :
                 evaluationSendDTOS) {
             V_evaluator evaluator = evaluatorService
-                    .getEvaluatorByTalentId(evaluationSendDTO
-                            .getEvaluator())
+                    .getEvaluatorByArchiveId(evaluationSendDTO
+                            .getEvaluationId())
                     .getData();
             if (evaluator != null) {
                 evaluationSendDTO.setEvaluatorName(evaluator.getEvaluatorName());
@@ -70,6 +71,38 @@ public class T_evaluation_detailsServiceImpl extends ServiceImpl<T_evaluation_de
         return ResultUtils.success(ResultMsg.SUCCESS,evaluationSendDTOS);
     }
 
+    /**
+     * @author: Matt
+     * @date: 2021-07-13 14:36
+     * @description: 获得评价统计
+     */
+
+    public Result<EvaluationStatisticDTO> getEvaluationStatisticByArchiveId(Integer archiveId) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("archive_detail_id", archiveId);
+        List<T_evaluation_details> evaluationDetails = this.evaluationDetailsMapper.selectList(queryWrapper);
+        if (evaluationDetails.isEmpty()) {
+            return ResultUtils.error(ResultMsg.EVALUATION_NOT_EXIST);
+        } else {
+            EvaluationStatisticDTO evaluationStatisticDTO = new EvaluationStatisticDTO();
+            evaluationStatisticDTO.setAbilityAvg((float)evaluationDetails.stream().mapToDouble((evaluationDetail) -> {
+                return (double)evaluationDetail.getAbility();
+            }).average().getAsDouble());
+            evaluationStatisticDTO.setExecutiveAbilityAvg((float)evaluationDetails.stream().mapToDouble((evaluationDetail) -> {
+                return (double)evaluationDetail.getExecutiveAbility();
+            }).average().getAsDouble());
+            evaluationStatisticDTO.setOpinionValueAvg((float)evaluationDetails.stream().mapToDouble((evaluationDetail) -> {
+                return (double)evaluationDetail.getOpinionValue();
+            }).average().getAsDouble());
+            evaluationStatisticDTO.setPerformanceAvg((float)evaluationDetails.stream().mapToDouble((evaluationDetail) -> {
+                return (double)evaluationDetail.getPerformance();
+            }).average().getAsDouble());
+            evaluationStatisticDTO.setProfessionKAvg((float)evaluationDetails.stream().mapToDouble((evaluationDetail) -> {
+                return (double)evaluationDetail.getProfessionalKnowledge();
+            }).average().getAsDouble());
+            return ResultUtils.success(ResultMsg.SUCCESS, evaluationStatisticDTO);
+        }
+    }
  /**
  * @Description:
  * @Param:
