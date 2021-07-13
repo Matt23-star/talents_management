@@ -26,6 +26,8 @@ __BasePath__ : /
 === Tags
 
 * HR接口 : T _hr Controller
+* t-_worker-controller : T _worker Controller
+* v-_evaluator-controller : V _evaluator Controller
 * 公司接口 : T _company Controller
 * 档案接口 : T _archive _detail Controller
 * 注册接口 : T _register Controller

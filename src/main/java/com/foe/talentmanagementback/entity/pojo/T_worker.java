@@ -1,8 +1,7 @@
 package com.foe.talentmanagementback.entity.pojo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import io.swagger.annotations.ApiModel;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.foe.talentmanagementback.utils.FloatConvert;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -25,6 +24,7 @@ public class T_worker implements Serializable {
 
     private Integer workingYears;
 
+    @JsonSerialize(using = FloatConvert.class)
     private Float salary;
 
     private String jobType;

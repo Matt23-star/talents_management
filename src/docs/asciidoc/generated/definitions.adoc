@@ -2,8 +2,31 @@
 [[_definitions]]
 == Definitions
 
-[[_evaluationdto]]
-=== EvaluationDTO
+[[_archivedto]]
+=== ArchiveDTO
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**absenceTimes** +
+__optional__|integer(int32)
+|**awardTimes** +
+__optional__|integer(int32)
+|**earlyLeaveTimes** +
+__optional__|integer(int32)
+|**lateTimes** +
+__optional__|integer(int32)
+|**leaveTimes** +
+__optional__|integer(int32)
+|**punishmentTimes** +
+__optional__|integer(int32)
+|**workingDays** +
+__optional__|integer(int32)
+|===
+
+
+[[_evaluationreceivedto]]
+=== EvaluationReceiveDTO
 
 [options="header", cols=".^3,.^4"]
 |===
@@ -12,8 +35,12 @@
 __optional__|integer(int32)
 |**comment** +
 __optional__|string
+|**companyId** +
+__optional__|string
 |**evaluator** +
 __optional__|string
+|**executiveAbility** +
+__optional__|integer(int32)
 |**opinionValue** +
 __optional__|integer(int32)
 |**performance** +
@@ -22,6 +49,61 @@ __optional__|integer(int32)
 __optional__|integer(int32)
 |**talentId** +
 __optional__|string
+|===
+
+
+[[_evaluationsenddto]]
+=== EvaluationSendDTO
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**comment** +
+__optional__|string
+|**date** +
+__optional__|string(date-time)
+|**evaluationId** +
+__optional__|integer(int32)
+|**evaluator** +
+__optional__|integer(int32)
+|**evaluatorName** +
+__optional__|string
+|===
+
+
+[[_evaluationstatisticdto]]
+=== EvaluationStatisticDTO
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**abilityAvg** +
+__optional__|number(float)
+|**executiveAbilityAvg** +
+__optional__|number(float)
+|**opinionValueAvg** +
+__optional__|number(float)
+|**performanceAvg** +
+__optional__|number(float)
+|**professionKAvg** +
+__optional__|number(float)
+|===
+
+
+[[_experiencedetailbo]]
+=== ExperienceDetailBO
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**archive** +
+__optional__|<<_archivedto,ArchiveDTO>>
+|**evaluationSends** +
+__optional__|< <<_evaluationsenddto,EvaluationSendDTO>> > array
+|**evaluationStatistic** +
+__optional__|<<_evaluationstatisticdto,EvaluationStatisticDTO>>
+|**workExperience** +
+__optional__|<<_workexperiencelistdto,WorkExperienceListDTO>>
 |===
 
 
@@ -58,6 +140,51 @@ __optional__|部门名称|string
 __optional__|integer(int32)
 |**data** +
 __optional__|object
+|**message** +
+__optional__|string
+|===
+
+
+[[_6d7a9957e79f8df09df6047b23ab2ad7]]
+=== Result«EvaluationStatisticDTO»
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**code** +
+__optional__|integer(int32)
+|**data** +
+__optional__|<<_evaluationstatisticdto,EvaluationStatisticDTO>>
+|**message** +
+__optional__|string
+|===
+
+
+[[_84d4ba3fce9f7b7ab414cce9d399219a]]
+=== Result«ExperienceDetailBO»
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**code** +
+__optional__|integer(int32)
+|**data** +
+__optional__|<<_experiencedetailbo,ExperienceDetailBO>>
+|**message** +
+__optional__|string
+|===
+
+
+[[_919720dcd112009efe3d9c84d381e357]]
+=== Result«List«EvaluationSendDTO»»
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**code** +
+__optional__|integer(int32)
+|**data** +
+__optional__|< <<_evaluationsenddto,EvaluationSendDTO>> > array
 |**message** +
 __optional__|string
 |===
@@ -108,21 +235,6 @@ __optional__|string
 |===
 
 
-[[_9a9d54c5d66d1d08c2005c8633fe9f69]]
-=== Result«T_archive_detail»
-
-[options="header", cols=".^3,.^4"]
-|===
-|Name|Schema
-|**code** +
-__optional__|integer(int32)
-|**data** +
-__optional__|<<_t_archive_detail,T_archive_detail>>
-|**message** +
-__optional__|string
-|===
-
-
 [[_0c9f50bc6757fa4f34833fdbae49ecf9]]
 === Result«T_department»
 
@@ -168,46 +280,33 @@ __optional__|string
 |===
 
 
-[[_t_archive_detail]]
-=== T_archive_detail
+[[_3c641a04a7e1d09b45f9467ed8e6f6af]]
+=== Result«V_evaluator»
 
-[options="header", cols=".^3,.^11,.^4"]
+[options="header", cols=".^3,.^4"]
 |===
-|Name|Description|Schema
-|**absenceTimes** +
-__optional__||integer(int32)
-|**awardTimes** +
-__optional__||integer(int32)
-|**companyId** +
-__optional__|公司ID|integer(int32)
-|**contract** +
-__optional__||string
-|**contractBeginDate** +
-__optional__||string(date-time)
-|**contractDeadline** +
-__optional__||string(date-time)
-|**departmentLast** +
-__optional__||integer(int32)
-|**earlyLeaveTimes** +
-__optional__||integer(int32)
-|**entryTime** +
-__optional__||string(date-time)
-|**id** +
-__optional__|档案ID|integer(int32)
-|**jobNumber** +
-__optional__||integer(int32)
-|**lateTimes** +
-__optional__||integer(int32)
-|**leaveTimes** +
-__optional__||integer(int32)
-|**positionLast** +
-__optional__||string
-|**punishmentTimes** +
-__optional__||integer(int32)
-|**quitTime** +
-__optional__||string(date-time)
-|**talentId** +
-__optional__||integer(int32)
+|Name|Schema
+|**code** +
+__optional__|integer(int32)
+|**data** +
+__optional__|<<_v_evaluator,V_evaluator>>
+|**message** +
+__optional__|string
+|===
+
+
+[[_39922d4e5ea8ad4e74869bbd31a169ed]]
+=== Result«WorkExperienceListDTO»
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**code** +
+__optional__|integer(int32)
+|**data** +
+__optional__|<<_workexperiencelistdto,WorkExperienceListDTO>>
+|**message** +
+__optional__|string
 |===
 
 
@@ -353,12 +452,31 @@ __optional__|enum (UserRight{idCode=1, userRight='normalUser'}, UserRight{idCode
 |===
 
 
+[[_v_evaluator]]
+=== V_evaluator
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**date** +
+__optional__|string(date-time)
+|**evaluationId** +
+__optional__|integer(int32)
+|**evaluator** +
+__optional__|integer(int32)
+|**evaluatorName** +
+__optional__|string
+|===
+
+
 [[_workexperiencedto]]
 === WorkExperienceDTO
 
 [options="header", cols=".^3,.^4"]
 |===
 |Name|Schema
+|**companyId** +
+__optional__|integer(int32)
 |**companyName** +
 __optional__|string
 |**departmentNameLast** +
@@ -371,6 +489,23 @@ __optional__|integer(int32)
 __optional__|string
 |**quitTime** +
 __optional__|string(date-time)
+|===
+
+
+[[_workexperiencelistdto]]
+=== WorkExperienceListDTO
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**departmentNames** +
+__optional__|< string > array
+|**positions** +
+__optional__|< string > array
+|**salaries** +
+__optional__|< number(float) > array
+|**workingYears** +
+__optional__|< integer(int32) > array
 |===
 
 

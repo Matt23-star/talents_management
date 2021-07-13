@@ -1,7 +1,7 @@
 package com.foe.talentmanagementback.entity.dto;
 
-import com.foe.talentmanagementback.entity.pojo.T_department;
-import lombok.Data;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.foe.talentmanagementback.utils.FloatConvert;
 
 import java.util.ArrayList;
 import java.util.List;
