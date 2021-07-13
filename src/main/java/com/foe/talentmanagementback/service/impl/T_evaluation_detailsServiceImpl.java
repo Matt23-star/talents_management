@@ -92,6 +92,7 @@ public class T_evaluation_detailsServiceImpl extends ServiceImpl<T_evaluation_de
             evaluationDetails.setOpinionValue(opinionValue);
             evaluationDetails.setAbility(ability);
             evaluationDetails.setPerformance(performance);
+            evaluationDetails.setExecutiveAbility(executiveAbility);
             evaluationDetails.setComment(comment);
             evaluationDetails.setEvaluator(evaluator);
             int resultEva = evaluationDetailsMapper.insert(evaluationDetails);
