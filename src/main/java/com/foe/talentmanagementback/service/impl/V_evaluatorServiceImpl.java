@@ -22,10 +22,19 @@ public class V_evaluatorServiceImpl extends ServiceImpl<V_evaluatorMapper, V_eva
     @Autowired
     private V_evaluatorMapper evaluatorMapper;
 
+    /**
+     * @author: Matt
+     * @date: 2021-07-10 10:59
+     * @description: 通过评价表id查询评价人
+     */
+
     @Override
-    public Result<V_evaluator> getEvaluatorByArchiveId(Integer archiveId) {
+    public Result<V_evaluator> getEvaluatorByEvaluationId(Integer evaluationId) {
         QueryWrapper<V_evaluator> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("evaluation_id",archiveId);
-        return ResultUtils.success(ResultMsg.SUCCESS,evaluatorMapper.selectOne(queryWrapper));
+        queryWrapper.eq("evaluation_id",evaluationId);
+        V_evaluator evaluator = evaluatorMapper.selectOne(queryWrapper);
+        if(evaluator == null)
+            return ResultUtils.error(ResultMsg.EVALUATOR_NOT_EXIST);
+        return ResultUtils.success(ResultMsg.SUCCESS,evaluator);
     }
 }

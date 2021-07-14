@@ -33,23 +33,6 @@ public class T_hrController {
     @Autowired
     private T_evaluation_detailsServiceImpl evaluationDetailsService;
 
-//    @GetMapping("/talentArchive/{talentId}/{companyId}")
-//    @ApiOperation(value = "查询特定公司特定员工档案")
-//    public Result<Archive> getAtchiveOfOneTalentInCo(@ApiParam(value = "系统人才id，公司id", required = true) @PathVariable("talentId") int talentId,
-//                                            @PathVariable("companyId") int companyId) {
-//        Archive archive = new Archive();
-//        T_archive_detail archiveDetail = archiveDetailService.getArchiveBytIdWcId(talentId, companyId).getData();
-//
-//        //调用archiveDetailService中getArchiveBytIdWcId
-//        //给档案对象Archive中archiveDetail赋值
-//        archive.setArchiveDetail(archiveDetail);
-//        //通过上方档案记录的id查询 评价记录
-//        archive.setEvaluationDetails(evaluationDetailsService.getEvaluationsByADId(archiveDetail.getId()).getData());
-//        //通过上方档案记录的id查询 考勤信息
-//        archive.setWorkAttendances(workAttendanceService.getAttendancesByADId(archiveDetail.getId()).getData());
-//        return ResultUtils.success(archive);
-//    }
-
     @GetMapping("/hrImf/{hrId}")
     @ApiOperation(value = "查询hr信息")
     @ApiImplicitParam(name = "hrId", value = "")

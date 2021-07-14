@@ -24,6 +24,6 @@ public class V_evaluatorController {
 
     @GetMapping("/archives/{archiveId}")
     public Result<V_evaluator> getEvaluatorByTalentId(@PathVariable("archiveId") Integer archiveId){
-        return evaluatorService.getEvaluatorByArchiveId(archiveId);
+        return evaluatorService.getEvaluatorByEvaluationId(archiveId);
     }
 }

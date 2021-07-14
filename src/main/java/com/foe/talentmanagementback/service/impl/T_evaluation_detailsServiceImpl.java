@@ -64,7 +64,7 @@ public class T_evaluation_detailsServiceImpl extends ServiceImpl<T_evaluation_de
         for (EvaluationSendDTO evaluationSendDTO :
                 evaluationSendDTOS) {
             V_evaluator evaluator = evaluatorService
-                    .getEvaluatorByArchiveId(evaluationSendDTO
+                    .getEvaluatorByEvaluationId(evaluationSendDTO
                             .getId())
                     .getData();
             if (evaluator != null) {
@@ -87,6 +87,7 @@ public class T_evaluation_detailsServiceImpl extends ServiceImpl<T_evaluation_de
             return ResultUtils.error(ResultMsg.EVALUATION_NOT_EXIST);
         } else {
             EvaluationStatisticDTO evaluationStatisticDTO = new EvaluationStatisticDTO();
+            //获得链表中某一属性的平均值
             evaluationStatisticDTO.setAbilityAvg((float) evaluationDetails.stream().mapToDouble((evaluationDetail) -> {
                 return (double) evaluationDetail.getAbility();
             }).average().getAsDouble());

@@ -46,5 +46,4 @@ public class T_departmentServiceImpl extends ServiceImpl<T_departmentMapper, T_d
         return ResultUtils.success(ResultMsg.SUCCESS,departmentMapper.selectList(queryWrapper));
     }
 
-
 }
