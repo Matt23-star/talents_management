@@ -17,6 +17,6 @@ import org.springframework.stereotype.Component;
 public interface T_organizationMapper extends BaseMapper<MyOrganizationDTO> {
     @Select("select ad.company_id,c.name,c.certification,ad.department_last,d.department_name,d.department_function " +
             " from t_archive_detail ad,t_company c,t_department d " +
-            " where ad.company_id = c.id and ad.company_id = d.company_id and ad.department_last = d.id and ad.talent_id = #{id}")
-    MyOrganizationDTO getMyOrganization(int id);
+            " where ad.company_id = c.id and ad.company_id = d.company_id and ad.department_last = d.id and ad.talent_id = #{arg0} and ad.company_id = #{arg1}")
+    MyOrganizationDTO getMyOrganization(int talentId,int companyId);
 }

@@ -107,6 +107,61 @@ __optional__|<<_workexperiencelistdto,WorkExperienceListDTO>>
 |===
 
 
+[[_evaluationsenddto]]
+=== EvaluationSendDTO
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**comment** +
+__optional__|string
+|**date** +
+__optional__|string(date-time)
+|**evaluationId** +
+__optional__|integer(int32)
+|**evaluator** +
+__optional__|integer(int32)
+|**evaluatorName** +
+__optional__|string
+|===
+
+
+[[_evaluationstatisticdto]]
+=== EvaluationStatisticDTO
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**abilityAvg** +
+__optional__|number(float)
+|**executiveAbilityAvg** +
+__optional__|number(float)
+|**opinionValueAvg** +
+__optional__|number(float)
+|**performanceAvg** +
+__optional__|number(float)
+|**professionKAvg** +
+__optional__|number(float)
+|===
+
+
+[[_experiencedetailbo]]
+=== ExperienceDetailBO
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**archive** +
+__optional__|<<_archivedto,ArchiveDTO>>
+|**evaluationSends** +
+__optional__|< <<_evaluationsenddto,EvaluationSendDTO>> > array
+|**evaluationStatistic** +
+__optional__|<<_evaluationstatisticdto,EvaluationStatisticDTO>>
+|**workExperience** +
+__optional__|<<_workexperiencelistdto,WorkExperienceListDTO>>
+|===
+
+
 [[_myorganizationdto]]
 === MyOrganizationDTO
 包含了我的组织页面的全部信息
@@ -140,6 +195,51 @@ __optional__|部门名称|string
 __optional__|integer(int32)
 |**data** +
 __optional__|object
+|**message** +
+__optional__|string
+|===
+
+
+[[_6d7a9957e79f8df09df6047b23ab2ad7]]
+=== Result«EvaluationStatisticDTO»
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**code** +
+__optional__|integer(int32)
+|**data** +
+__optional__|<<_evaluationstatisticdto,EvaluationStatisticDTO>>
+|**message** +
+__optional__|string
+|===
+
+
+[[_84d4ba3fce9f7b7ab414cce9d399219a]]
+=== Result«ExperienceDetailBO»
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**code** +
+__optional__|integer(int32)
+|**data** +
+__optional__|<<_experiencedetailbo,ExperienceDetailBO>>
+|**message** +
+__optional__|string
+|===
+
+
+[[_919720dcd112009efe3d9c84d381e357]]
+=== Result«List«EvaluationSendDTO»»
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**code** +
+__optional__|integer(int32)
+|**data** +
+__optional__|< <<_evaluationsenddto,EvaluationSendDTO>> > array
 |**message** +
 __optional__|string
 |===
@@ -235,21 +335,6 @@ __optional__|string
 |===
 
 
-[[_0c9f50bc6757fa4f34833fdbae49ecf9]]
-=== Result«T_department»
-
-[options="header", cols=".^3,.^4"]
-|===
-|Name|Schema
-|**code** +
-__optional__|integer(int32)
-|**data** +
-__optional__|<<_t_department,T_department>>
-|**message** +
-__optional__|string
-|===
-
-
 [[_c7a36d9936a64679239f3946d21b9f3d]]
 === Result«T_talent»
 
@@ -275,6 +360,21 @@ __optional__|string
 __optional__|integer(int32)
 |**data** +
 __optional__|<<_userdto,UserDTO>>
+|**message** +
+__optional__|string
+|===
+
+
+[[_3c641a04a7e1d09b45f9467ed8e6f6af]]
+=== Result«V_evaluator»
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**code** +
+__optional__|integer(int32)
+|**data** +
+__optional__|<<_v_evaluator,V_evaluator>>
 |**message** +
 __optional__|string
 |===
@@ -347,7 +447,7 @@ __optional__|integer(int32)
 [[_t_talent]]
 === T_talent
 
-[options="header", cols=".^3,.^11,.^4"]
+[options="header", cols=".^3,.^4"]
 |===
 |Name|Description|Schema
 |**accountNumber** +

@@ -13,5 +13,5 @@ import org.apache.ibatis.annotations.Select;
  */
 public interface IT_organizationService {
 
-   Result<MyOrganizationDTO> getMyOrganization(int id);
+   Result<MyOrganizationDTO> getMyOrganization(int talentId,int companyId);
 }

@@ -23,9 +23,9 @@ public class T_organizationServiceImpl implements IT_organizationService {
     private T_organizationMapper organizationMapper;
 
     @Override
-    public Result<MyOrganizationDTO> getMyOrganization(int id) {
+    public Result<MyOrganizationDTO> getMyOrganization(int talentId,int companyId) {
 
-        return ResultUtils.success(new ResultMessage(200,"成功了呢giegie"),organizationMapper.getMyOrganization(id));
+        return ResultUtils.success(new ResultMessage(200,"成功了呢giegie"),organizationMapper.getMyOrganization(talentId,companyId));
 
     }
 }

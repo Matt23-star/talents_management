@@ -27,8 +27,8 @@ public class T_organizationController {
      * @Author: 张越
      * @Date: 2021/7/12
      */
-    @GetMapping("/{id}")
-    public Result<MyOrganizationDTO> getMyOrganization(@PathVariable("id")int id){
-        return organizationService.getMyOrganization(id);
+    @GetMapping("/{companyId}/talents/{talentId}")
+    public Result<MyOrganizationDTO> getMyOrganization(@PathVariable("companyId")int companyId,@PathVariable("talentId")int talentId){
+        return organizationService.getMyOrganization(talentId,companyId);
     }
 }
