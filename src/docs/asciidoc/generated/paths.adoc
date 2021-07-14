@@ -121,6 +121,45 @@ __required__|companyid|integer(int32)
 * 公司接口
 
 
+[[_getdepartmentsbycoidusingget]]
+=== 通过部门companyId查询部门信息，成功返回
+....
+GET /api/department/companies/{companyId}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**companyId** +
+__required__|companyId|integer(int32)
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_7290ea99480c6977897297ef646418c0,Result«List«T_department»»>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* 部门接口
+
+
 [[_getdepartmentbymanagerusingget]]
 === 通过部门经理talentId查询部门信息，成功返回T_department，失败返回错误信息
 ....
@@ -302,7 +341,7 @@ __required__|档案id|ref
 
 
 [[_getevaluationstatisticbyarchiveidusingget]]
-=== 通过archiveId查询评价，成功返回评价链表，失败返回错误信息
+=== 通过archiveId查询评价统计，成功返回评价统计，失败返回错误信息
 ....
 GET /api/evaluations/archives/{archiveId}/evaluation-statistics
 ....
@@ -314,6 +353,45 @@ GET /api/evaluations/archives/{archiveId}/evaluation-statistics
 |===
 |Type|Name|Description|Schema
 |**Path**|**archiveId** +
+__required__|档案id|ref
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_6d7a9957e79f8df09df6047b23ab2ad7,Result«EvaluationStatisticDTO»>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* 评价详情接口
+
+
+[[_getevaluationstatisticbytalentidusingget]]
+=== 通过talentId查询评价统计，成功返回所有公司的评价统计，失败返回错误信息
+....
+GET /api/evaluations/talents/{talentId}/evaluation-statistics
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**talentId** +
 __required__|档案id|ref
 |===
 
@@ -468,7 +546,7 @@ __required__|密码password|string
 [[_getmyorganizationusingget]]
 === getMyOrganization
 ....
-GET /api/organizations/{id}
+GET /api/organizations/{companyId}/talents/{talentId}
 ....
 
 
@@ -477,8 +555,10 @@ GET /api/organizations/{id}
 [options="header", cols=".^2,.^3,.^9,.^4"]
 |===
 |Type|Name|Description|Schema
-|**Path**|**id** +
-__required__|id|integer(int32)
+|**Path**|**companyId** +
+__required__|companyId|integer(int32)
+|**Path**|**talentId** +
+__required__|talentId|integer(int32)
 |===
 
 

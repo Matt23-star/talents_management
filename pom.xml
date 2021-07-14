@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.foe</groupId>
     <artifactId>Talent-management</artifactId>
-    <version>0.2.2</version>
+    <version>0.2.3</version>
     <name>Talent-management-back</name>
     <description>Demo project for Spring Boot</description>
 
