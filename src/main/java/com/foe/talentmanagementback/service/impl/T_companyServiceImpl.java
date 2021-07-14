@@ -2,6 +2,7 @@ package com.foe.talentmanagementback.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.foe.talentmanagementback.entity.Result;
+import com.foe.talentmanagementback.entity.dto.TalentDTO;
 import com.foe.talentmanagementback.entity.pojo.T_company;
 import com.foe.talentmanagementback.entity.pojo.T_talent;
 import com.foe.talentmanagementback.mapper.T_companyMapper;
@@ -45,6 +46,7 @@ public class T_companyServiceImpl extends ServiceImpl<T_companyMapper, T_company
     public Result<List<T_talent>> getTalentByCompanyId(int companyId) {
         QueryWrapper queryWrapper =new QueryWrapper();
         queryWrapper.eq("company_id",companyId);
-        return ResultUtils.success(talentMapper.selectList(queryWrapper));
+        List<TalentDTO> talents = companyMapper.getTalentByCompanyId(companyId);
+        return ResultUtils.success(talents);
     }
 }

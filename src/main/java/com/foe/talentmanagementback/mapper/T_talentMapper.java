@@ -1,8 +1,12 @@
 package com.foe.talentmanagementback.mapper;
 
+import com.foe.talentmanagementback.entity.dto.TalentDTO;
 import com.foe.talentmanagementback.entity.pojo.T_talent;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
