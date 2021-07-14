@@ -1,12 +1,17 @@
 package com.foe.talentmanagementback.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.foe.talentmanagementback.entity.Result;
+import com.foe.talentmanagementback.entity.enums.ResultMsg;
 import com.foe.talentmanagementback.entity.pojo.T_department;
 import com.foe.talentmanagementback.mapper.T_departmentMapper;
 import com.foe.talentmanagementback.service.IT_departmentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.foe.talentmanagementback.utils.ResultUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -32,6 +37,13 @@ public class T_departmentServiceImpl extends ServiceImpl<T_departmentMapper, T_d
     @Override
     public T_department getDepartmentById(Integer departmentId) {
         return departmentMapper.selectById(departmentId);
+    }
+
+    @Override
+    public Result<List<T_department>> getDepartmentsByCoId(Integer companyId) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("company_id",companyId);
+        return ResultUtils.success(ResultMsg.SUCCESS,departmentMapper.selectList(queryWrapper));
     }
 
 

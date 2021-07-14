@@ -9,8 +9,11 @@ import com.foe.talentmanagementback.utils.ResultUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * <p>
@@ -42,5 +45,10 @@ public class T_departmentController {
         return ResultUtils.success(ResultMsg.SUCCESS, departmentService.getDepartmentById(departmentId));
     }
 
+    @GetMapping("/companies/{companyId}")
+    @ApiOperation(value = "通过部门companyId查询部门信息，成功返回")
+    public Result<List<T_department>> getDepartmentsByCoId(@PathVariable("companyId") Integer companyId){
+        return departmentService.getDepartmentsByCoId(companyId);
+    }
 }
 
