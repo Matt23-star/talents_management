@@ -90,16 +90,16 @@ public class T_evaluation_detailsServiceImpl extends ServiceImpl<T_evaluation_de
             evaluationStatisticDTO.setAbilityAvg((float) evaluationDetails.stream().mapToDouble((evaluationDetail) -> {
                 return (double) evaluationDetail.getAbility();
             }).average().getAsDouble());
-            evaluationStatisticDTO.setExecutiveAbilityAvg((float)evaluationDetails.stream().mapToDouble((evaluationDetail) -> {
+            evaluationStatisticDTO.setExecutiveAbilityAvg((float) evaluationDetails.stream().mapToDouble((evaluationDetail) -> {
                 return (double) evaluationDetail.getExecutiveAbility();
             }).average().getAsDouble());
-            evaluationStatisticDTO.setOpinionValueAvg((float)evaluationDetails.stream().mapToDouble((evaluationDetail) -> {
+            evaluationStatisticDTO.setOpinionValueAvg((float) evaluationDetails.stream().mapToDouble((evaluationDetail) -> {
                 return (double) evaluationDetail.getOpinionValue();
             }).average().getAsDouble());
-            evaluationStatisticDTO.setPerformanceAvg((float)evaluationDetails.stream().mapToDouble((evaluationDetail) -> {
+            evaluationStatisticDTO.setPerformanceAvg((float) evaluationDetails.stream().mapToDouble((evaluationDetail) -> {
                 return (double) evaluationDetail.getPerformance();
             }).average().getAsDouble());
-            evaluationStatisticDTO.setProfessionKAvg((float)evaluationDetails.stream().mapToDouble((evaluationDetail) -> {
+            evaluationStatisticDTO.setProfessionKAvg((float) evaluationDetails.stream().mapToDouble((evaluationDetail) -> {
                 return (double) evaluationDetail.getProfessionalKnowledge();
             }).average().getAsDouble());
             return ResultUtils.success(ResultMsg.SUCCESS, evaluationStatisticDTO);
@@ -107,13 +107,12 @@ public class T_evaluation_detailsServiceImpl extends ServiceImpl<T_evaluation_de
     }
 
     /**
-     *
      * @author: Matt
      * @date: 2021-07-13 16:49
      * @description:
      */
     @Override
-    public Result<List<EvaluationStatisticDTO>> getEvaluationStatisticsByTalentId(Integer talentId) {
+    public Result<EvaluationStatisticDTO> getEvaluationStatisticsByTalentId(Integer talentId) {
 
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("talent_id", talentId);
@@ -121,9 +120,28 @@ public class T_evaluation_detailsServiceImpl extends ServiceImpl<T_evaluation_de
         List<EvaluationStatisticDTO> evaluationStatistics = new ArrayList<>();
         for (T_archive_detail archiveDetail :
                 archiveDetails) {
-            evaluationStatistics.add(getEvaluationStatisticByArchiveId(archiveDetail.getId()).getData());
+            EvaluationStatisticDTO evaluationStatistic = getEvaluationStatisticByArchiveId(archiveDetail.getId()).getData();
+            if (evaluationStatistic != null)
+                evaluationStatistics.add(evaluationStatistic);
         }
-        return ResultUtils.success(ResultMsg.SUCCESS,evaluationStatistics);
+
+        EvaluationStatisticDTO evaluationStatisticDTO = new EvaluationStatisticDTO();
+        evaluationStatisticDTO.setAbilityAvg((float) evaluationStatistics.stream().mapToDouble((evaluationStatistic) -> {
+            return (double) evaluationStatistic.getAbilityAvg();
+        }).average().getAsDouble());
+        evaluationStatisticDTO.setExecutiveAbilityAvg((float) evaluationStatistics.stream().mapToDouble((evaluationStatistic) -> {
+            return (double) evaluationStatistic.getExecutiveAbilityAvg();
+        }).average().getAsDouble());
+        evaluationStatisticDTO.setOpinionValueAvg((float) evaluationStatistics.stream().mapToDouble((evaluationStatistic) -> {
+            return (double) evaluationStatistic.getOpinionValueAvg();
+        }).average().getAsDouble());
+        evaluationStatisticDTO.setPerformanceAvg((float) evaluationStatistics.stream().mapToDouble((evaluationStatistic) -> {
+            return (double) evaluationStatistic.getPerformanceAvg();
+        }).average().getAsDouble());
+        evaluationStatisticDTO.setProfessionKAvg((float) evaluationStatistics.stream().mapToDouble((evaluationStatistic) -> {
+            return (double) evaluationStatistic.getProfessionKAvg();
+        }).average().getAsDouble());
+        return ResultUtils.success(ResultMsg.SUCCESS, evaluationStatisticDTO);
     }
 
 
