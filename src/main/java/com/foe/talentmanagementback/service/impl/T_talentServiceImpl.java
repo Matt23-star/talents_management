@@ -2,6 +2,8 @@ package com.foe.talentmanagementback.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.foe.talentmanagementback.entity.*;
+import com.foe.talentmanagementback.entity.dto.TalentSquareDTO;
+import com.foe.talentmanagementback.entity.pojo.R_ConditionReceiver;
 import com.foe.talentmanagementback.entity.pojo.T_talent;
 import com.foe.talentmanagementback.mapper.*;
 import com.foe.talentmanagementback.service.IT_talentService;
@@ -11,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,10 +26,6 @@ import java.util.List;
 public class T_talentServiceImpl extends ServiceImpl<T_talentMapper, T_talent> implements IT_talentService {
     @Autowired
     private T_talentMapper talentMapper;
-    @Autowired
-    private T_hrMapper hrMapper;
-    @Autowired
-    private T_workerMapper workerMapper;
 
     @Override
     public Result<List<T_talent>> getTalents() {
@@ -63,6 +62,12 @@ public class T_talentServiceImpl extends ServiceImpl<T_talentMapper, T_talent> i
             return ResultUtils.success();
         }
         else return ResultUtils.error(new ResultMessage(500,"更新失败"));
+    }
+
+    @Override
+    public Result<List<TalentSquareDTO>> getTalentInSquare(R_ConditionReceiver receiver) {
+        List<TalentSquareDTO> result = talentMapper.getTalentInSquare(receiver);
+        return ResultUtils.success(result);
     }
 
 

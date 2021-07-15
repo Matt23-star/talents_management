@@ -1,10 +1,13 @@
 package com.foe.talentmanagementback.service;
 
 import com.foe.talentmanagementback.entity.Result;
+import com.foe.talentmanagementback.entity.dto.TalentSquareDTO;
+import com.foe.talentmanagementback.entity.pojo.R_ConditionReceiver;
 import com.foe.talentmanagementback.entity.pojo.T_talent;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,4 +23,5 @@ public interface IT_talentService extends IService<T_talent> {
     Result<T_talent> getTalentById(int id);
     Result addTalent(T_talent newTalent);
     Result updateTalent(T_talent talent);
+    Result<List<TalentSquareDTO>> getTalentInSquare(R_ConditionReceiver receiver);
 }

@@ -2,6 +2,8 @@ package com.foe.talentmanagementback.controller;
 
 
 import com.foe.talentmanagementback.entity.Result;
+import com.foe.talentmanagementback.entity.dto.TalentSquareDTO;
+import com.foe.talentmanagementback.entity.pojo.R_ConditionReceiver;
 import com.foe.talentmanagementback.entity.pojo.T_talent;
 import com.foe.talentmanagementback.service.impl.T_talentServiceImpl;
 import io.swagger.annotations.Api;
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -25,13 +28,21 @@ public class T_talentController {
 
     @Autowired
     private T_talentServiceImpl talentService;
+
     /**
-     * @Description:
+     * @Description: 高级搜索功能，通过各类条件组合查询
      * @Param:
      * @return:
      * @Author: 张越
-     * @Date: 2021/7/12
+     * @Date: 2021/7/14
      */
+    @PostMapping("/square")
+    public Result<List<TalentSquareDTO>> getTalentInSquare(@RequestBody R_ConditionReceiver receiver){
+        System.out.println(receiver.toString());
+        return  talentService.getTalentInSquare(receiver);
+    }
+
+
     @GetMapping("")
     @ApiOperation(value = "无需参数，返回所有T_tanlent数据")
     public Result<List<T_talent>> getTalents(){

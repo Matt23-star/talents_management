@@ -1,5 +1,8 @@
 package com.foe.talentmanagementback.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.foe.talentmanagementback.entity.Result;
 import com.foe.talentmanagementback.entity.ResultMessage;
 import com.foe.talentmanagementback.entity.dto.MyOrganizationDTO;
@@ -9,6 +12,10 @@ import com.foe.talentmanagementback.utils.ResultUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Collection;
+import java.util.Map;
+import java.util.function.Function;
 
 /**
  * Created with IntelliJ IDEA.
@@ -28,4 +35,5 @@ public class T_organizationServiceImpl implements IT_organizationService {
         return ResultUtils.success(new ResultMessage(200,"成功了呢giegie"),organizationMapper.getMyOrganization(talentId,companyId));
 
     }
+
 }

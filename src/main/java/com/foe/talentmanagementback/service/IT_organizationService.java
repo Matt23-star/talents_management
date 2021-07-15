@@ -1,5 +1,6 @@
 package com.foe.talentmanagementback.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.foe.talentmanagementback.entity.Result;
 import com.foe.talentmanagementback.entity.dto.MyOrganizationDTO;
 import org.apache.ibatis.annotations.Select;
@@ -11,7 +12,7 @@ import org.apache.ibatis.annotations.Select;
  * @Date: 2021/07/12/9:41
  * @Description:
  */
-public interface IT_organizationService {
+public interface IT_organizationService  {
 
    Result<MyOrganizationDTO> getMyOrganization(int talentId,int companyId);
 }

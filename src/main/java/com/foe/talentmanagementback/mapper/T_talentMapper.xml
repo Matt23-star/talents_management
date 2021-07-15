@@ -1,5 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.foe.talentmanagementback.mapper.T_talentMapper">
+    <resultMap id="talentDTO" type="com.foe.talentmanagementback.entity.dto.TalentSquareDTO">
+        <result property="id" column="tid"/>
+        <result property="companyId" column="tcid"/>
+        <result property="name" column="tname"/>
+        <result property="age" column="age"/>
+        <result property="sex" column="sex"/>
+        <result property="school" column="school"/>
+        <result property="degree" column="degree"/>
+        <result property="major" column="major"/>
+        <result property="companyName" column="cname"/>
+        <result property="position" column="position_last"/>
+    </resultMap>
 
+    <select id="getTalentInSquare" parameterType="com.foe.talentmanagementback.entity.pojo.R_ConditionReceiver"
+            resultMap="talentDTO">
+        select distinct t.id tid, t.company_id tcid,t.name tname, t.age,t.sex,t.school,t.degree,t.major,
+                c.name cname,
+                ad.position_last
+        from t_talent t, t_archive_detail ad,t_company c,t_evaluation_details ed
+        <where>
+
+            <if test="r.field!=null and r.field!=''">
+                and t.field = #{r.field}
+            </if>
+            <if test="r.major!=null and r.major!=''">
+                and t.major = #{r.major}
+            </if>
+            <if test="r.age!=null and r.age!=''">
+                and t.age between #{r.age[0]} and #{r.age[1]}
+            </if>
+<!--            <if test="r.professionalKnowledge!=null and r.professionalKnowledge!=''">-->
+<!--                and t.professionalKnowledge between #{r.professionalKnowledge[0]} and #{r.professionalKnowledge[1]}-->
+<!--            </if>-->
+<!--            <if test="r.opinionValue!=null and r.opinionValue!=''">-->
+<!--                and t.opinionValue between #{r.opinionValue[0]} and #{r.opinionValue[1]}-->
+<!--            </if>-->
+<!--            <if test="r.ability!=null and r.ability!=''">-->
+<!--                and t.ability between #{r.ability[0]} and #{r.ability[1]}-->
+<!--            </if>-->
+<!--            <if test="r.performance!=null and r.performance!=''">-->
+<!--                and t.performance between #{r.performance[0]} and #{r.performance[1]}-->
+<!--            </if>-->
+<!--            <if test="r.executiveAbility!=null and r.executiveAbility!=''">-->
+<!--                and t.executiveAbility between #{r.executiveAbility[0]} and #{r.executiveAbility[1]}-->
+<!--            </if>-->
+        </where>
+
+    </select>
 </mapper>
