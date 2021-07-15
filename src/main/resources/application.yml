@@ -20,10 +20,11 @@ spring:
     time-zone: GMT+8
   #验证码发送邮箱配置
   mail:
-    host: smtp.163.com
+    host: 123.126.97.3
     username: talent_management@163.com
     password: SCJWCNWTGKFLMPUX
     default-encoding: UTF-8
+    port: 465
     properties:
       mail:
         smtp:
@@ -31,6 +32,10 @@ spring:
           starttls:
             enable: true
             required: true
+          socketFactory:
+            port: 465
+            class: javax.net.ssl.SSLSocketFactory
+            fallback: false
 
 #配置验证码邮件发送方
 mail:

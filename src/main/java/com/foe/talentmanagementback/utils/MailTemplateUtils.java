@@ -1,5 +1,7 @@
 package com.foe.talentmanagementback.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
@@ -17,12 +19,15 @@ import java.io.InputStreamReader;
 @Component
 public class MailTemplateUtils {
 
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     public String getHtml(String title, String userName, String type, String captcha) {
         String emailTemplet = System.getProperty("mail_template");
         emailTemplet = emailTemplet.replace("$(title)", title);
         emailTemplet = emailTemplet.replace("$(userName)", userName);
         emailTemplet = emailTemplet.replace("$(type)", type);
         emailTemplet = emailTemplet.replace("$(captcha)", captcha);
+        System.out.println("设置完成");
         return emailTemplet;
     }
 
@@ -48,12 +53,12 @@ public class MailTemplateUtils {
                 sb.append(lineTxt);
             }
             System.setProperty("mail_template", sb.toString());
-            System.out.println("注入文件:"+sb.toString());
+            logger.info("注入文件:"+sb.toString());
             resourceAsStream.close();
             read.close();
-            System.out.println("注入完成");
+            logger.info("注入完成");
         } catch (IOException e) {
-            System.out.println("读取文件内容出错");
+            logger.error("读取文件内容出错");
             e.printStackTrace();
         }
     }

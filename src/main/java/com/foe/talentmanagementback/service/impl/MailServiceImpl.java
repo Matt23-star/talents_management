@@ -53,6 +53,7 @@ public class MailServiceImpl implements MailService {
         emailTemplate.initEmailTemplate();
         MimeMessage message = mailSender.createMimeMessage();
         try {
+            logger.info("开始设置");
             //true表示需要创建一个multipart message
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
             helper.setFrom(from);
@@ -60,8 +61,9 @@ public class MailServiceImpl implements MailService {
             helper.setSubject(title);//邮件主题
             String email = emailTemplate.getHtml(title, username, "注册验证", code);
             helper.setText(email, true);//邮件内容
+            logger.info("开始发送");
             mailSender.send(message);
-            logger.debug("邮件发送成功");
+            logger.info("邮件发送成功");
         } catch (MessagingException messagingException) {
             logger.error("发送失败！发送人:{}", to);
         }
