@@ -40,14 +40,15 @@ public class MailController {
     @ApiOperation(value = "通过account和password登录系统，返回UserDTO")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "fromId", value = "发送方id", dataType = "Integer", paramType = "query", required = true),
-            @ApiImplicitParam(name = "toId", value = "用户邮箱email", dataType = "Integer", paramType = "query", required = true)
-            @ApiImplicitParam(name = "title", value = "发送邮件的标题title", dataType = "String", paramType = "query", required = true)
+            @ApiImplicitParam(name = "toId", value = "用户邮箱email", dataType = "Integer", paramType = "query", required = true),
+            @ApiImplicitParam(name = "title", value = "发送邮件的标题title", dataType = "String", paramType = "query", required = true),
             @ApiImplicitParam(name = "content", value = "发送邮件的内容content", dataType = "String", paramType = "query", required = true)
     })
     public Result<String> sendEmail(@RequestParam("fromId") Integer fromId,
                                     @RequestParam("toId") Integer toId,
                                     @RequestParam("title") String title,
                                     @RequestParam("content") String content) {
-        return mailService.senf(account, password);
+//        return mailService.senf(account, password);
+        return null;
     }
 }
