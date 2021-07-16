@@ -9,7 +9,8 @@ import lombok.Data;
  */
 
 public enum UserRight {
-    NORMAL_USER(1,"normalUser"),
+    NORMAL_USER(0,"normalUser"),
+    WORKER_USER(1,"worker"),
     MANAGER_USER(2,"deptManager"),
     HR_USER(3,"hr");
 
