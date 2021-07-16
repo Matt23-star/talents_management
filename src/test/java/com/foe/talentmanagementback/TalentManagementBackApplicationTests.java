@@ -31,13 +31,13 @@ class TalentManagementBackApplicationTests {
         String checkCode = String.valueOf(new Random().nextInt(899999) + 100000);
         String message = " 【跨平台人才管理组织】验证码:"+checkCode+"，该验证码5分钟内有效，请勿泄露于他人！";
         System.out.println(checkCode);
-        mailService.sendSimpleMail("825256547@qq.com","跨平台人才管理平台验证",message);
+        mailService.sendSimpleMail("825256547@qq.com","825256547@qq.com","跨平台人才管理平台验证",message);
     }
 
     @Test
     public void testSend(){
 
 
-        mailService.sendVerifyEmail("825256547@qq.com","验证码","123445453","username");
+        mailService.sendVerifyEmail("825256547@qq.com","825256547@qq.com","验证码","123445453","username");
     }
 }

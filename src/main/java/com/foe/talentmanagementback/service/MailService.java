@@ -18,9 +18,9 @@ public interface MailService {
 
     Result<String> getCheckCode(String account, String email);
 
-    public void sendVerifyEmail(String params, String title, String code, String username);
+    public void sendVerifyEmail(String from,String to, String title, String code, String username);
 
-    void sendSimpleMail(String to, String subject, String content);
+    void sendSimpleMail(String from,String to, String subject, String content);
 
-    void sendHtmlMail(String to, String subject, String content);
+    void sendHtmlMail(String from,String to, String subject, String content);
 }

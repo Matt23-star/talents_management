@@ -3,7 +3,7 @@ package com.foe.talentmanagementback.service.impl;
 import com.foe.talentmanagementback.entity.Result;
 import com.foe.talentmanagementback.entity.enums.ResultMsg;
 import com.foe.talentmanagementback.service.MailService;
-import com.foe.talentmanagementback.utils.MailTemplateUtils;
+import com.foe.talentmanagementback.utils.CodeEmailUtils;
 import com.foe.talentmanagementback.utils.ResultUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,25 +31,24 @@ public class MailServiceImpl implements MailService {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    private MailTemplateUtils emailTemplate;
+    private CodeEmailUtils emailTemplate;
 
     @Autowired
     private JavaMailSender mailSender;
 
-    @Value("${mail.fromMail.addr}")
-    private String from;
-
+    @Autowired
+    private CodeEmailUtils codeEmailUtils;
 
     @Override
     public Result<String> getCheckCode(String account, String email) {
         String checkCode = String.valueOf(new Random().nextInt(899999) + 100000);
-        sendVerifyEmail(email, "跨组织人才管理系统验证码", checkCode, account);
+        codeEmailUtils.sendVerifyEmail(email, "跨组织人才管理系统验证码", checkCode, account);
         return ResultUtils.success(ResultMsg.SUCCESS,checkCode);
     }
 
-    //发送固定html模板的邮件，模板在src/main/resources/templates/mail_template.html
+    //发送固定html模板的邮件，模板在src/main/resources/templates/email_template.html
     @Override
-    public void sendVerifyEmail(String to, String title, String code, String username) {
+    public void sendVerifyEmail(String from,String to, String title, String code, String username) {
         emailTemplate.initEmailTemplate();
         MimeMessage message = mailSender.createMimeMessage();
         try {
@@ -59,7 +58,7 @@ public class MailServiceImpl implements MailService {
             helper.setFrom(from);
             helper.setTo(to);//邮件接收者
             helper.setSubject(title);//邮件主题
-            String email = emailTemplate.getHtml(title, username, "注册验证", code);
+            String email = emailTemplate.setCodeEmailHtml(title, username, "注册验证", code);
             helper.setText(email, true);//邮件内容
             logger.info("开始发送");
             mailSender.send(message);
@@ -71,7 +70,7 @@ public class MailServiceImpl implements MailService {
 
     //发送最基础邮件，只包含标题 和 内容
     @Override
-    public void sendSimpleMail(String to, String subject, String content) {
+    public void sendSimpleMail(String from,String to, String subject, String content) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(from);
         message.setTo(to);
@@ -88,7 +87,7 @@ public class MailServiceImpl implements MailService {
 
     //发送一个html页面
     @Override
-    public void sendHtmlMail(String to, String subject, String content) {
+    public void sendHtmlMail(String from,String to, String subject, String content) {
         MimeMessage message = mailSender.createMimeMessage();
 
         try {
