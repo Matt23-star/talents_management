@@ -2,8 +2,10 @@ package com.foe.talentmanagementback.service.impl;
 
 import com.foe.talentmanagementback.entity.Result;
 import com.foe.talentmanagementback.entity.enums.ResultMsg;
+import com.foe.talentmanagementback.entity.pojo.T_talent;
 import com.foe.talentmanagementback.service.MailService;
-import com.foe.talentmanagementback.utils.CodeEmailUtils;
+import com.foe.talentmanagementback.utils.CodeHtmlUtils;
+import com.foe.talentmanagementback.utils.MailUtils;
 import com.foe.talentmanagementback.utils.ResultUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,77 +33,31 @@ public class MailServiceImpl implements MailService {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    private CodeEmailUtils emailTemplate;
-
-    @Autowired
     private JavaMailSender mailSender;
+    @Value("${mail.fromMail.addr}")
+    private String from;
+    @Autowired
+    private CodeHtmlUtils codeHtmlUtils;
 
     @Autowired
-    private CodeEmailUtils codeEmailUtils;
+    private MailUtils mailUtils;
+
+    @Autowired
+    private T_talentServiceImpl talentService;
 
     @Override
-    public Result<String> getCheckCode(String account, String email) {
+    public Result<String> sendVerifyEmail(String account, String email) {
         String checkCode = String.valueOf(new Random().nextInt(899999) + 100000);
-        codeEmailUtils.sendVerifyEmail(email, "跨组织人才管理系统验证码", checkCode, account);
-        return ResultUtils.success(ResultMsg.SUCCESS,checkCode);
+        codeHtmlUtils.initEmailTemplate();
+        String content = codeHtmlUtils.setCodeEmailHtml("跨组织人才管理系统验证码", account, "注册验证", checkCode);
+        mailUtils.sendHtmlEmail(email, "跨组织人才管理系统验证码", content);
+        return ResultUtils.success(ResultMsg.SUCCESS, checkCode);
     }
 
-    //发送固定html模板的邮件，模板在src/main/resources/templates/email_template.html
     @Override
-    public void sendVerifyEmail(String from,String to, String title, String code, String username) {
-        emailTemplate.initEmailTemplate();
-        MimeMessage message = mailSender.createMimeMessage();
-        try {
-            logger.info("开始设置");
-            //true表示需要创建一个multipart message
-            MimeMessageHelper helper = new MimeMessageHelper(message, true);
-            helper.setFrom(from);
-            helper.setTo(to);//邮件接收者
-            helper.setSubject(title);//邮件主题
-            String email = emailTemplate.setCodeEmailHtml(title, username, "注册验证", code);
-            helper.setText(email, true);//邮件内容
-            logger.info("开始发送");
-            mailSender.send(message);
-            logger.info("邮件发送成功");
-        } catch (MessagingException messagingException) {
-            logger.error("发送失败！发送人:{}", to);
-        }
+    public Result<Boolean> sendEmailToTalent(Integer toId, String title, String content) {
+        T_talent talent = talentService.getTalentById(toId).getData();
+        return ResultUtils.success(ResultMsg.SUCCESS, mailUtils.sendHtmlEmail(talent.getEmail(), title, content));
     }
 
-    //发送最基础邮件，只包含标题 和 内容
-    @Override
-    public void sendSimpleMail(String from,String to, String subject, String content) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom(from);
-        message.setTo(to);
-        message.setSubject(subject);
-        message.setText(content);
-
-        try {
-            mailSender.send(message);
-            logger.info("简单邮件已经发送。");
-        } catch (Exception e) {
-            logger.error("发送简单邮件时发生异常！", e);
-        }
-    }
-
-    //发送一个html页面
-    @Override
-    public void sendHtmlMail(String from,String to, String subject, String content) {
-        MimeMessage message = mailSender.createMimeMessage();
-
-        try {
-            //true表示需要创建一个multipart message
-            MimeMessageHelper helper = new MimeMessageHelper(message, true);
-            helper.setFrom(from);
-            helper.setTo(to);
-            helper.setSubject(subject);
-            helper.setText(content, true);
-
-            mailSender.send(message);
-            logger.info("html邮件发送成功");
-        } catch (MessagingException e) {
-            logger.error("发送html邮件时发生异常！", e);
-        }
-    }
 }

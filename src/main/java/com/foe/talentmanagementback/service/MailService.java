@@ -16,11 +16,9 @@ import com.foe.talentmanagementback.entity.Result;
 
 public interface MailService {
 
-    Result<String> getCheckCode(String account, String email);
+    Result<String> sendVerifyEmail(String account, String email);
 
-    public void sendVerifyEmail(String from,String to, String title, String code, String username);
+    Result<Boolean> sendEmailToTalent(Integer toId, String title, String content);
 
-    void sendSimpleMail(String from,String to, String subject, String content);
 
-    void sendHtmlMail(String from,String to, String subject, String content);
 }

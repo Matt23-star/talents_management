@@ -23,35 +23,9 @@ import java.io.InputStreamReader;
  */
 
 @Component
-public class CodeEmailUtils {
+public class CodeHtmlUtils {
 
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
-    @Autowired
-    private JavaMailSender mailSender;
-
-    @Value("${mail.fromMail.addr}")
-    private String from;
-
-    public void sendVerifyEmail(String to, String title, String code, String username) {
-        initEmailTemplate();
-        MimeMessage message = mailSender.createMimeMessage();
-        try {
-            logger.info("开始设置");
-            //true表示需要创建一个multipart message
-            MimeMessageHelper helper = new MimeMessageHelper(message, true);
-            helper.setFrom(from);
-            helper.setTo(to);//邮件接收者
-            helper.setSubject(title);//邮件主题
-            String email = setCodeEmailHtml(title, username, "注册验证", code);
-            helper.setText(email, true);//邮件内容
-            logger.info("开始发送");
-            mailSender.send(message);
-            logger.info("邮件发送成功");
-        } catch (MessagingException messagingException) {
-            logger.error("发送失败！发送人:{}", to);
-        }
-    }
+    private static final Logger logger = LoggerFactory.getLogger(CodeHtmlUtils.class);
 
     public static String setCodeEmailHtml(String title, String userName, String type, String captcha) {
         String emailTemplet = System.getProperty("email_template");
@@ -69,7 +43,7 @@ public class CodeEmailUtils {
      * @author name：yuxin <br>email: yuruixin_china@163.com
      **/
 
-    public void initEmailTemplate() {
+    public static void initEmailTemplate() {
         StringBuilder sb = new StringBuilder();
         try {
             String encoding = "UTF-8";

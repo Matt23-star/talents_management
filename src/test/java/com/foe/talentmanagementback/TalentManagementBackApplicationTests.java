@@ -2,6 +2,7 @@ package com.foe.talentmanagementback;
 
 import com.foe.talentmanagementback.service.MailService;
 import com.foe.talentmanagementback.utils.DateUtils;
+import com.foe.talentmanagementback.utils.MailUtils;
 import com.foe.talentmanagementback.utils.RightUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ class TalentManagementBackApplicationTests {
     RightUtils rightUtils;
 
     @Autowired
-    private MailService mailService;
+    private MailUtils mailService;
 
     @Test
     public void Run(){
@@ -31,13 +32,11 @@ class TalentManagementBackApplicationTests {
         String checkCode = String.valueOf(new Random().nextInt(899999) + 100000);
         String message = " 【跨平台人才管理组织】验证码:"+checkCode+"，该验证码5分钟内有效，请勿泄露于他人！";
         System.out.println(checkCode);
-        mailService.sendSimpleMail("825256547@qq.com","825256547@qq.com","跨平台人才管理平台验证",message);
+        mailService.sendSimpleMail("825256547@qq.com","跨平台人才管理平台验证",message);
     }
 
     @Test
     public void testSend(){
-
-
-        mailService.sendVerifyEmail("825256547@qq.com","825256547@qq.com","验证码","123445453","username");
+        //mailService.sendVerifyEmail("825256547@qq.com","825256547@qq.com","验证码","123445453","username");
     }
 }
