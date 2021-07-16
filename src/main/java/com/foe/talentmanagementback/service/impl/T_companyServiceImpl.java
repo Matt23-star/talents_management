@@ -1,6 +1,8 @@
 package com.foe.talentmanagementback.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.foe.talentmanagementback.entity.Result;
 import com.foe.talentmanagementback.entity.dto.TalentDTO;
 import com.foe.talentmanagementback.entity.pojo.T_company;
@@ -28,8 +30,6 @@ public class T_companyServiceImpl extends ServiceImpl<T_companyMapper, T_company
 
     @Autowired
     private T_companyMapper companyMapper;
-    @Autowired
-    private T_talentMapper talentMapper;
     @Override
     public T_company getCompanyById(Integer id) {
         return companyMapper.selectById(id);
@@ -44,9 +44,10 @@ public class T_companyServiceImpl extends ServiceImpl<T_companyMapper, T_company
     */
     @Override
     public Result<List<T_talent>> getTalentByCompanyId(int companyId) {
+        Page<T_talent> talentPage = new Page<>(1, 10);
         QueryWrapper queryWrapper =new QueryWrapper();
         queryWrapper.eq("company_id",companyId);
-        List<TalentDTO> talents = companyMapper.getTalentByCompanyId(companyId);
+        IPage<TalentDTO> talents = companyMapper.getTalentByCompanyId(talentPage,companyId);
         return ResultUtils.success(talents);
     }
 }

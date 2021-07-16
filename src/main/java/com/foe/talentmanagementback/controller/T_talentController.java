@@ -93,7 +93,7 @@ public class T_talentController {
      */
     @PutMapping("")
     @ApiOperation(value = "接受put请求，T_tanlent中id为必填字段")
-    public Result updateTalent(@RequestBody T_talent talent){
+    public Result<T_talent> updateTalent(@RequestBody T_talent talent){
         T_talent updateTalent =talent;
         return talentService.updateTalent(updateTalent);
     }

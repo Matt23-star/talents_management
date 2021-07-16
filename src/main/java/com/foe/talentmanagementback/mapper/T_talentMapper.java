@@ -1,5 +1,7 @@
 package com.foe.talentmanagementback.mapper;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.foe.talentmanagementback.entity.Result;
 import com.foe.talentmanagementback.entity.dto.TalentDTO;
 import com.foe.talentmanagementback.entity.dto.TalentSquareDTO;
@@ -23,5 +25,5 @@ import java.util.Map;
 
 @Component
 public interface T_talentMapper extends BaseMapper<T_talent> {
-    List<TalentSquareDTO> getTalentInSquare(@Param("r") R_ConditionReceiver r);
+    IPage<TalentSquareDTO> getTalentInSquare(Page<T_talent> page, @Param("r") R_ConditionReceiver r);
 }

@@ -11,6 +11,7 @@ import lombok.Data;
  */
 @Data
 public class R_ConditionReceiver {
+    private String page;
     private String field;
     private String major;
     private int[] age;
