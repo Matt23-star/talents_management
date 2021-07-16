@@ -1,15 +1,13 @@
 package com.foe.talentmanagementback.controller;
 
 import com.foe.talentmanagementback.entity.Result;
+import com.foe.talentmanagementback.entity.dto.NormalEmailDTO;
 import com.foe.talentmanagementback.service.impl.MailServiceImpl;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author: Matt
@@ -42,9 +40,7 @@ public class MailController {
             @ApiImplicitParam(name = "title", value = "发送邮件的标题title", dataType = "String", paramType = "query", required = true),
             @ApiImplicitParam(name = "content", value = "发送邮件的内容content", dataType = "String", paramType = "query", required = true)
     })
-    public Result<Boolean> sendEmail(@RequestParam("toId") Integer toId,
-                                    @RequestParam("title") String title,
-                                    @RequestParam("content") String content) {
-        return mailService.sendEmailToTalent(toId,title,content);
+    public Result<Boolean> sendEmail(@RequestBody NormalEmailDTO normalEmail) {
+        return mailService.sendEmailToTalent(normalEmail.getToId(), normalEmail.getTitle(), normalEmail.getContent());
     }
 }
