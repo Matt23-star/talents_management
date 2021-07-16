@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
@@ -27,13 +28,9 @@ import java.util.Random;
  * @description: 邮箱发送
  */
 
-@Service
+@Component
 public class MailServiceImpl implements MailService {
 
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
-    @Autowired
-    private JavaMailSender mailSender;
     @Value("${mail.fromMail.addr}")
     private String from;
     @Autowired
