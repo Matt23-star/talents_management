@@ -2,6 +2,7 @@ package com.foe.talentmanagementback.controller;
 
 
 import com.foe.talentmanagementback.entity.Result;
+import com.foe.talentmanagementback.entity.dto.CompanyDTO;
 import com.foe.talentmanagementback.entity.pojo.T_talent;
 import com.foe.talentmanagementback.service.impl.T_companyServiceImpl;
 import io.swagger.annotations.Api;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
+import sun.util.resources.cldr.ca.TimeZoneNames_ca;
 
 import java.util.List;
 
@@ -51,6 +53,11 @@ public class T_companyController {
     @ApiOperation(value = "输入company的id，返回该hr公司下的所有T_tanlent数据")
     public Result<List<T_talent>> getWorkersByHrId(@PathVariable("companyid")int companyId){
         return companyService.getTalentByCompanyId(companyId);
+    }
+    @GetMapping("")
+    @ApiOperation(value = "获取所有公司名称和id")
+    public  Result<List<CompanyDTO>> getCompanies(){
+        return companyService.getCompanies();
     }
 }
 

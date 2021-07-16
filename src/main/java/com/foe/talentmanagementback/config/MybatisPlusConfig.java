@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Configuration;
  * @Description:
  */
 @Configuration
-@ConditionalOnClass(value = {PaginationInterceptor.class})
+@ConditionalOnClass(value = {MybatisPlusInterceptor.class})
 public class MybatisPlusConfig {
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
