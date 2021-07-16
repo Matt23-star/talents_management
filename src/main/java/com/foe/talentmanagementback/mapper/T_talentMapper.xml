@@ -13,7 +13,7 @@
         <result property="companyName" column="cname"/>
         <result property="position" column="position_last"/>
     </resultMap>
-
+<!---->
     <select id="getTalentInSquare" parameterType="com.foe.talentmanagementback.entity.pojo.R_ConditionReceiver"
             resultMap="talentDTO">
         select distinct t.id tid, t.company_id tcid,t.name tname, t.age,t.sex,t.school,t.degree,t.major,
