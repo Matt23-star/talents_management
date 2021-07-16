@@ -3,7 +3,6 @@ package com.foe.talentmanagementback.controller;
 
 import com.foe.talentmanagementback.entity.Result;
 import com.foe.talentmanagementback.entity.bo.ExperienceDetailBO;
-import com.foe.talentmanagementback.entity.pojo.T_archive_detail;
 import com.foe.talentmanagementback.entity.dto.WorkExperienceDTO;
 import com.foe.talentmanagementback.service.impl.T_archive_detailServiceImpl;
 import io.swagger.annotations.*;
