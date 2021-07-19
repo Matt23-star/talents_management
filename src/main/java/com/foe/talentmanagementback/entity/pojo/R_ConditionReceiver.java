@@ -20,4 +20,5 @@ public class R_ConditionReceiver {
     private int[] ability;
     private int[] performance;
     private int[] executiveAbility;
+    private String degree;
 }

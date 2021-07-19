@@ -37,6 +37,7 @@ public class T_talentController {
      * @Date: 2021/7/14
      */
     @PostMapping("/square")
+    @ApiOperation(value = "搜索条件，返回T_talent数据")
     public Result<List<TalentSquareDTO>> getTalentInSquare(@RequestBody R_ConditionReceiver receiver){
         System.out.println(receiver.toString());
         return  talentService.getTalentInSquare(receiver);

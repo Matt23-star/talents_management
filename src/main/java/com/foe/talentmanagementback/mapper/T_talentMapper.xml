@@ -45,6 +45,17 @@
             <if test="r.executiveAbility!=null and r.executiveAbility!=''">
                 and t.executive_ability_ave between #{r.executiveAbility[0]} and #{r.executiveAbility[1]}
             </if>
+            <if test="r.degree!=null and  r.degree!=''">
+                <if test="r.degree =='学士'">
+
+                </if>
+                <if test="r.degree =='硕士'">
+                    and t.degree !='学士'
+                </if>
+                <if test="r.degree =='博士'">
+                    and t.degree = #{r.degree}
+                </if>
+            </if>
         </where>
 
     </select>
