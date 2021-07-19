@@ -2,15 +2,9 @@ package com.foe.talentmanagementback.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,9 +17,9 @@ import java.io.InputStreamReader;
  */
 
 @Component
-public class CodeHtmlUtils {
+public class CheckCodeHtmlUtils {
 
-    private static final Logger logger = LoggerFactory.getLogger(CodeHtmlUtils.class);
+    private static final Logger logger = LoggerFactory.getLogger(CheckCodeHtmlUtils.class);
 
     public static String setCodeEmailHtml(String title, String userName, String type, String captcha) {
         String emailTemplet = System.getProperty("email_template");

@@ -118,6 +118,9 @@ public class T_evaluation_detailsServiceImpl extends ServiceImpl<T_evaluation_de
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("talent_id", talentId);
         List<T_archive_detail> archiveDetails = archiveDetailMapper.selectList(queryWrapper);
+        if (archiveDetails.isEmpty()) {
+            return ResultUtils.error(ResultMsg.ARCHIVE_NOT_EXIST);
+        }
         List<EvaluationStatisticDTO> evaluationStatistics = new ArrayList<>();
         for (T_archive_detail archiveDetail :
                 archiveDetails) {

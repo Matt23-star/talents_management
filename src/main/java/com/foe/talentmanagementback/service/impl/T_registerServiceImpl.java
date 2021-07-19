@@ -30,33 +30,33 @@ public class T_registerServiceImpl implements IT_registerService {
     private T_loginMapper loginMapper;
     @Autowired
     private T_talentMapper talentMapper;
-   public Result register(String account, String passWord){
-       if (account!=null&&account!=""&&passWord!=null&&passWord!=""){
-           QueryWrapper<T_login> queryWrapperLogin = new QueryWrapper();
-           queryWrapperLogin.eq("account_number",account);
-           if (loginMapper.selectOne(queryWrapperLogin)!=null){
-               return ResultUtils.error(new ResultMessage(500,"注册失败,该账号已注册"));
-           }else {
-               T_login login = new T_login();
-               login.setAccountNumber(account);
-               login.setPassword(passWord);
-               int loginInsert =  loginMapper.insert(login);
-               T_talent talent = new T_talent();
-               talent.setAccountNumber(account);
-               int talentInsert = talentMapper.insert(talent);
 
-               if(loginInsert==1&&talentInsert==1)
-               {
-                   QueryWrapper<T_talent> queryWrapperTalent = new QueryWrapper();
-                   queryWrapperTalent.eq("account_number",account);
-                   T_talent talentToDTO= talentMapper.selectOne(queryWrapperTalent);
-                   ModelMapper modelMapper =new ModelMapper();
-                   UserDTO userDTO = modelMapper.map(talentToDTO,UserDTO.class);
-                   userDTO.setUserRight(UserRight.NORMAL_USER);
-                   return ResultUtils.success(new ResultMessage(200,"注册成功"),userDTO);
-               }else return ResultUtils.error(new ResultMessage(500,"注册失败，插入数据库异常"));
-           }
-       }
-       return ResultUtils.error(new ResultMessage(500,"注册失败，参数为空"));
-   }
+    public Result register(String account, String passWord) {
+        if (account != null && account != "" && passWord != null && passWord != "") {
+            QueryWrapper<T_login> queryWrapperLogin = new QueryWrapper();
+            queryWrapperLogin.eq("account_number", account);
+            if (loginMapper.selectOne(queryWrapperLogin) != null) {
+                return ResultUtils.error(new ResultMessage(500, "注册失败,该账号已注册"));
+            } else {
+                T_login login = new T_login();
+                login.setAccountNumber(account);
+                login.setPassword(passWord);
+                int loginInsert = loginMapper.insert(login);
+                T_talent talent = new T_talent();
+                talent.setAccountNumber(account);
+                int talentInsert = talentMapper.insert(talent);
+
+                if (loginInsert == 1 && talentInsert == 1) {
+                    QueryWrapper<T_talent> queryWrapperTalent = new QueryWrapper();
+                    queryWrapperTalent.eq("account_number", account);
+                    T_talent talentToDTO = talentMapper.selectOne(queryWrapperTalent);
+                    ModelMapper modelMapper = new ModelMapper();
+                    UserDTO userDTO = modelMapper.map(talentToDTO, UserDTO.class);
+                    userDTO.setUserRight(UserRight.NORMAL_USER);
+                    return ResultUtils.success(new ResultMessage(200, "注册成功"), userDTO);
+                } else return ResultUtils.error(new ResultMessage(500, "注册失败，插入数据库异常"));
+            }
+        }
+        return ResultUtils.error(new ResultMessage(500, "注册失败，参数为空"));
+    }
 }

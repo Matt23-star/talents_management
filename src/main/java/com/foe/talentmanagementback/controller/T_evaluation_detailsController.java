@@ -35,6 +35,7 @@ public class T_evaluation_detailsController {
     @GetMapping("/archives/{archiveId}")
     @ApiOperation(value = "通过archiveId查询评价，成功返回评价链表，失败返回错误信息")
     @ApiImplicitParam(name = "archiveId", value = "档案id", dataType = "Integer", paramType = "path", required = true)
+    @ApiResponses(@ApiResponse(code = 200,message = "成功",response = EvaluationSendDTO.class))
     public Result<List<EvaluationSendDTO>> getEvaluationByArchiveId(@PathVariable("archiveId") Integer archiveId){
         return evaluationDetailsService.getEvaluationsByArchiveId(archiveId);
     }
@@ -47,6 +48,7 @@ public class T_evaluation_detailsController {
     @GetMapping("/archives/{archiveId}/evaluation-statistics")
     @ApiOperation(value = "通过archiveId查询评价统计，成功返回评价统计，失败返回错误信息")
     @ApiImplicitParam(name = "archiveId", value = "档案id", dataType = "Integer", paramType = "path", required = true)
+    @ApiResponses(@ApiResponse(code = 200,message = "成功",response = EvaluationStatisticDTO.class))
     public Result<EvaluationStatisticDTO> getEvaluationStatisticByArchiveId(@PathVariable("archiveId") Integer archiveId){
         return evaluationDetailsService.getEvaluationStatisticByArchiveId(archiveId);
     }
@@ -60,6 +62,7 @@ public class T_evaluation_detailsController {
     @GetMapping("/talents/{talentId}/evaluation-statistics")
     @ApiOperation(value = "通过talentId查询评价统计，成功返回所有公司的评价统计，失败返回错误信息")
     @ApiImplicitParam(name = "talentId", value = "档案id", dataType = "Integer", paramType = "path", required = true)
+    @ApiResponses(@ApiResponse(code = 200,message = "成功",response = EvaluationStatisticDTO.class))
     public Result<EvaluationStatisticDTO> getEvaluationStatisticByTalentId(@PathVariable("talentId") Integer talentId){
         return evaluationDetailsService.getEvaluationStatisticsByTalentId(talentId);
     }
