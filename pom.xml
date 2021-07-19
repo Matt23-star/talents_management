@@ -119,28 +119,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
-<!--        spring security框架导入-->
-<!--        &lt;!&ndash;引入security依赖&ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.security</groupId>-->
-<!--            <artifactId>spring-security-web</artifactId>-->
-<!--            <version>5.0.1.RELEASE</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.security</groupId>-->
-<!--            <artifactId>spring-security-config</artifactId>-->
-<!--            <version>5.0.1.RELEASE</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.security</groupId>-->
-<!--            <artifactId>spring-security-core</artifactId>-->
-<!--            <version>5.0.1.RELEASE</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.security</groupId>-->
-<!--            <artifactId>spring-security-taglibs</artifactId>-->
-<!--            <version>5.0.1.RELEASE</version>-->
-<!--        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
