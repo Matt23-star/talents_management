@@ -133,4 +133,6 @@ public class T_talent implements Serializable {
 
     @ApiModelProperty(value = "公司Id")
     private Integer companyId;
+
+    private String field;
 }
