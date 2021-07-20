@@ -80,10 +80,10 @@ public class T_loginServiceImpl extends ServiceImpl<T_loginMapper, T_login> impl
 
         //使用ModelMapper 映射到UserDTO
         ModelMapper modelMapper = new ModelMapper();
-        UserDTO userDTO = modelMapper.map(talent,UserDTO.class);
+        UserDTO userDTO = modelMapper.map(talent, UserDTO.class);
 
         //若talent能查到
-        if(talent!=null) {
+        if (talent != null) {
             //根据talent信息设置公司名、民族名、头像路径以及工作状态
             userDTO.setCompanyName(companyService
                     .getCompanyById(talent.getCompanyId())
@@ -101,13 +101,13 @@ public class T_loginServiceImpl extends ServiceImpl<T_loginMapper, T_login> impl
             queryWrapperArchive.eq("talent_id", talent.getId());
             queryWrapperArchive.eq("company_id", talent.getCompanyId());
             T_archive_detail archiveDetail = archiveDetailMapper.selectOne(queryWrapperArchive);
-            if (archiveDetail!=null) {
-                    userDTO.setDepartmentName(departmentService
-                            .getDepartmentByTalentId(archiveDetail.getDepartmentLast())
-                            .getDepartmentName());
-                    userDTO.setPosition(archiveDetail.getPositionLast());
-                }
+            if (archiveDetail != null) {
+                userDTO.setDepartmentName(departmentService
+                        .getDepartmentByTalentId(archiveDetail.getDepartmentLast())
+                        .getDepartmentName());
+                userDTO.setPosition(archiveDetail.getPositionLast());
             }
+        }
         return ResultUtils.success(ResultMsg.SUCCESS, userDTO);
     }
 }

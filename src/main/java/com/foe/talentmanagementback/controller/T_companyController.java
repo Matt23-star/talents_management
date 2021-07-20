@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
-import sun.util.resources.cldr.ca.TimeZoneNames_ca;
 
 import java.util.List;
 
@@ -27,7 +26,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/companies")
-@Api(value = "公司接口",tags = "公司接口")
+@Api(tags = "公司接口")
 public class T_companyController {
 
 //    @Autowired
@@ -54,6 +53,7 @@ public class T_companyController {
     public Result<List<T_talent>> getWorkersByHrId(@PathVariable("companyid")int companyId){
         return companyService.getTalentByCompanyId(companyId);
     }
+
     @GetMapping("")
     @ApiOperation(value = "获取所有公司名称和id")
     public  Result<List<CompanyDTO>> getCompanies(){

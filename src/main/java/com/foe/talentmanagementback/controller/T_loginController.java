@@ -4,10 +4,7 @@ package com.foe.talentmanagementback.controller;
 import com.foe.talentmanagementback.entity.Result;
 import com.foe.talentmanagementback.entity.dto.UserDTO;
 import com.foe.talentmanagementback.service.impl.T_loginServiceImpl;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
  * @Description:
  */
 @RestController
-@Api(value = "登录和注册接口", tags = "登录接口")
+@Api(tags = "登录接口")
 @RequestMapping("/api/login")
 public class T_loginController {
 
@@ -31,6 +28,7 @@ public class T_loginController {
             @ApiImplicitParam(name = "account", value = "用户名account", dataType = "String", paramType = "query", required = true),
             @ApiImplicitParam(name = "password", value = "密码password", dataType = "String", paramType = "query", required = true)
     })
+    @ApiResponses(@ApiResponse(code = 200,message = "成功",response = UserDTO.class))
     public Result<UserDTO> login(@RequestParam("account") String account,
                                  @RequestParam("password") String password) {
         return loginService.login(account,password);

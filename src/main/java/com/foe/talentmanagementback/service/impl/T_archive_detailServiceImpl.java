@@ -91,6 +91,9 @@ public class T_archive_detailServiceImpl extends ServiceImpl<T_archive_detailMap
         queryWrapper.eq("talent_id",talentId);
         queryWrapper.eq("company_id",companyId);
         T_archive_detail archiveDetail = archive_detailMapper.selectOne(queryWrapper);
+        if(archiveDetail ==null)
+            return ResultUtils.error(ResultMsg.ARCHIVE_NOT_EXIST);
+
         Integer archiveId = archiveDetail.getId();
         ModelMapper modelMapper = new ModelMapper();
         ExperienceDetailBO experienceDetailBO = new ExperienceDetailBO();

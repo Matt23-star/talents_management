@@ -4,21 +4,12 @@ import com.foe.talentmanagementback.entity.Result;
 import com.foe.talentmanagementback.entity.enums.ResultMsg;
 import com.foe.talentmanagementback.entity.pojo.T_talent;
 import com.foe.talentmanagementback.service.MailService;
-import com.foe.talentmanagementback.utils.CodeHtmlUtils;
+import com.foe.talentmanagementback.utils.CheckCodeHtmlUtils;
 import com.foe.talentmanagementback.utils.MailUtils;
 import com.foe.talentmanagementback.utils.ResultUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
 import java.util.Random;
 
 
@@ -28,13 +19,11 @@ import java.util.Random;
  * @description: 邮箱发送
  */
 
-@Component
+@Service
 public class MailServiceImpl implements MailService {
 
-    @Value("${mail.fromMail.addr}")
-    private String from;
     @Autowired
-    private CodeHtmlUtils codeHtmlUtils;
+    private CheckCodeHtmlUtils codeHtmlUtils;
 
     @Autowired
     private MailUtils mailUtils;
@@ -47,8 +36,9 @@ public class MailServiceImpl implements MailService {
         String checkCode = String.valueOf(new Random().nextInt(899999) + 100000);
         codeHtmlUtils.initEmailTemplate();
         String content = codeHtmlUtils.setCodeEmailHtml("跨组织人才管理系统验证码", account, "注册验证", checkCode);
-        mailUtils.sendHtmlEmail(email, "跨组织人才管理系统验证码", content);
-        return ResultUtils.success(ResultMsg.SUCCESS, checkCode);
+        if (mailUtils.sendHtmlEmail(email, "跨组织人才管理系统验证码", content))
+            return ResultUtils.success(ResultMsg.SUCCESS, checkCode);
+        return ResultUtils.error(ResultMsg.SEND_EMAIL_FAIL);
     }
 
     @Override
