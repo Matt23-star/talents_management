@@ -7,7 +7,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.foe.talentmanagementback.entity.pojo.T_talent;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * <p>
@@ -19,7 +18,7 @@ import java.util.Map;
  */
 public interface IT_companyService extends IService<T_company> {
 
-    T_company getCompanyById(int id);
+    public T_company getCompanyById(Integer id);
     /**
      * @Description: 通过公司id，查询公司下的所有员工
      * @Param: int companyId
@@ -27,6 +26,6 @@ public interface IT_companyService extends IService<T_company> {
      * @Author: 张越
      * @Date: 2021/7/12
      */
-    Result<List<T_talent>> getTalentByCompanyId(Map<String,Integer> receiver);
+    Result<List<T_talent>> getTalentByCompanyId(int companyId);
     Result<List<CompanyDTO>> getCompanies();
 }

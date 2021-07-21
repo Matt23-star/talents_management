@@ -18,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * <p>
@@ -34,7 +33,7 @@ public class T_companyServiceImpl extends ServiceImpl<T_companyMapper, T_company
     @Autowired
     private T_companyMapper companyMapper;
     @Override
-    public T_company getCompanyById(int id) {
+    public T_company getCompanyById(Integer id) {
         return companyMapper.selectById(id);
     }
 
@@ -46,12 +45,9 @@ public class T_companyServiceImpl extends ServiceImpl<T_companyMapper, T_company
     * @Date: 2021/7/12
     */
     @Override
-    public Result<List<T_talent>> getTalentByCompanyId(Map<String,Integer> receiver) {
-        Page<T_talent> talentPage = new Page<>(receiver.get("page"), 10);
-        int companyId = receiver.get("companyId");
-        QueryWrapper queryWrapper =new QueryWrapper();
-        queryWrapper.eq("company_id",companyId);
-        IPage<TalentDTO> talents = companyMapper.getTalentByCompanyId(talentPage,companyId);
+    public Result<List<T_talent>> getTalentByCompanyId(int companyId) {
+
+        List<T_talent> talents = companyMapper.getTalentByCompanyId(companyId);
         return ResultUtils.success(talents);
     }
 
