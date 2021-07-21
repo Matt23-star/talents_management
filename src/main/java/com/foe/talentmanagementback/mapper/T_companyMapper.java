@@ -26,6 +26,7 @@ public interface T_companyMapper extends BaseMapper<T_company> {
     @Select("select t.*,d.department_name,d.id,ad.department_last " +
             "from t_talent t left join t_archive_detail ad on t.id = ad.talent_id,t_department d " +
             "where " +
+            "t.company_id = #{companyId} or " +
             "t.company_id = #{companyId} and " +
             "t.id = ad.talent_id and " +
             "t.company_id = ad.company_id and " +

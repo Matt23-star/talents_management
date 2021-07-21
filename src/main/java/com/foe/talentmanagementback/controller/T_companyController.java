@@ -5,16 +5,12 @@ import com.foe.talentmanagementback.entity.Result;
 import com.foe.talentmanagementback.entity.dto.CompanyDTO;
 import com.foe.talentmanagementback.entity.pojo.T_talent;
 import com.foe.talentmanagementback.service.impl.T_companyServiceImpl;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -48,10 +44,14 @@ public class T_companyController {
      * @Author: 张越
      * @Date: 2021/7/12
      */
-    @GetMapping("/{companyid}/talents")
+    @PostMapping("/talents")
     @ApiOperation(value = "输入company的id，返回该hr公司下的所有T_tanlent数据")
-    public Result<List<T_talent>> getWorkersByHrId(@PathVariable("companyid")int companyId){
-        return companyService.getTalentByCompanyId(companyId);
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "page", value = "当前页数", dataType = "int", paramType = "query", required = true),
+            @ApiImplicitParam(name = "companyId", value = "公司id", dataType = "int", paramType = "query", required = true)
+    })
+    public Result<List<T_talent>> getWorkersByHrId(@RequestBody Map receiver){
+        return companyService.getTalentByCompanyId(receiver);
     }
 
     @GetMapping("")
