@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.foe</groupId>
     <artifactId>Talent-management</artifactId>
-    <version>0.3.2</version>
+    <version>0.3.6</version>
     <name>Talent-management-back</name>
     <description>Demo project for Spring Boot</description>
 
@@ -16,13 +16,15 @@
     </properties>
 
     <dependencies>
-        <!--swagger 导出依赖-->
+
+<!--        swagger 导出依赖-->
 <!--        <dependency>-->
 <!--            <groupId>io.github.swagger2markup</groupId>-->
 <!--            <artifactId>swagger2markup</artifactId>-->
 <!--            <version>1.3.1</version>-->
 <!--        </dependency>-->
 
+<!--        web依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
