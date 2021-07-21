@@ -45,6 +45,12 @@
             <if test="r.executiveAbility!=null and r.executiveAbility!=''">
                 and t.executive_ability_ave between #{r.executiveAbility[0]} and #{r.executiveAbility[1]}
             </if>
+            <if test="r.nativePlace!=null and r.nativePlace!=''">
+                and t.native_place = #{r.nativePlace}
+            </if>
+            <if test="r.address!=null and r.address!=''">
+                and t.address = #{r.address}
+            </if>
             <if test="r.degree!=null and  r.degree!=''">
                 <if test="r.degree =='学士'">
 
