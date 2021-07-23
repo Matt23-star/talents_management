@@ -3,6 +3,7 @@ package com.foe.talentmanagementback.controller;
 
 import com.foe.talentmanagementback.entity.Result;
 import com.foe.talentmanagementback.entity.dto.CompanyDTO;
+import com.foe.talentmanagementback.entity.dto.TalentDTO;
 import com.foe.talentmanagementback.entity.pojo.T_talent;
 import com.foe.talentmanagementback.service.impl.T_companyServiceImpl;
 import io.swagger.annotations.Api;
@@ -41,7 +42,7 @@ public class T_companyController {
      */
     @GetMapping("/{companyid}/talents")
     @ApiOperation(value = "输入company的id，返回该hr公司下的所有T_tanlent数据")
-    public Result<List<T_talent>> getWorkersByHrId(@PathVariable("companyid") int companyId) {
+    public Result<List<TalentDTO>> getWorkersByHrId(@PathVariable("companyid") int companyId) {
         return companyService.getTalentByCompanyId(companyId);
     }
 

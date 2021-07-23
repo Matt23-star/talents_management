@@ -45,9 +45,9 @@ public class T_companyServiceImpl extends ServiceImpl<T_companyMapper, T_company
     * @Date: 2021/7/12
     */
     @Override
-    public Result<List<T_talent>> getTalentByCompanyId(int companyId) {
+    public Result<List<TalentDTO>> getTalentByCompanyId(int companyId) {
 
-        List<T_talent> talents = companyMapper.getTalentByCompanyId(companyId);
+        List<TalentDTO> talents = companyMapper.getTalentByCompanyId(companyId);
         return ResultUtils.success(talents);
     }
 

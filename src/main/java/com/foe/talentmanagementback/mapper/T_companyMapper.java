@@ -24,12 +24,12 @@ import java.util.List;
 
 @Component
 public interface T_companyMapper extends BaseMapper<T_company> {
-    @Select("select t.*,d.department_name,d.id,ad.department_last " +
+    @Select("select t.*,d.department_name,ad.department_last " +
             "from t_talent t left join t_archive_detail ad on t.id = ad.talent_id left join t_department d on ad.department_last = d.id " +
             "where t.company_id = #{companyId} and " +
             "(t.id = ad.talent_id or ad.talent_id is null) and " +
             "(t.company_id = ad.company_id or ad.company_id is null) and " +
             "(ad.company_id = d.company_id or ad.company_id is null) and " +
             "(ad.department_last = d.id or ad.company_id is null)")
-        List<T_talent> getTalentByCompanyId(@Param("companyId") int companyId);
+        List<TalentDTO> getTalentByCompanyId(@Param("companyId") int companyId);
 }
