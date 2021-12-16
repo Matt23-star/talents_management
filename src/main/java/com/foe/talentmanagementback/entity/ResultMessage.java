@@ -2,12 +2,6 @@ package com.foe.talentmanagementback.entity;
 
 import lombok.Data;
 
-/**
- * @author: Matt
- * @date: 2021/7/9/15:00
- * @description:
- */
-
 @Data
 public class ResultMessage {
 

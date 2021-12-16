@@ -7,14 +7,6 @@ import lombok.Data;
 
 import java.io.Serializable;
 
-/**
- * <p>
- * 
- * </p>
- *
- * @author Matt
- * @since 2021-07-08
- */
 
 @Data
 //@ApiModel(value = "com.foe.talentmanagementback.entity.pojo.T_department",description = "新增部门参数")

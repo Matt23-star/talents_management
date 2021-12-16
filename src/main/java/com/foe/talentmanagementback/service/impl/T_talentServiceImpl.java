@@ -17,13 +17,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created with IntelliJ IDEA.
- *
- * @Author: 张越
- * @Date: 2021/07/09/23:11
- * @Description:
- */
 @Service
 public class T_talentServiceImpl extends ServiceImpl<T_talentMapper, T_talent> implements IT_talentService {
     @Autowired

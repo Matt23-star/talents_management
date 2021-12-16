@@ -1,10 +1,4 @@
 package com.foe.talentmanagementback.entity.enums;
-
-/**
- * @author: Matt
- * @date: 2021/7/11/9:48
- * @description:
- */
 public enum ResultMsg {
 
     SUCCESS(200,"成功"),

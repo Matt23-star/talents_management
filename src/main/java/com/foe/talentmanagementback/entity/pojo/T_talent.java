@@ -11,14 +11,6 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * Created with IntelliJ IDEA.
- *
- * @Author: 张越
- * @Date: 2021/07/09/23:11
- * @Description:
- */
-
 @Data
 //@ApiModel(value = "T_talent",description = "新增系统人才参数")
 public class T_talent implements Serializable {

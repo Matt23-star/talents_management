@@ -8,12 +8,6 @@ import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-/**
- *
- * @Author: Matt
- * @Date: 2021/07/09/23:11
- * @Description:
- */
 @RestController
 @Api(tags = "登录接口")
 @RequestMapping("/api/login")

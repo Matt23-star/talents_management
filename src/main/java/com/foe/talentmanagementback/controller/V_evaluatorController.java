@@ -12,13 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-/**
- * @author: Matt
- * @date: 2021/7/13/9:24
- * @description:
- */
-
 @RestController
 @RequestMapping("/api/evaluators")
 public class V_evaluatorController {

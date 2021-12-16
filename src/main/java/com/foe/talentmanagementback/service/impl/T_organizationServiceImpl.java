@@ -17,13 +17,6 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.function.Function;
 
-/**
- * Created with IntelliJ IDEA.
- *
- * @Author: 张越
- * @Date: 2021/07/12/9:42
- * @Description:
- */
 @Service
 public class T_organizationServiceImpl implements IT_organizationService {
     @Autowired

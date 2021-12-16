@@ -7,13 +7,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
-/**
- * Created with IntelliJ IDEA.
- *
- * @Author: 张越
- * @Date: 2021/07/11/9:41
- * @Description:
- */
 @Slf4j
 @Component
 public class MyMetaObjectHandler implements MetaObjectHandler {

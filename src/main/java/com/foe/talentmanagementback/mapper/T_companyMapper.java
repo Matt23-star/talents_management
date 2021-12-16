@@ -13,15 +13,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-/**
- * <p>
- * Mapper 接口
- * </p>
- *
- * @author Matt
- * @since 2021-07-08
- */
-
 @Component
 public interface T_companyMapper extends BaseMapper<T_company> {
     @Select("select t.*,d.department_name,ad.department_last " +

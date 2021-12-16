@@ -19,15 +19,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * <p>
- *  服务实现类
- * </p>
- *
- * @author Matt
- * @since 2021-07-08
- */
-
 
 @Service
 public class T_archive_detailServiceImpl extends ServiceImpl<T_archive_detailMapper, T_archive_detail> implements IT_archive_detailService {
@@ -45,12 +36,6 @@ public class T_archive_detailServiceImpl extends ServiceImpl<T_archive_detailMap
     private T_workerServiceImpl workerService;
     @Autowired
     private T_evaluation_detailsServiceImpl evaluationDetailsService;
-
-    /**
-     * @author: Matt
-     * @date: 2021-07-14 11:04
-     * @description:
-     */
 
     @Override
     public Result<List<WorkExperienceDTO>> getArchivesByTalentId(int talentId) {
@@ -79,11 +64,6 @@ public class T_archive_detailServiceImpl extends ServiceImpl<T_archive_detailMap
         return ResultUtils.success(ResultMsg.SUCCESS,workExperienceDTOS);
     }
 
-    /**
-     * @author: Matt
-     * @date: 2021-07-14 11:04
-     * @description:
-     */
 
     @Override
     public Result<ExperienceDetailBO> getArchiveBytIdWcId(int talentId, int companyId) {

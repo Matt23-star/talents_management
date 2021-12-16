@@ -12,13 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Random;
 
-
-/**
- * @author: Matt
- * @date: 2021-07-15 10:20
- * @description: 邮箱发送
- */
-
 @Service
 public class MailServiceImpl implements MailService {
 

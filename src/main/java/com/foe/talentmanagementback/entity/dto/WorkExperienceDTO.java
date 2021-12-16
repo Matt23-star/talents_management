@@ -4,12 +4,6 @@ import lombok.Data;
 
 import java.util.Date;
 
-/**
- * @author: Matt
- * @date: 2021/7/12/9:29
- * @description:
- */
-
 @Data
 public class WorkExperienceDTO {
 

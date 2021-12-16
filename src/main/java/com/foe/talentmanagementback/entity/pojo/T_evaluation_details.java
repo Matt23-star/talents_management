@@ -7,15 +7,6 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * <p>
- * 评价详情表
- * </p>
- *
- * @author Matt
- * @since 2021-07-08
- */
-
 @Data
 public class T_evaluation_details implements Serializable {
 

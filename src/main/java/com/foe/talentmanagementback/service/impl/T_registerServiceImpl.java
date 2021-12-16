@@ -15,14 +15,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-/**
- * Created with IntelliJ IDEA.
- *
- * @Author: 张越
- * @Date: 2021/07/11/16:11
- * @Description:
- */
 @Service
 public class T_registerServiceImpl implements IT_registerService {
 

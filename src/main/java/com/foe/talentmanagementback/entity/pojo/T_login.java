@@ -6,14 +6,6 @@ import lombok.Data;
 
 import java.io.Serializable;
 
-/**
- * Created with IntelliJ IDEA.
- *
- * @Author: 张越
- * @Date: 2021/07/09/23:11
- * @Description:
- */
-
 @Data
 public class T_login implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)

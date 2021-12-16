@@ -9,15 +9,6 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * <p>
- * 
- * </p>
- *
- * @author Matt
- * @since 2021-07-08
- */
-
 @Data
 @ApiModel(value = "com.foe.talentmanagementback.entity.pojo.T_archive_detail",description = "新增档案记录参数")
 public class T_archive_detail implements Serializable {

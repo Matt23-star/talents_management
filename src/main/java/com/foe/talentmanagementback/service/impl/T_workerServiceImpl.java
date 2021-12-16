@@ -15,13 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- *
- * @Author: Matt
- * @Date: 2021/07/09/23:11
- * @Description:
- */
+
 @Service
 public class T_workerServiceImpl extends ServiceImpl<T_workerMapper, T_worker> implements IT_workerService {
 
@@ -30,13 +24,6 @@ public class T_workerServiceImpl extends ServiceImpl<T_workerMapper, T_worker> i
 
     @Autowired
     private T_departmentServiceImpl departmentService;
-
-    /**
-     * @author: Matt
-     * @date: 2021-07-14 10:53
-     * @description: 通过档案id查询t_worker表，获得工作者记录集合workerList，
-     * 然后访问每个节点，对WorkExperienceListDTO中的不同链表属性插入对应节点。
-     */
 
     @Override
     public Result<WorkExperienceListDTO> getWorkerByArchiveId(Integer archiveId) {

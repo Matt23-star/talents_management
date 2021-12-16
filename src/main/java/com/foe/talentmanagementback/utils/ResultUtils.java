@@ -4,11 +4,6 @@ import com.foe.talentmanagementback.entity.Result;
 import com.foe.talentmanagementback.entity.ResultMessage;
 import com.foe.talentmanagementback.entity.enums.ResultMsg;
 
-/**
- * @author: Matt
- * @date: 2021/7/9/14:50
- * @description:
- */
 public class ResultUtils {
 
     //带code和参数的成功

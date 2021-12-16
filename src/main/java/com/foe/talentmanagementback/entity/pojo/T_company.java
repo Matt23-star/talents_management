@@ -7,15 +7,6 @@ import lombok.Data;
 
 import java.io.Serializable;
 
-/**
- * <p>
- * 
- * </p>
- *
- * @author Matt
- * @since 2021-07-08
- */
-
 @Data
 //@ApiModel(value = "com.foe.talentmanagementback.entity.pojo.T_company",description = "新增公司参数")
 public class T_company implements Serializable {

@@ -11,13 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * Created with IntelliJ IDEA.
- *
- * @Author: 张越
- * @Date: 2021/07/09/23:11
- * @Description:
- */
 @RestController
 @Api(tags = "注册接口")
 @RequestMapping("/api/register")
@@ -25,13 +18,6 @@ public class T_registerController {
 
     @Autowired
     private T_registerServiceImpl registerService;
-    /**
-     * @Description:
-     * @Param:
-     * @return:
-     * @Author: 张越
-     * @Date: 2021/7/12
-     */
     @PostMapping("")
     @ApiOperation(value = "输入用户名和密码注册")
     public Result register(@ApiParam(value = "账号",required = true)@RequestParam(value="account") String account,

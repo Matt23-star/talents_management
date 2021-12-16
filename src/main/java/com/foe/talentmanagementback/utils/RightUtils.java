@@ -7,12 +7,6 @@ import com.foe.talentmanagementback.service.impl.T_talentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-/**
- * @author: Matt
- * @date: 2021/7/12/10:37
- * @description: 使用者权限判断
- */
-
 @Component
 public class RightUtils {
 

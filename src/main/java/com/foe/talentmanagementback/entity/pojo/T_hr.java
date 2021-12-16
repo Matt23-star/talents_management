@@ -6,14 +6,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 
-/**
- * <p>
- * 
- * </p>
- *
- * @author Matt
- * @since 2021-07-08
- */
+
 
 @Data
 public class T_hr implements Serializable {
