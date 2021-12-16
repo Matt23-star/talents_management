@@ -8,13 +8,7 @@ import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-/**
- * Created with IntelliJ IDEA.
- *
- * @Author: Matt
- * @Date: 2021/07/09/23:11
- * @Description:
- */
+
 @RestController
 @RequestMapping("/api/workers")
 @Api(tags = "职员接口")
