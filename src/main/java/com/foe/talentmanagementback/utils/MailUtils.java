@@ -12,6 +12,11 @@ import org.springframework.stereotype.Component;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
+/**
+ * @author: Matt
+ * @date: 2021/7/16/11:03
+ * @description:
+ */
 
 @Component
 public class MailUtils {

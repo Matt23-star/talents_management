@@ -1,6 +1,13 @@
 package com.foe.talentmanagementback.entity.enums;
 
 import lombok.Data;
+
+/**
+ * @author: Matt
+ * @date: 2021/7/10/11:25
+ * @description:
+ */
+
 public enum UserRight {
     NORMAL_USER(0,"normalUser"),
     WORKER_USER(1,"worker"),

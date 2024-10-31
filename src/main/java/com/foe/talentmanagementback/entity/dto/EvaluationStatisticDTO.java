@@ -4,6 +4,12 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.foe.talentmanagementback.utils.FloatConvert;
 import lombok.Data;
 
+/**
+ * @author: Matt
+ * @date: 2021/7/13/10:21
+ * @description:
+ */
+
 @Data
 public class EvaluationStatisticDTO {
 

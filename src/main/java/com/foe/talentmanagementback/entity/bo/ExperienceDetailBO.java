@@ -7,6 +7,12 @@ import com.foe.talentmanagementback.entity.dto.WorkExperienceListDTO;
 
 import java.util.List;
 
+/**
+ * @author: Matt
+ * @date: 2021/7/13/10:10
+ * @description:
+ */
+
 public class ExperienceDetailBO {
 
     private ArchiveDTO archive;

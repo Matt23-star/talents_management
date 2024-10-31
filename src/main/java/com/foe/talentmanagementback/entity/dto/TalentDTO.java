@@ -3,6 +3,13 @@ package com.foe.talentmanagementback.entity.dto;
 import com.foe.talentmanagementback.entity.enums.UserRight;
 import lombok.Data;
 
+/**
+ * Created with IntelliJ IDEA.
+ *
+ * @Author: 张越
+ * @Date: 2021/07/14/13:53
+ * @Description:
+ */
 @Data
 public class TalentDTO {
     /**

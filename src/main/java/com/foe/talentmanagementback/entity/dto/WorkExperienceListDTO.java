@@ -5,6 +5,12 @@ import com.foe.talentmanagementback.utils.FloatConvert;
 
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * @author: Matt
+ * @date: 2021/7/13/10:14
+ * @description:
+ */
 public class WorkExperienceListDTO {
 
     private List<String> departmentNames;

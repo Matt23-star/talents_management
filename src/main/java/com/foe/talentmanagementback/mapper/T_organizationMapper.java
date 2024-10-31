@@ -6,6 +6,13 @@ import com.foe.talentmanagementback.entity.dto.MyOrganizationDTO;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
 
+/**
+ * Created with IntelliJ IDEA.
+ *
+ * @Author: 张越
+ * @Date: 2021/07/12/9:51
+ * @Description:
+ */
 @Component
 public interface T_organizationMapper extends BaseMapper<MyOrganizationDTO> {
     @Select("select ad.company_id,c.name,c.certification,ad.department_last,d.department_name,d.department_function " +

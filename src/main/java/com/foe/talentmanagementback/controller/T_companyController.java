@@ -17,6 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * <p>
+ * 前端控制器
+ * </p>
+ *
+ * @author Matt
+ * @since 2021-07-08
+ */
 @RestController
 @RequestMapping("/api/companies")
 @Api(tags = "公司接口")

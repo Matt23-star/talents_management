@@ -5,7 +5,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
+/**
+ * @author: Matt
+ * @date: 2021/7/12/21:08
+ * @description:
+ */
 public class DateUtils {
 
     public static Date dateConvert(Date date) {

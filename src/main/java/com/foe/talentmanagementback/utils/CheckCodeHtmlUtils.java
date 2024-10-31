@@ -10,6 +10,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+/**
+ * @author: Matt
+ * @date: 2021-07-15 11:23
+ * @description: 邮件html格式规范
+ */
 
 @Component
 public class CheckCodeHtmlUtils {
@@ -26,7 +31,11 @@ public class CheckCodeHtmlUtils {
         return emailTemplet;
     }
 
-
+    /** 
+     * Description：容器初始化是加载
+     * @return void
+     * @author name：yuxin <br>email: yuruixin_china@163.com
+     **/
 
     public static void initEmailTemplate() {
         StringBuilder sb = new StringBuilder();

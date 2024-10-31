@@ -3,6 +3,13 @@ package com.foe.talentmanagementback.entity.dto;
 import lombok.Data;
 import org.springframework.context.annotation.Bean;
 
+/**
+ * Created with IntelliJ IDEA.
+ *
+ * @Author: 张越
+ * @Date: 2021/07/14/18:43
+ * @Description:
+ */
 @Data
 public class TalentSquareDTO {
 

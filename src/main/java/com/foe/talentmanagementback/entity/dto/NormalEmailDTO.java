@@ -1,5 +1,10 @@
 package com.foe.talentmanagementback.entity.dto;
 
+/**
+ * @author: Matt
+ * @date: 2021/7/16/15:26
+ * @description:
+ */
 public class NormalEmailDTO {
     private Integer toId;
     private String title;

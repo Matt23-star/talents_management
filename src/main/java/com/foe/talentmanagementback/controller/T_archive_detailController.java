@@ -10,6 +10,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+/**
+ * <p>
+ * 前端控制器
+ * </p>
+ *
+ * @author Matt
+ * @since 2021-07-08
+ */
+
 @RestController
 @RequestMapping("/api/archive-details")
 @Api(tags = {"档案接口"})

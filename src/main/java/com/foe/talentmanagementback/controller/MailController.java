@@ -6,6 +6,13 @@ import com.foe.talentmanagementback.service.impl.MailServiceImpl;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+/**
+ * @author: Matt
+ * @date: 2021/7/15/13:00
+ * @description:
+ */
+
 @RestController
 @RequestMapping("/api/mails")
 @Api(tags = "邮箱接口")

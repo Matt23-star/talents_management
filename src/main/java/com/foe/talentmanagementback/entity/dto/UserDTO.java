@@ -5,6 +5,12 @@ import com.foe.talentmanagementback.entity.enums.UserRight;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+/**
+ * @author: Matt
+ * @date: 2021/7/11/11:12
+ * @description:
+ */
+
 @Data
 public class UserDTO {
 

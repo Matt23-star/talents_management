@@ -1,5 +1,11 @@
 package com.foe.talentmanagementback.entity.enums;
 
+/**
+ * @author: Matt
+ * @date: 2021/7/12/9:03
+ * @description:
+ */
+
 public enum JobStatus {
 
     UNEMPLOYED(0,"未就业"),

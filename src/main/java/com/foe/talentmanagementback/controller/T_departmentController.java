@@ -11,6 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+/**
+ * <p>
+ * 前端控制器
+ * </p>
+ *
+ * @author Matt
+ * @since 2021-07-08
+ */
 @RestController
 @Api(tags = "部门接口")
 @RequestMapping("/api/department")
@@ -19,6 +28,11 @@ public class T_departmentController {
     @Autowired
     private T_departmentServiceImpl departmentService;
 
+    /**
+     * @author: Matt
+     * @date: 2021-07-09 17:15
+     * @description:
+     */
     @GetMapping("/talentId/{talentId}")
     @ApiOperation(value = "通过部门经理talentId查询部门信息，成功返回T_department，失败返回错误信息")
     @ApiImplicitParam(name = "talentId", value = "部门经理id", dataType = "Integer", paramType = "path", required = true)

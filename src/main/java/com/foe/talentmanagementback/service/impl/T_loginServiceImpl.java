@@ -18,6 +18,13 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Created with IntelliJ IDEA.
+ *
+ * @Author: Matt
+ * @Date: 2021/07/09/23:11
+ * @Description:
+ */
 @Service
 public class T_loginServiceImpl extends ServiceImpl<T_loginMapper, T_login> implements IT_loginService {
 
@@ -45,6 +52,12 @@ public class T_loginServiceImpl extends ServiceImpl<T_loginMapper, T_login> impl
 
     @Autowired
     private RightUtils rightUtils;
+
+    /**
+     * @author: Matt
+     * @date: 2021-07-12 11:03
+     * @description:
+     */
 
     @Override
     public Result<UserDTO> login(String account, String password) {

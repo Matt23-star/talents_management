@@ -8,7 +8,11 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
-
+/**
+ * @author: Matt
+ * @date: 2021/7/13/15:33
+ * @description:
+ */
 public class FloatConvert extends JsonSerializer<Float> {
 
     private DecimalFormat df = new DecimalFormat("0.0");

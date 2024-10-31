@@ -11,12 +11,22 @@ import com.foe.talentmanagementback.utils.ResultUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+/**
+ * @author: Matt
+ * @date: 2021/7/13/9:26
+ * @description:
+ */
 @Service
 public class V_evaluatorServiceImpl extends ServiceImpl<V_evaluatorMapper, V_evaluator> implements IV_evaluatorService {
 
     @Autowired
     private V_evaluatorMapper evaluatorMapper;
+
+    /**
+     * @author: Matt
+     * @date: 2021-07-10 10:59
+     * @description: 通过评价表id查询评价人
+     */
 
     @Override
     public Result<V_evaluator> getEvaluatorByEvaluationId(Integer evaluationId) {

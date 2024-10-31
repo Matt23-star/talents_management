@@ -22,6 +22,14 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <p>
+ * 评价详情表 服务实现类
+ * </p>
+ *
+ * @author Matt
+ * @since 2021-07-08
+ */
 @Service
 public class T_evaluation_detailsServiceImpl extends ServiceImpl<T_evaluation_detailsMapper, T_evaluation_details> implements IT_evaluation_detailsService {
 
@@ -34,6 +42,12 @@ public class T_evaluation_detailsServiceImpl extends ServiceImpl<T_evaluation_de
     @Autowired
     private V_evaluatorServiceImpl evaluatorService;
 
+    /**
+     * @return
+     * @author: Matt
+     * @date: 2021-07-13 11:29
+     * @description: 获得评价
+     */
     @Override
     public Result<List<EvaluationSendDTO>> getEvaluationsByArchiveId(Integer archiveId) {
         QueryWrapper queryWrapper = new QueryWrapper();
@@ -60,7 +74,11 @@ public class T_evaluation_detailsServiceImpl extends ServiceImpl<T_evaluation_de
         return ResultUtils.success(ResultMsg.SUCCESS, evaluationSendDTOS);
     }
 
-
+    /**
+     * @author: Matt
+     * @date: 2021-07-13 14:36
+     * @description: 获得评价统计
+     */
     public Result<EvaluationStatisticDTO> getEvaluationStatisticByArchiveId(Integer archiveId) {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("archive_detail_id", archiveId);
@@ -89,6 +107,11 @@ public class T_evaluation_detailsServiceImpl extends ServiceImpl<T_evaluation_de
         }
     }
 
+    /**
+     * @author: Matt
+     * @date: 2021-07-13 16:49
+     * @description:
+     */
     @Override
     public Result<EvaluationStatisticDTO> getEvaluationStatisticsByTalentId(Integer talentId) {
 
@@ -125,6 +148,14 @@ public class T_evaluation_detailsServiceImpl extends ServiceImpl<T_evaluation_de
         return ResultUtils.success(ResultMsg.SUCCESS, evaluationStatisticDTO);
     }
 
+
+    /**
+     * @Description:
+     * @Param:
+     * @return:
+     * @Author: 张越
+     * @Date: 2021/7/13
+     */
     @Override
     public Result intsertEvaluation(int talentId, int companyId, int professionalKnowledge, int opinionValue, int ability, int performance, int executiveAbility, String comment, int evaluator) {
         QueryWrapper queryWrapper = new QueryWrapper();

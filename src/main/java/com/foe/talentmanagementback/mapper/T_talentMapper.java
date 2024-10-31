@@ -15,6 +15,13 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Created with IntelliJ IDEA.
+ *
+ * @Author: 张越
+ * @Date: 2021/07/09/23:11
+ * @Description:
+ */
 
 @Component
 public interface T_talentMapper extends BaseMapper<T_talent> {
